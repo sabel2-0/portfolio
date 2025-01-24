@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Sumalinog - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-lg z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-2xl font-bold text-indigo-600">MS.</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-600 hover:text-indigo-600 transition">Home</a>
+                    <a href="#about" class="text-gray-600 hover:text-indigo-600 transition">About</a>
+                    <a href="#projects" class="text-gray-600 hover:text-indigo-600 transition">Projects</a>
+                    <a href="#contact" class="text-gray-600 hover:text-indigo-600 transition">Contact</a>
+                </div>
+                <button class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-16 bg-gradient-to-br from-indigo-50 to-purple-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-5xl md:text-7xl font-bold text-gray-800 mb-4 animate-fade-in">
+                        Hi, I'm Mark <span class="text-indigo-600">Sumalinog</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 animate-fade-in-delay">
+                        Full Stack Developer & UI/UX Designer
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105 shadow-lg">
+                            Hire Me
+                        </a>
+                        <a href="#projects" class="border-2 border-indigo-600 text-indigo-600 px-8 py-3 rounded-lg hover:bg-indigo-600 hover:text-white transition duration-300 transform hover:scale-105">
+                            View Work
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="avatar.jpg" alt="Profile" class="rounded-full w-64 h-64 md:w-96 md:h-96 object-cover mx-auto shadow-2xl border-4 border-white transform hover:scale-105 transition duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">About <span class="text-indigo-600">Me</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <i class="fas fa-code text-3xl text-indigo-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Web Development</h3>
+                    <p class="text-gray-600">Experienced in building modern and responsive websites using the latest technologies.</p>
+                </div>
+                <div class="p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <i class="fas fa-paint-brush text-3xl text-indigo-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">UI/UX Design</h3>
+                    <p class="text-gray-600">Creating beautiful and intuitive user interfaces with attention to detail.</p>
+                </div>
+                <div class="p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <i class="fas fa-mobile-alt text-3xl text-indigo-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Mobile Development</h3>
+                    <p class="text-gray-600">Building cross-platform mobile applications using React Native.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gradient-to-br from-gray-50 to-indigo-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">My <span class="text-indigo-600">Projects</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3" alt="Project 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">E-commerce Website</h3>
+                        <p class="text-gray-600 mb-4">A full-featured online store built with React and Node.js</p>
+                        <div class="flex space-x-2">
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d" alt="Project 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Social Media App</h3>
+                        <p class="text-gray-600 mb-4">A social platform for connecting professionals</p>
+                        <div class="flex space-x-2">
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">Vue.js</span>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8" alt="Project 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Task Management</h3>
+                        <p class="text-gray-600 mb-4">A productivity app for managing daily tasks</p>
+                        <div class="flex space-x-2">
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">Angular</span>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-sm">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">Get In <span class="text-indigo-600">Touch</span></h2>
+            <div class="max-w-3xl mx-auto">
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <input type="text" placeholder="Name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 transition duration-300">
+                        <input type="email" placeholder="Email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 transition duration-300">
+                    </div>
+                    <input type="text" placeholder="Subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                    <textarea placeholder="Message" rows="6" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600"></textarea>
+                    <button type="submit" class="w-full bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105 shadow-lg">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Mark Sumalinog</h3>
+                    <p class="text-gray-400">Full Stack Developer & UI/UX Designer</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 Mark Sumalinog. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
