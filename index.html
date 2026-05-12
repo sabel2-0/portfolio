@@ -1,474 +1,1206 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mark Ivan - Frontend Developer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Add AOS library for scroll animations -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Add Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configure Tailwind with your custom theme -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#6366f1',
-                        secondary: '#8b5cf6',
-                    },
-                    animation: {
-                        'gradient': 'gradient 5s ease infinite',
-                        'scroll': 'scroll 2s infinite',
-                        'bounce': 'bounce 2s infinite',
-                    },
-                    keyframes: {
-                        gradient: {
-                            '0%, 100%': { backgroundPosition: '0% 50%' },
-                            '50%': { backgroundPosition: '100% 50%' },
-                        },
-                        scroll: {
-                            '0%': { transform: 'translate(-50%, 0)', opacity: '1' },
-                            '100%': { transform: 'translate(-50%, 15px)', opacity: '0' },
-                        },
-                    },
-                },
-            },
-        }
-    </script>
-    <!-- Add these new styles after your existing Tailwind config -->
-    <style>
-        @keyframes float {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mark Ivan Sumalinog — Developer · AI · Cybersecurity</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-            0%,
-            100% {
-                transform: translateY(0);
-            }
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        display: ['Syne', 'sans-serif'],
+        mono: ['Space Mono', 'monospace'],
+        body: ['Inter', 'sans-serif'],
+      },
+      colors: {
+        void: '#030712',
+        neural: '#0f172a',
+        grid: '#0d1117',
+        cyan: { 400: '#22d3ee', 500: '#06b6d4' },
+        violet: { 400: '#a78bfa', 500: '#8b5cf6', 600: '#7c3aed' },
+        emerald: { 400: '#34d399', 500: '#10b981' },
+        rose: { 400: '#fb7185', 500: '#f43f5e' },
+        amber: { 400: '#fbbf24' },
+      },
+    }
+  }
+}
+</script>
 
-            50% {
-                transform: translateY(-10px);
-            }
-        }
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .floating-animation {
-            animation: float 3s ease-in-out infinite;
-        }
+  :root {
+    --cyan: #22d3ee;
+    --violet: #a78bfa;
+    --emerald: #34d399;
+    --rose: #fb7185;
+    --amber: #fbbf24;
+    --void: #030712;
+    --neural: #0f172a;
+    --surface: #111827;
+    --border: rgba(255,255,255,0.06);
+  }
 
-        .glass-effect {
-            backdrop-filter: blur(10px);
-            background: rgba(17, 24, 39, 0.8);
-        }
+  html { scroll-behavior: smooth; }
 
-        .tech-card {
-            background: linear-gradient(145deg, #1f2937, #111827);
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-        }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--void);
+    color: #e2e8f0;
+    overflow-x: hidden;
+    cursor: none;
+  }
 
-        .gradient-border {
-            position: relative;
-            border: double 1px transparent;
-            background-image: linear-gradient(#1f2937, #1f2937),
-                linear-gradient(to right, #6366f1, #8b5cf6);
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
-        }
-    </style>
+  /* ── CUSTOM CURSOR ── */
+  #cursor-dot {
+    width: 8px; height: 8px;
+    background: var(--cyan);
+    border-radius: 50%;
+    position: fixed; pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, background 0.2s;
+    box-shadow: 0 0 12px var(--cyan);
+  }
+  #cursor-ring {
+    width: 36px; height: 36px;
+    border: 1.5px solid rgba(34,211,238,0.5);
+    border-radius: 50%;
+    position: fixed; pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.18s ease, width 0.2s, height 0.2s, border-color 0.2s;
+  }
+  body:has(a:hover) #cursor-ring,
+  body:has(button:hover) #cursor-ring {
+    width: 60px; height: 60px;
+    border-color: var(--violet);
+  }
+
+  /* ── GRID BACKGROUND ── */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(34,211,238,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34,211,238,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  .noise::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; opacity: 0.4;
+  }
+
+  /* ── GLOW ORBS ── */
+  .orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(80px); opacity: 0.15;
+    pointer-events: none; animation: orbDrift 12s ease-in-out infinite;
+  }
+  @keyframes orbDrift {
+    0%,100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(30px,-20px) scale(1.05); }
+    66% { transform: translate(-20px,15px) scale(0.95); }
+  }
+
+  /* ── HERO TITLE ── */
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+  .char-glow {
+    background: linear-gradient(135deg, #fff 0%, var(--cyan) 40%, var(--violet) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 40px rgba(34,211,238,0.3));
+  }
+
+  /* ── TYPING CURSOR ── */
+  .type-cursor::after {
+    content: '|';
+    color: var(--cyan);
+    animation: blink 1s infinite;
+  }
+  @keyframes blink { 0%,50% { opacity: 1; } 51%,100% { opacity: 0; } }
+
+  /* ── TERMINAL ── */
+  .terminal {
+    background: rgba(0,0,0,0.7);
+    border: 1px solid rgba(34,211,238,0.2);
+    border-radius: 12px;
+    backdrop-filter: blur(20px);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+  }
+  .terminal-bar { background: rgba(255,255,255,0.05); border-radius: 12px 12px 0 0; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+
+  /* ── SKILL CARDS ── */
+  .skill-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative; overflow: hidden;
+  }
+  .skill-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--card-color, var(--cyan)), transparent 60%);
+    opacity: 0; transition: opacity 0.4s;
+    border-radius: inherit;
+  }
+  .skill-card:hover::before { opacity: 0.07; }
+  .skill-card:hover {
+    border-color: var(--card-color, var(--cyan));
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px var(--card-color, var(--cyan)), inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+
+  /* ── LEARNING BADGE ── */
+  .learning-badge {
+    background: linear-gradient(135deg, rgba(167,139,250,0.15), rgba(34,211,238,0.1));
+    border: 1px solid rgba(167,139,250,0.3);
+    border-radius: 100px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    animation: pulseBorder 2s ease-in-out infinite;
+  }
+  @keyframes pulseBorder {
+    0%,100% { border-color: rgba(167,139,250,0.3); box-shadow: 0 0 0 0 rgba(167,139,250,0.2); }
+    50% { border-color: rgba(34,211,238,0.5); box-shadow: 0 0 20px rgba(167,139,250,0.15); }
+  }
+
+  /* ── PROGRESS BARS ── */
+  .progress-track { background: rgba(255,255,255,0.06); border-radius: 100px; overflow: hidden; height: 4px; }
+  .progress-fill {
+    height: 100%; border-radius: 100px;
+    background: linear-gradient(90deg, var(--from), var(--to));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .progress-fill.animated { transform: scaleX(1); }
+
+  /* ── AI SECTION ── */
+  .neural-net {
+    position: absolute; inset: 0; overflow: hidden; opacity: 0.15;
+  }
+
+  /* ── PROJECT CARD ── */
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .project-card:hover {
+    border-color: rgba(34,211,238,0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 40px rgba(34,211,238,0.05);
+  }
+  .project-img-wrap { position: relative; overflow: hidden; }
+  .project-img-wrap img { transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
+  .project-card:hover .project-img-wrap img { transform: scale(1.05); }
+  .project-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(34,211,238,0.85), rgba(167,139,250,0.85));
+    opacity: 0; transition: opacity 0.4s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .project-card:hover .project-overlay { opacity: 1; }
+
+  /* ── CONTACT ── */
+  .contact-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+  }
+  .contact-card:hover {
+    border-color: rgba(34,211,238,0.3);
+    background: linear-gradient(145deg, rgba(34,211,238,0.06), rgba(167,139,250,0.04));
+    transform: translateX(6px);
+  }
+
+  /* ── NAV ── */
+  .nav-glass {
+    background: rgba(3,7,18,0.8);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    transition: color 0.2s;
+    letter-spacing: 0.05em;
+  }
+  .nav-link:hover { color: var(--cyan); }
+
+  /* ── SCROLL PROGRESS ── */
+  #scroll-prog {
+    position: fixed; top: 0; left: 0; height: 2px; z-index: 9999;
+    background: linear-gradient(90deg, var(--cyan), var(--violet), var(--emerald));
+    transition: width 0.1s linear;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--cyan);
+    text-transform: uppercase;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+
+  /* ── CYBER GRID ANIMATION ── */
+  @keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+  .scan-line {
+    position: fixed; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(34,211,238,0.3), transparent);
+    animation: scan 6s linear infinite;
+    pointer-events: none; z-index: 1; opacity: 0.4;
+  }
+
+  /* ── FADE IN UP ── */
+  .fade-in {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── STATUS DOT ── */
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--emerald);
+    box-shadow: 0 0 10px var(--emerald);
+    animation: statusPulse 2s ease-in-out infinite;
+  }
+  @keyframes statusPulse {
+    0%,100% { box-shadow: 0 0 10px var(--emerald); }
+    50% { box-shadow: 0 0 20px var(--emerald), 0 0 40px rgba(52,211,153,0.3); }
+  }
+
+  /* ── HEXAGON SKILL ICON ── */
+  .hex-icon {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ── MOBILE MENU ── */
+  #mobile-menu {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  #mobile-menu.open { transform: translateX(0); }
+
+  /* ── GLITCH TEXT ── */
+  .glitch {
+    position: relative;
+  }
+  .glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute; left: 0; top: 0;
+    background: linear-gradient(135deg, #fff 0%, var(--cyan) 40%, var(--violet) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .glitch::before { animation: glitch1 4s infinite; clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%); }
+  .glitch::after  { animation: glitch2 4s infinite; clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%); }
+  @keyframes glitch1 {
+    0%,94%,100% { transform: none; opacity: 0; }
+    95% { transform: translate(-2px, 1px) skewX(-3deg); opacity: 0.6; }
+    97% { transform: translate(2px, -1px); opacity: 0.6; }
+  }
+  @keyframes glitch2 {
+    0%,94%,100% { transform: none; opacity: 0; }
+    95% { transform: translate(2px, -1px) skewX(3deg); opacity: 0.6; }
+    97% { transform: translate(-2px, 1px); opacity: 0.6; }
+  }
+
+  /* ── FLOAT ── */
+  .float { animation: floatAnim 4s ease-in-out infinite; }
+  @keyframes floatAnim {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero-name { font-size: clamp(2.8rem, 11vw, 5rem); }
+  }
+
+  /* ── MAGNETIC BUTTON ── */
+  .mag-btn {
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, var(--cyan), var(--violet));
+    border-radius: 100px;
+    transition: all 0.3s ease;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  .mag-btn::before {
+    content: '';
+    position: absolute; inset: -2px;
+    background: linear-gradient(135deg, var(--cyan), var(--violet), var(--emerald));
+    border-radius: inherit; z-index: -1;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .mag-btn:hover { transform: scale(1.05); box-shadow: 0 10px 40px rgba(34,211,238,0.3); }
+
+  .outline-btn {
+    position: relative; overflow: hidden;
+    background: transparent;
+    border: 1px solid rgba(34,211,238,0.4);
+    border-radius: 100px;
+    transition: all 0.3s ease;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: var(--cyan);
+  }
+  .outline-btn:hover {
+    background: rgba(34,211,238,0.08);
+    border-color: var(--cyan);
+    transform: scale(1.05);
+  }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--void); }
+  ::-webkit-scrollbar-thumb { background: rgba(34,211,238,0.3); border-radius: 100px; }
+</style>
 </head>
+<body class="grid-bg noise relative">
 
-<body>
-    <nav
-        class="fixed w-full flex justify-around items-center glass-effect shadow-lg z-50 px-8 py-5 transition-all duration-300">
-        <p class="text-white font-bold text-xl">MI<span class="text-primary">.</span></p>
+<!-- Custom cursor -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
 
-        <div class="lg:hidden cursor-pointer" id="hamburger">
-            <span class="block w-6 h-0.5 bg-white mb-1.5 transition-all"></span>
-            <span class="block w-6 h-0.5 bg-white mb-1.5 transition-all"></span>
-            <span class="block w-6 h-0.5 bg-white transition-all"></span>
-        </div>
+<!-- Scan line -->
+<div class="scan-line"></div>
 
-        <div id="mobileMenu"
-            class="fixed inset-0 bg-gray-800/95 backdrop-blur-md -translate-x-full transition-transform duration-300 lg:hidden">
-            <ul class="flex flex-col items-center justify-center h-full space-y-8">
-                <li><a href="#home" class="text-white hover:text-primary text-2xl"><i
-                            class="fas fa-home mr-2"></i>Home</a></li>
-                <li><a href="#contact" class="text-white hover:text-primary text-2xl"><i
-                            class="fas fa-envelope mr-2"></i>Contact</a></li>
-                <li><a href="#project" class="text-white hover:text-primary text-2xl"><i
-                            class="fas fa-code mr-2"></i>Projects</a></li>
-                <li><a href="#skills" class="text-white hover:text-primary text-2xl"><i
-                            class="fas fa-tools mr-2"></i>Skills</a></li>
-            </ul>
-        </div>
+<!-- Scroll progress -->
+<div id="scroll-prog" style="width:0%"></div>
 
-        <ul class="hidden lg:flex items-center space-x-4">
-            <li><a href="#home" class="text-white hover:text-primary px-4 py-2 transition-colors duration-300"><i
-                        class="fas fa-home mr-2"></i>Home</a></li>
-            <li><a href="#contact" class="text-white hover:text-primary px-4 py-2 transition-colors duration-300"><i
-                        class="fas fa-envelope mr-2"></i>Contact</a></li>
-            <li><a href="#project" class="text-white hover:text-primary px-4 py-2 transition-colors duration-300"><i
-                        class="fas fa-code mr-2"></i>Projects</a></li>
-            <li><a href="#skills" class="text-white hover:text-primary px-4 py-2 transition-colors duration-300"><i
-                        class="fas fa-tools mr-2"></i>Skills</a></li>
-        </ul>
+<!-- NAV -->
+<nav class="nav-glass fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#home" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-violet-500 flex items-center justify-center">
+        <span class="font-display font-bold text-sm text-void">MI</span>
+      </div>
+      <span class="font-mono text-xs text-white/40 hidden sm:block">Mark Ivan</span>
+    </a>
 
-        <img class="w-10 h-10 rounded-full border-2 border-primary hover:scale-110 transition-transform duration-300"
-            src="me.jpg" alt="Profile Picture">
-    </nav>
+    <!-- Desktop nav -->
+    <ul class="hidden lg:flex items-center gap-8">
+      <li><a href="#home" class="nav-link">_home</a></li>
+      <li><a href="#skills" class="nav-link">_skills</a></li>
+      <li><a href="#ai-journey" class="nav-link">_ai_journey</a></li>
+      <li><a href="#project" class="nav-link">_projects</a></li>
+      <li><a href="#contact" class="nav-link">_contact</a></li>
+    </ul>
 
-    <div class="fixed top-0 left-0 w-full h-1 bg-gray-700 z-50">
-        <div id="scrollProgress" class="h-full bg-gradient-to-r from-primary to-secondary w-0"></div>
+    <div class="hidden lg:flex items-center gap-3">
+      <div class="status-dot"></div>
+      <span class="font-mono text-xs text-emerald-400">Available for hire</span>
     </div>
 
-    <!-- Hero Section -->
-    <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white px-4"
-        id="home">
-        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
-            <div class="text-primary font-medium mb-4 tracking-wide ">Hello, I'm Mark Ivan</div>
-            <div
-                class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent bg-[length:200%] animate-gradient">
-                FRONTEND DEVELOPER</div>
-            <div class="typing-text text-lg sm:text-xl md:text-2xl text-gray-300 mb-8"></div>
-            <div class="text-gray-300 max-w-2xl mx-auto mb-8 leading-relaxed px-4 sm:px-6" data-aos="fade-up"
-                data-aos-delay="200">
-                I am a passionate developer focused on crafting elegant solutions to complex challenges. I create
-                efficient, maintainable code while staying current with emerging technologies.
-            </div>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 px-4" data-aos="fade-up"
-                data-aos-delay="400">
-                <a href="#contact"
-                    class="px-8 py-3 bg-primary hover:bg-primary/90 rounded-full font-medium transition-all transform hover:scale-105 text-center">Get
-                    in Touch</a>
-                <a href="#project"
-                    class="px-8 py-3 border-2 border-primary text-primary hover:bg-primary/10 rounded-full font-medium transition-all transform hover:scale-105 text-center">View
-                    Projects</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Tech Stack Section -->
-    <section id="skills" class="py-16 sm:py-20 bg-gray-800">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center text-white mb-12 sm:mb-16">
-                <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Tech Stack</span>
-            </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8" data-aos="fade-up">
-                <!-- Frontend -->
-                <div class="tech-card p-6 rounded-xl hover:shadow-xl transition-all hover:scale-105 gradient-border">
-                    <h3 class="text-white font-bold mb-4">Frontend</h3>
-                    <div class="space-y-3">
-                        <div class="flex items-center gap-2">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-                                class="w-6 h-6" />
-                            <span class="text-gray-300">React.js</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-                                class="w-6 h-6" />
-                            <span class="text-gray-300">TypeScript</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
-                                class="w-6 h-6 tech-icon" />
-                            <span class="text-gray-300">Tailwind CSS</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
-                                class="w-6 h-6" />
-                            <span class="text-gray-300">Bootstrap</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Backend -->
-                <div class="tech-card p-6 rounded-xl hover:shadow-xl transition-all hover:scale-105 gradient-border">
-                    <h3 class="text-white font-bold mb-4">Backend</h3>
-                    <div class="space-y-3">
-                        <div class="flex items-center gap-2">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-                                class="w-6 h-6" />
-                            <span class="text-gray-300">Node.js</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-                                class="w-6 h-6" />
-                            <span class="text-gray-300">Express.js</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
-                                class="w-6 h-6" />
-                            <span class="text-gray-300">PHP</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-                                class="w-6 h-6" />
-                            <span class="text-gray-300">MySQL</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tools -->
-                <div class="tech-card p-6 rounded-xl hover:shadow-xl transition-all hover:scale-105 gradient-border">
-                    <h3 class="text-white font-bold mb-4">Tools</h3>
-                    <div class="space-y-3">
-                        <div class="flex items-center gap-2">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-                                class="w-6 h-6" />
-                            <span class="text-gray-300">Git</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
-                                class="w-6 h-6" />
-                            <span class="text-gray-300">Docker</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-                                class="w-6 h-6" />
-                            <span class="text-gray-300">VS Code</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg"
-                                class="w-6 h-6" />
-                            <span class="text-gray-300">Postman</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Cloud -->
-                <div class="tech-card p-6 rounded-xl hover:shadow-xl transition-all hover:scale-105 gradient-border">
-                    <h3 class="text-white font-bold mb-4">Cloud</h3>
-                    <div class="space-y-3">
-                        <div class="flex items-center gap-2">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg"
-                                class="w-6 h-6 tech-icon" />
-                            <span class="text-gray-300">AWS</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"
-                                class="w-6 h-6" />
-                            <span class="text-gray-300">Google Cloud</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
-                                class="w-6 h-6" />
-                            <span class="text-gray-300">Firebase</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-original.svg"
-                                class="w-6 h-6" />
-                            <span class="text-gray-300">Heroku</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="project" class="py-16 sm:py-20 bg-gray-900">
-        <div class="max-w-6xl mx-auto px-4" data-aos="fade-up">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center text-white mb-12 sm:mb-16">
-                <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">My
-                    Projects</span>
-            </h2>
-            <div class="flex justify-center px-4">
-                <!-- Project Card -->
-                <div class="w-full max-w-md bg-gray-800 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 gradient-border"
-                    data-aos="fade-up">
-                    <div class="relative group">
-                        <img src="proj-1.png" alt="Emade Assist and Connect"
-                            class="w-full h-48 sm:h-64 object-cover transition-transform duration-300 group-hover:scale-110">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-r from-primary/90 to-secondary/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <a href="http://emade-main.infinityfreeapp.com/" target="_blank"
-                                class="text-white hover:text-gray-200 text-2xl sm:text-3xl transform hover:scale-110 transition-transform">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="p-6 sm:p-8">
-                        <h3
-                            class="text-xl sm:text-2xl font-semibold text-white mb-3 sm:mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                            Emade Assist and Connect
-                        </h3>
-                        <p class="text-gray-300 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
-                            A comprehensive management system for Emade Technological Solutions Corp featuring inventory
-                            tracking and client management, powered by MySQL database. Demo credentials - Username:
-                            admin, Password: admin123
-                        </p>
-                        <div class="flex flex-wrap gap-2 sm:gap-3">
-                            <span
-                                class="px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm bg-blue-600/20 text-blue-400 rounded-full font-medium hover:bg-blue-600/30 transition-colors">PHP</span>
-                            <span
-                                class="px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm bg-yellow-600/20 text-yellow-400 rounded-full font-medium hover:bg-yellow-600/30 transition-colors">JavaScript</span>
-                            <span
-                                class="px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm bg-blue-600/20 text-blue-400 rounded-full font-medium hover:bg-blue-600/30 transition-colors">MySQL</span>
-                            <span
-                                class="px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm bg-orange-600/20 text-orange-400 rounded-full font-medium hover:bg-orange-600/30 transition-colors">HTML</span>
-                            <span
-                                class="px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm bg-blue-400/20 text-blue-300 rounded-full font-medium hover:bg-blue-400/30 transition-colors">CSS</span>
-                            <span
-                                class="px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm bg-teal-600/20 text-teal-400 rounded-full font-medium hover:bg-teal-600/30 transition-colors">Tailwind</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 sm:py-20 bg-gray-800">
-        <div class="max-w-6xl mx-auto px-4" data-aos="fade-up">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center text-white mb-12 sm:mb-16">
-                <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Get In
-                    Touch</span>
-            </h2>
-            <div class="flex justify-center px-4">
-                <div class="w-full max-w-md space-y-6 sm:space-y-8" data-aos="fade-right">
-                    <div class="bg-gray-700 p-4 sm:p-6 rounded-xl flex items-start gap-4">
-                        <div class="text-primary text-xl sm:text-2xl"><i class="fas fa-envelope"></i></div>
-                        <div>
-                            <h3 class="text-white font-bold mb-2">Email</h3>
-                            <p class="text-gray-300 text-sm sm:text-base">markivan.night@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="bg-gray-700 p-4 sm:p-6 rounded-xl flex items-start gap-4">
-                        <div class="text-primary text-xl sm:text-2xl"><i class="fas fa-phone"></i></div>
-                        <div>
-                            <h3 class="text-white font-bold mb-2">Phone</h3>
-                            <p class="text-gray-300 text-sm sm:text-base">09949065613</p>
-                        </div>
-                    </div>
-                    <div class="bg-gray-700 p-4 sm:p-6 rounded-xl flex items-start gap-4">
-                        <div class="text-primary text-xl sm:text-2xl"><i class="fas fa-map-marker-alt"></i></div>
-                        <div>
-                            <h3 class="text-white font-bold mb-2">Location</h3>
-                            <p class="text-gray-300 text-sm sm:text-base">Cebu City, Philippines</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <div class="text-3xl font-bold mb-8">MI<span class="text-primary">.</span></div>
-            <p class="text-gray-400">© 2025 Mark Ivan Sumalinog. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <button id="backToTop"
-        class="fixed bottom-8 right-8 bg-gradient-to-r from-primary to-secondary p-4 rounded-full text-white opacity-0 transition-all duration-300 hover:scale-110 shadow-lg">
-        <i class="fas fa-arrow-up"></i>
+    <!-- Hamburger -->
+    <button id="hamburger" class="lg:hidden flex flex-col gap-1.5 p-2">
+      <span class="block w-5 h-0.5 bg-white/70 transition-all"></span>
+      <span class="block w-5 h-0.5 bg-white/70 transition-all"></span>
+      <span class="block w-3 h-0.5 bg-white/70 transition-all"></span>
     </button>
+  </div>
+</nav>
 
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
+<!-- Mobile menu -->
+<div id="mobile-menu" class="fixed inset-0 bg-void/95 backdrop-blur-2xl z-40 flex flex-col items-center justify-center">
+  <ul class="flex flex-col items-center gap-8">
+    <li><a href="#home" class="font-display text-2xl text-white hover:text-cyan-400 transition-colors">Home</a></li>
+    <li><a href="#skills" class="font-display text-2xl text-white hover:text-cyan-400 transition-colors">Skills</a></li>
+    <li><a href="#ai-journey" class="font-display text-2xl text-white hover:text-cyan-400 transition-colors">AI Journey</a></li>
+    <li><a href="#project" class="font-display text-2xl text-white hover:text-cyan-400 transition-colors">Projects</a></li>
+    <li><a href="#contact" class="font-display text-2xl text-white hover:text-cyan-400 transition-colors">Contact</a></li>
+  </ul>
+</div>
 
-        // Typing effect
-        const texts = ["Building Beautiful Interfaces", "Creating Seamless Experiences", "Solving Complex Problems"];
-        let count = 0;
-        let index = 0;
-        let currentText = "";
-        let letter = "";
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+  <!-- Orbs -->
+  <div class="orb w-96 h-96 bg-cyan-400 top-20 -left-32" style="animation-delay:0s"></div>
+  <div class="orb w-80 h-80 bg-violet-500 bottom-20 -right-24" style="animation-delay:4s"></div>
+  <div class="orb w-48 h-48 bg-emerald-400 top-1/2 left-1/2" style="animation-delay:8s"></div>
 
-        function type() {
-            if (count === texts.length) {
-                count = 0;
-            }
-            currentText = texts[count];
-            letter = currentText.slice(0, ++index);
+  <div class="max-w-7xl mx-auto px-6 w-full">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
 
-            document.querySelector(".typing-text").textContent = letter;
-            if (letter.length === currentText.length) {
-                count++;
-                index = 0;
-                setTimeout(type, 2000);
-            } else {
-                setTimeout(type, 100);
-            }
-        }
+      <!-- Left -->
+      <div class="fade-in">
+        <!-- Status -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
+          <div class="status-dot"></div>
+          <span class="font-mono text-xs text-white/60">OPEN TO OPPORTUNITIES · CEBU, PH</span>
+        </div>
 
-        type();
-        // Mobile menu
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
+        <!-- Name -->
+        <div class="hero-name mb-4 overflow-hidden">
+          <div class="glitch char-glow" data-text="MARK">MARK</div>
+          <div class="glitch char-glow" data-text="IVAN" style="animation-delay:0.5s">IVAN</div>
+        </div>
 
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('-translate-x-full');
-            // Animate hamburger
-            hamburger.querySelectorAll('span').forEach((span, index) => {
-                if (mobileMenu.classList.contains('-translate-x-full')) {
-                    span.style.transform = '';
-                    span.style.opacity = '1';
-                } else {
-                    if (index === 0) span.style.transform = 'rotate(45deg) translate(5px, 5px)';
-                    if (index === 1) span.style.opacity = '0';
-                    if (index === 2) span.style.transform = 'rotate(-45deg) translate(7px, -6px)';
-                }
-            });
-        });
+        <!-- Role -->
+        <div class="flex items-center gap-3 mb-6">
+          <div class="h-px flex-1 bg-gradient-to-r from-cyan-400/50 to-transparent"></div>
+          <span id="typing-role" class="font-mono text-sm text-cyan-400 type-cursor"></span>
+        </div>
 
-        // Close mobile menu when clicking links
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('-translate-x-full');
-                hamburger.querySelectorAll('span').forEach(span => {
-                    span.style.transform = '';
-                    span.style.opacity = '1';
-                });
-            });
-        });
+        <p class="text-white/50 text-base leading-relaxed mb-8 max-w-lg font-body">
+          Frontend developer evolving into a multi-domain technologist. Currently pushing the boundaries of 
+          <span class="text-violet-400 font-medium">AI & Machine Learning</span>, hunting exploits in 
+          <span class="text-emerald-400 font-medium">Cybersecurity</span>, and mastering 
+          <span class="text-amber-400 font-medium">Python</span> — converging all three into a singular vision.
+        </p>
 
-        // Scroll progress
-        window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('scrollProgress').style.width = scrolled + '%';
+        <div class="flex flex-wrap gap-3 mb-10">
+          <a href="#contact" class="mag-btn px-7 py-3 text-void font-semibold cursor-none">Get In Touch</a>
+          <a href="#project" class="outline-btn px-7 py-3 cursor-none">View Projects</a>
+          <a href="#ai-journey" class="outline-btn px-7 py-3 cursor-none" style="border-color:rgba(167,139,250,0.4); color:var(--violet)">AI Journey ↗</a>
+        </div>
 
-            // Show/hide back to top button
-            const backToTop = document.getElementById('backToTop');
-            if (winScroll > 300) {
-                backToTop.style.opacity = '1';
-            } else {
-                backToTop.style.opacity = '0';
-            }
-        });
+        <!-- Quick stats -->
+        <div class="grid grid-cols-3 gap-4">
+          <div class="text-center">
+            <div class="font-display font-bold text-2xl text-cyan-400">1+</div>
+            <div class="font-mono text-xs text-white/30 mt-1">YEARS EXP</div>
+          </div>
+          <div class="text-center border-x border-white/10">
+            <div class="font-display font-bold text-2xl text-violet-400">∞</div>
+            <div class="font-mono text-xs text-white/30 mt-1">CURIOSITY</div>
+          </div>
+          <div class="text-center">
+            <div class="font-display font-bold text-2xl text-emerald-400">3</div>
+            <div class="font-mono text-xs text-white/30 mt-1">DOMAINS</div>
+          </div>
+        </div>
+      </div>
 
-        // Back to top functionality
-        document.getElementById('backToTop').addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+      <!-- Right: Terminal -->
+      <div class="fade-in float" style="transition-delay:0.3s">
+        <div class="terminal p-0 relative">
+          <div class="terminal-bar px-4 py-3 flex items-center gap-2">
+            <div class="dot bg-rose-500"></div>
+            <div class="dot bg-amber-400"></div>
+            <div class="dot bg-emerald-400"></div>
+            <span class="ml-4 text-white/20 text-xs">mark_ivan ~ portfolio</span>
+          </div>
+          <div class="p-5 space-y-2 text-sm leading-relaxed">
+            <div class="text-white/30">// Mark Ivan · Developer Profile</div>
+            <br>
+            <div><span class="text-violet-400">const</span> <span class="text-cyan-400">developer</span> <span class="text-white/50">=</span> <span class="text-white/80">{</span></div>
+            <div class="pl-4"><span class="text-emerald-400">name</span><span class="text-white/50">:</span> <span class="text-amber-400">"Mark Ivan Sumalinog"</span><span class="text-white/50">,</span></div>
+            <div class="pl-4"><span class="text-emerald-400">role</span><span class="text-white/50">:</span> <span class="text-amber-400">"Frontend Developer"</span><span class="text-white/50">,</span></div>
+            <div class="pl-4"><span class="text-emerald-400">location</span><span class="text-white/50">:</span> <span class="text-amber-400">"Cebu City, PH 🇵🇭"</span><span class="text-white/50">,</span></div>
+            <div class="pl-4"><span class="text-emerald-400">learning</span><span class="text-white/50">:</span> <span class="text-white/80">[</span></div>
+            <div class="pl-8"><span class="text-amber-400">"AI / LLM"</span><span class="text-white/50">,</span></div>
+            <div class="pl-8"><span class="text-amber-400">"Machine Learning"</span><span class="text-white/50">,</span></div>
+            <div class="pl-8"><span class="text-amber-400">"Cybersecurity"</span><span class="text-white/50">,</span></div>
+            <div class="pl-8"><span class="text-amber-400">"Python Mastery"</span></div>
+            <div class="pl-4"><span class="text-white/80">]</span><span class="text-white/50">,</span></div>
+            <div class="pl-4"><span class="text-emerald-400">status</span><span class="text-white/50">:</span> <span class="text-emerald-400">"available"</span><span class="text-white/50">,</span></div>
+            <div class="pl-4"><span class="text-emerald-400">mission</span><span class="text-white/50">:</span> <span class="text-amber-400">"Build. Break. Secure. Repeat."</span></div>
+            <div><span class="text-white/80">}</span></div>
+            <br>
+            <div id="terminal-running" class="text-emerald-400 text-xs">
+              <span class="text-white/30">❯</span> running<span class="type-cursor"></span>
+            </div>
+          </div>
+        </div>
 
-        // Form feedback
-        const form = document.querySelector('form');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const button = form.querySelector('button');
-            const originalText = button.textContent;
-            button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+        <!-- Learning pills below terminal -->
+        <div class="flex flex-wrap gap-2 mt-4 justify-center">
+          <span class="learning-badge px-4 py-1.5 text-violet-300">🧠 LLM IN PROGRESS</span>
+          <span class="learning-badge px-4 py-1.5 text-cyan-300" style="border-color:rgba(34,211,238,0.3)">🛡️ CYBERSEC LEARNING</span>
+          <span class="learning-badge px-4 py-1.5 text-amber-300" style="border-color:rgba(251,191,36,0.3)">🐍 PYTHON MASTERY</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-            // Simulate form submission
-            setTimeout(() => {
-                button.innerHTML = '<i class="fas fa-check mr-2"></i>Sent!';
-                form.reset();
-                setTimeout(() => {
-                    button.textContent = originalText;
-                }, 2000);
-            }, 1500);
-        });
-    </script>
+  <!-- Scroll cue -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+    <span class="font-mono text-xs text-white/40">scroll</span>
+    <div class="w-px h-10 bg-gradient-to-b from-cyan-400 to-transparent animate-pulse"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SKILLS ═══════════════════════════ -->
+<section id="skills" class="py-28 relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mb-16 fade-in">
+      <div class="section-label mb-3">02 / SKILLS</div>
+      <h2 class="section-title">Tech <span style="background: linear-gradient(135deg, var(--cyan), var(--violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Arsenal</span></h2>
+      <p class="text-white/40 max-w-xl mt-3 font-body">The toolkit I deploy to craft exceptional digital experiences.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      <!-- Frontend -->
+      <div class="skill-card p-6 fade-in" style="--card-color: var(--cyan)">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(34,211,238,0.1)">
+            <i class="fas fa-layer-group text-cyan-400 text-sm"></i>
+          </div>
+          <div>
+            <div class="font-display font-bold text-white text-sm">Frontend</div>
+            <div class="font-mono text-xs text-cyan-400">4 techs</div>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <div class="flex items-center gap-2.5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-5 h-5">
+            <span class="text-white/70 text-sm">React.js</span>
+            <div class="ml-auto text-xs text-cyan-400/60 font-mono">core</div>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" class="w-5 h-5">
+            <span class="text-white/70 text-sm">TypeScript</span>
+            <div class="ml-auto text-xs text-cyan-400/60 font-mono">core</div>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" class="w-5 h-5">
+            <span class="text-white/70 text-sm">Tailwind CSS</span>
+            <div class="ml-auto text-xs text-emerald-400/60 font-mono">expert</div>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" class="w-5 h-5">
+            <span class="text-white/70 text-sm">Bootstrap</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Backend -->
+      <div class="skill-card p-6 fade-in" style="--card-color: var(--violet); transition-delay:0.1s">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(167,139,250,0.1)">
+            <i class="fas fa-server text-violet-400 text-sm"></i>
+          </div>
+          <div>
+            <div class="font-display font-bold text-white text-sm">Backend</div>
+            <div class="font-mono text-xs text-violet-400">4 techs</div>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <div class="flex items-center gap-2.5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" class="w-5 h-5">
+            <span class="text-white/70 text-sm">Node.js</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" class="w-5 h-5" style="filter:invert(1) opacity(0.7)">
+            <span class="text-white/70 text-sm">Express.js</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" class="w-5 h-5">
+            <span class="text-white/70 text-sm">PHP</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="w-5 h-5">
+            <span class="text-white/70 text-sm">MySQL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div class="skill-card p-6 fade-in" style="--card-color: var(--emerald); transition-delay:0.2s">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(52,211,153,0.1)">
+            <i class="fas fa-wrench text-emerald-400 text-sm"></i>
+          </div>
+          <div>
+            <div class="font-display font-bold text-white text-sm">Tools</div>
+            <div class="font-mono text-xs text-emerald-400">4 techs</div>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <div class="flex items-center gap-2.5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="w-5 h-5">
+            <span class="text-white/70 text-sm">Git & GitHub</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-5 h-5">
+            <span class="text-white/70 text-sm">Docker</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="w-5 h-5">
+            <span class="text-white/70 text-sm">VS Code</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" class="w-5 h-5">
+            <span class="text-white/70 text-sm">Postman</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cloud -->
+      <div class="skill-card p-6 fade-in" style="--card-color: var(--amber); transition-delay:0.3s">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(251,191,36,0.1)">
+            <i class="fas fa-cloud text-amber-400 text-sm"></i>
+          </div>
+          <div>
+            <div class="font-display font-bold text-white text-sm">Cloud</div>
+            <div class="font-mono text-xs text-amber-400">4 techs</div>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <div class="flex items-center gap-2.5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" class="w-5 h-5" style="filter:invert(1) opacity(0.7)">
+            <span class="text-white/70 text-sm">AWS</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" class="w-5 h-5">
+            <span class="text-white/70 text-sm">Google Cloud</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" class="w-5 h-5">
+            <span class="text-white/70 text-sm">Firebase</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-original.svg" class="w-5 h-5">
+            <span class="text-white/70 text-sm">Heroku</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ AI JOURNEY ═══════════════════════════ -->
+<section id="ai-journey" class="py-28 relative overflow-hidden">
+  <!-- Background glow -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-violet-500/30 to-transparent"></div>
+    <div class="orb w-[500px] h-[500px] bg-violet-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="opacity:0.08"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="mb-16 fade-in">
+      <div class="section-label mb-3">03 / AI × CYBER × PYTHON</div>
+      <h2 class="section-title">The <span style="background: linear-gradient(135deg, var(--violet), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Frontier</span></h2>
+      <p class="text-white/40 max-w-xl mt-3 font-body">Where I'm heading. Three disciplines converging into one unstoppable force.</p>
+    </div>
+
+    <!-- Big 3 cards -->
+    <div class="grid lg:grid-cols-3 gap-6 mb-12">
+
+      <!-- AI / LLM -->
+      <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--violet)">
+        <div class="absolute top-4 right-4">
+          <span class="learning-badge px-3 py-1 text-violet-300 text-xs">IN PROGRESS</span>
+        </div>
+        <!-- Icon -->
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(167,139,250,0.2), rgba(167,139,250,0.05)); border: 1px solid rgba(167,139,250,0.2)">
+          <span class="text-3xl">🧠</span>
+        </div>
+        <h3 class="font-display font-bold text-xl text-white mb-2">AI & Large Language Models</h3>
+        <p class="text-white/40 text-sm leading-relaxed mb-6">Studying transformer architectures, prompt engineering, fine-tuning, RAG pipelines, and how LLMs actually think. Targeting mastery of the full AI stack.</p>
+
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-violet-400/10 text-violet-300 border border-violet-400/20">Transformers</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-violet-400/10 text-violet-300 border border-violet-400/20">LLMs</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-violet-400/10 text-violet-300 border border-violet-400/20">Prompt Eng.</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-violet-400/10 text-violet-300 border border-violet-400/20">RAG</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-violet-400/10 text-violet-300 border border-violet-400/20">Fine-tuning</span>
+        </div>
+
+        <!-- Progress -->
+        <div class="space-y-3">
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-1.5">
+              <span class="text-white/40">Foundations</span><span class="text-violet-400">72%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.72" style="--from:#a78bfa; --to:#22d3ee"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-1.5">
+              <span class="text-white/40">Architectures</span><span class="text-violet-400">45%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.45" style="--from:#a78bfa; --to:#22d3ee"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-1.5">
+              <span class="text-white/40">Applications</span><span class="text-violet-400">60%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.60" style="--from:#a78bfa; --to:#22d3ee"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Machine Learning -->
+      <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--cyan); transition-delay:0.1s">
+        <div class="absolute top-4 right-4">
+          <span class="learning-badge px-3 py-1 text-cyan-300 text-xs" style="border-color:rgba(34,211,238,0.3)">LEARNING</span>
+        </div>
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(34,211,238,0.2), rgba(34,211,238,0.05)); border: 1px solid rgba(34,211,238,0.2)">
+          <span class="text-3xl">⚡</span>
+        </div>
+        <h3 class="font-display font-bold text-xl text-white mb-2">Machine Learning</h3>
+        <p class="text-white/40 text-sm leading-relaxed mb-6">Deep diving into ML algorithms, neural networks, training pipelines, model evaluation, and real-world deployment. NumPy, pandas, scikit-learn, PyTorch on the stack.</p>
+
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-cyan-400/10 text-cyan-300 border border-cyan-400/20">Neural Nets</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-cyan-400/10 text-cyan-300 border border-cyan-400/20">PyTorch</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-cyan-400/10 text-cyan-300 border border-cyan-400/20">scikit-learn</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-cyan-400/10 text-cyan-300 border border-cyan-400/20">pandas</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-cyan-400/10 text-cyan-300 border border-cyan-400/20">NumPy</span>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-1.5">
+              <span class="text-white/40">Math & Stats</span><span class="text-cyan-400">65%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.65" style="--from:#22d3ee; --to:#34d399"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-1.5">
+              <span class="text-white/40">Algorithms</span><span class="text-cyan-400">50%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.50" style="--from:#22d3ee; --to:#34d399"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-1.5">
+              <span class="text-white/40">Model Deploy</span><span class="text-cyan-400">35%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.35" style="--from:#22d3ee; --to:#34d399"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cybersecurity + Python -->
+      <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--emerald); transition-delay:0.2s">
+        <div class="absolute top-4 right-4">
+          <span class="learning-badge px-3 py-1 text-emerald-300 text-xs" style="border-color:rgba(52,211,153,0.3)">ACTIVE</span>
+        </div>
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(52,211,153,0.2), rgba(52,211,153,0.05)); border: 1px solid rgba(52,211,153,0.2)">
+          <span class="text-3xl">🛡️</span>
+        </div>
+        <h3 class="font-display font-bold text-xl text-white mb-2">Cybersecurity + Python</h3>
+        <p class="text-white/40 text-sm leading-relaxed mb-6">Learning offensive & defensive security. Network security, ethical hacking, OSINT, and building security tools in Python — the one language to rule them all.</p>
+
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">Ethical Hacking</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">OSINT</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-amber-400/10 text-amber-300 border border-amber-400/20">🐍 Python</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">Network Sec</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">CTF</span>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-1.5">
+              <span class="text-white/40">Python</span><span class="text-emerald-400">68%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.68" style="--from:#34d399; --to:#fbbf24"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-1.5">
+              <span class="text-white/40">Sec Concepts</span><span class="text-emerald-400">55%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.55" style="--from:#34d399; --to:#fbbf24"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-1.5">
+              <span class="text-white/40">Pen Testing</span><span class="text-emerald-400">30%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.30" style="--from:#34d399; --to:#fbbf24"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONVERGENCE BANNER — the thing that doesn't exist anywhere else -->
+    <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--cyan)">
+      <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
+        <!-- Animated connection lines SVG -->
+        <svg width="100%" height="100%" viewBox="0 0 800 200" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#22d3ee" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#a78bfa"/>
+              <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M100,100 Q250,30 400,100 Q550,170 700,100" stroke="url(#lineGrad)" stroke-width="1.5" fill="none">
+            <animate attributeName="d" dur="4s" repeatCount="indefinite"
+              values="M100,100 Q250,30 400,100 Q550,170 700,100;
+                      M100,100 Q250,170 400,100 Q550,30 700,100;
+                      M100,100 Q250,30 400,100 Q550,170 700,100"/>
+          </path>
+          <circle r="4" fill="#22d3ee"><animateMotion dur="4s" repeatCount="indefinite" path="M100,100 Q250,30 400,100 Q550,170 700,100"/></circle>
+          <circle r="4" fill="#a78bfa"><animateMotion dur="4s" begin="1.3s" repeatCount="indefinite" path="M100,100 Q250,30 400,100 Q550,170 700,100"/></circle>
+          <circle r="4" fill="#34d399"><animateMotion dur="4s" begin="2.6s" repeatCount="indefinite" path="M100,100 Q250,30 400,100 Q550,170 700,100"/></circle>
+        </svg>
+      </div>
+
+      <div class="relative grid lg:grid-cols-3 gap-8 items-center">
+        <div class="lg:col-span-2">
+          <div class="font-mono text-xs text-violet-400 mb-2">// THE CONVERGENCE THESIS</div>
+          <h3 class="font-display font-bold text-2xl text-white mb-3">Frontend + AI + Cybersecurity = <span class="text-cyan-400">The Future Developer</span></h3>
+          <p class="text-white/40 leading-relaxed text-sm">
+            Most developers choose one lane. I'm building across three. A frontend architect who understands LLM integration, can write ML-powered features in Python, and thinks like a hacker when designing systems. That intersection doesn't exist on most resumes. It will define mine.
+          </p>
+        </div>
+        <div class="flex flex-col gap-3 text-sm font-mono">
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <span class="text-cyan-400">→</span>
+            <span class="text-white/60">Build AI-powered UIs</span>
+          </div>
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <span class="text-violet-400">→</span>
+            <span class="text-white/60">Secure every layer</span>
+          </div>
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <span class="text-emerald-400">→</span>
+            <span class="text-white/60">Automate with Python</span>
+          </div>
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <span class="text-amber-400">→</span>
+            <span class="text-white/60">Ship. Break. Improve.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ PROJECTS ═══════════════════════════ -->
+<section id="project" class="py-28 relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mb-16 fade-in">
+      <div class="section-label mb-3">04 / PROJECTS</div>
+      <h2 class="section-title">Work I've <span style="background: linear-gradient(135deg, var(--emerald), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Shipped</span></h2>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-6">
+      <!-- Main Project — large -->
+      <div class="project-card lg:col-span-3 fade-in">
+        <div class="project-img-wrap">
+          <img src="proj-1.png" alt="Emade Assist and Connect"
+               class="w-full h-56 lg:h-72 object-cover"
+               onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80&auto=format'">
+          <div class="project-overlay">
+            <a href="http://emade-main.infinityfreeapp.com/" target="_blank"
+               class="w-14 h-14 rounded-full bg-void/80 flex items-center justify-center text-white text-xl hover:bg-void transition-colors cursor-none">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+          <!-- Live badge -->
+          <div class="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-void/80 backdrop-blur-md border border-white/10">
+            <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+            <span class="font-mono text-xs text-white/70">LIVE</span>
+          </div>
+        </div>
+        <div class="p-7">
+          <h3 class="font-display font-bold text-xl text-white mb-2">Emade Assist & Connect</h3>
+          <p class="text-white/40 text-sm leading-relaxed mb-5">
+            Comprehensive management system for Emade Technological Solutions Corp. Features inventory tracking, client management, and reporting — powered by MySQL.
+            <span class="text-white/25 block mt-1 font-mono text-xs">Demo: admin / admin123</span>
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-blue-400/10 text-blue-300 border border-blue-400/20">PHP</span>
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-yellow-400/10 text-yellow-300 border border-yellow-400/20">JavaScript</span>
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20">MySQL</span>
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-orange-400/10 text-orange-300 border border-orange-400/20">HTML</span>
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-cyan-400/10 text-cyan-300 border border-cyan-400/20">Tailwind</span>
+          </div>
+          <a href="http://emade-main.infinityfreeapp.com/" target="_blank"
+             class="inline-flex items-center gap-2 font-mono text-xs text-cyan-400 hover:text-cyan-300 transition-colors cursor-none">
+            View Live Project <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right side: upcoming / vision -->
+      <div class="lg:col-span-2 flex flex-col gap-5">
+
+        <!-- AI Project (coming soon) -->
+        <div class="skill-card p-6 fade-in flex-1 relative overflow-hidden" style="--card-color: var(--violet); transition-delay:0.15s">
+          <div class="absolute top-3 right-3">
+            <span class="learning-badge px-3 py-1 text-violet-300 text-xs">BUILDING</span>
+          </div>
+          <div class="text-4xl mb-3">🤖</div>
+          <h3 class="font-display font-bold text-white text-lg mb-2">AI-Powered App</h3>
+          <p class="text-white/40 text-sm leading-relaxed mb-4">Next project: integrating LLM APIs to build a real AI-driven web application. Frontend meets machine intelligence.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-violet-400/10 text-violet-300 border border-violet-400/20">Python</span>
+            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-violet-400/10 text-violet-300 border border-violet-400/20">LLM API</span>
+            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-violet-400/10 text-violet-300 border border-violet-400/20">React</span>
+          </div>
+        </div>
+
+        <!-- Cyber Tool (coming soon) -->
+        <div class="skill-card p-6 fade-in flex-1 relative overflow-hidden" style="--card-color: var(--emerald); transition-delay:0.3s">
+          <div class="absolute top-3 right-3">
+            <span class="learning-badge px-3 py-1 text-emerald-300 text-xs" style="border-color:rgba(52,211,153,0.3)">PLANNED</span>
+          </div>
+          <div class="text-4xl mb-3">🔐</div>
+          <h3 class="font-display font-bold text-white text-lg mb-2">Security Tool</h3>
+          <p class="text-white/40 text-sm leading-relaxed mb-4">Building a Python-based OSINT / network analysis tool as part of my cybersecurity learning path.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">Python</span>
+            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">OSINT</span>
+            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">Networking</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CONTACT ═══════════════════════════ -->
+<section id="contact" class="py-28 relative overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="orb w-96 h-96 bg-cyan-400 top-1/2 right-0 translate-x-1/2 -translate-y-1/2" style="opacity:0.08"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left -->
+      <div class="fade-in">
+        <div class="section-label mb-3">05 / CONTACT</div>
+        <h2 class="section-title mb-4">Let's <span style="background: linear-gradient(135deg, var(--cyan), var(--emerald)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Connect</span></h2>
+        <p class="text-white/40 leading-relaxed mb-8 font-body">
+          I'm always open to new opportunities, collaborations, and conversations about tech. Whether you want to build something together, discuss AI, or just say hi — my inbox is open.
+        </p>
+
+        <div class="space-y-4 mb-8">
+          <a href="mailto:markivan.night@gmail.com" class="contact-card flex items-center gap-4 p-5 cursor-none">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(34,211,238,0.1)">
+              <i class="fas fa-envelope text-cyan-400"></i>
+            </div>
+            <div>
+              <div class="font-mono text-xs text-white/30 mb-0.5">EMAIL</div>
+              <div class="text-white text-sm">markivan.night@gmail.com</div>
+            </div>
+            <i class="fas fa-arrow-right ml-auto text-white/20 text-xs"></i>
+          </a>
+
+          <div class="contact-card flex items-center gap-4 p-5">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(52,211,153,0.1)">
+              <i class="fas fa-phone text-emerald-400"></i>
+            </div>
+            <div>
+              <div class="font-mono text-xs text-white/30 mb-0.5">PHONE</div>
+              <div class="text-white text-sm">+63 994 906 5613</div>
+            </div>
+          </div>
+
+          <div class="contact-card flex items-center gap-4 p-5">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(251,191,36,0.1)">
+              <i class="fas fa-map-marker-alt text-amber-400"></i>
+            </div>
+            <div>
+              <div class="font-mono text-xs text-white/30 mb-0.5">LOCATION</div>
+              <div class="text-white text-sm">Cebu City, Philippines 🇵🇭</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social links -->
+        <div class="flex gap-3">
+          <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-cyan-400 hover:border-cyan-400/30 transition-all cursor-none">
+            <i class="fab fa-github text-sm"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-cyan-400 hover:border-cyan-400/30 transition-all cursor-none">
+            <i class="fab fa-linkedin text-sm"></i>
+          </a>
+         <a href="https://x.com/Vaizen__" target="_blank" 
+   class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-cyan-400 hover:border-cyan-400/30 transition-all cursor-none">
+    <i class="fa-brands fa-x-twitter text-sm"></i>
+</a>
+        </div>
+      </div>
+
+      <!-- Right: Quick message panel -->
+     
+</section>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer class="border-t border-white/5 py-10">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-violet-500 flex items-center justify-center">
+        <span class="font-display font-bold text-sm text-void">MI</span>
+      </div>
+      <span class="font-mono text-xs text-white/20">Mark Ivan Sumalinog</span>
+    </div>
+    <div class="font-mono text-xs text-white/20 text-center">
+      Built with passion · Tailwind CSS · Cebu, PH · 2025
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="status-dot"></div>
+      <span class="font-mono text-xs text-emerald-400/60">Systems online</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button id="back-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-500 flex items-center justify-center text-void opacity-0 transition-all duration-300 hover:scale-110 shadow-lg cursor-none z-40">
+  <i class="fas fa-arrow-up text-sm"></i>
+</button>
+
+<script>
+// ── CURSOR ──
+const dot = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let mx=0, my=0, rx=0, ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+function animRing() { rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); }
+animRing();
+
+// ── TYPING EFFECT ──
+const roles = [
+  "Frontend Developer",
+  "AI/LLM Learner",
+  "Python Enthusiast",
+  "Cybersec Explorer",
+  "Full-Stack Builder",
+];
+let ri=0, ci=0, deleting=false;
+function typeRole() {
+  const el = document.getElementById('typing-role');
+  const current = roles[ri];
+  if (!deleting) {
+    el.textContent = current.slice(0,++ci);
+    if (ci===current.length) { deleting=true; setTimeout(typeRole,2000); return; }
+    setTimeout(typeRole, 80);
+  } else {
+    el.textContent = current.slice(0,--ci);
+    if (ci===0) { deleting=false; ri=(ri+1)%roles.length; setTimeout(typeRole, 400); return; }
+    setTimeout(typeRole, 40);
+  }
+}
+typeRole();
+
+// Terminal running text
+const terminalTexts = ['init portfolio.js', 'loading modules...', 'ai_modules loaded ✓', 'cyber_modules loaded ✓', 'python_modules loaded ✓', 'portfolio.run() — ready'];
+let ti=0;
+function cycleTerminal() {
+  const el = document.getElementById('terminal-running');
+  if (!el) return;
+  el.innerHTML = `<span class="text-white/30">❯</span> ${terminalTexts[ti]}<span class="type-cursor"></span>`;
+  ti=(ti+1)%terminalTexts.length;
+  setTimeout(cycleTerminal, 2000);
+}
+setTimeout(cycleTerminal, 1000);
+
+// ── SCROLL PROGRESS ──
+window.addEventListener('scroll', () => {
+  const s = document.documentElement.scrollTop;
+  const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  document.getElementById('scroll-prog').style.width = (s/h*100)+'%';
+  document.getElementById('back-top').style.opacity = s>300?'1':'0';
+});
+
+// ── BACK TO TOP ──
+document.getElementById('back-top').addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+// ── MOBILE MENU ──
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+// ── SCROLL ANIMATIONS ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.classList.add('visible');
+      // Animate progress bars inside
+      e.target.querySelectorAll('.progress-fill').forEach(bar => {
+        setTimeout(() => bar.classList.add('animated'), 300);
+      });
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Also observe sections for progress bars
+const progObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.querySelectorAll('.progress-fill').forEach(bar => {
+        setTimeout(() => bar.classList.add('animated'), 300);
+      });
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('section').forEach(s => progObserver.observe(s));
+
+// ── SEND BUTTON ──
+document.getElementById('contact-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('send-btn');
+  const txt = document.getElementById('send-text');
+  const status = document.getElementById('send-status');
+  const name = document.getElementById('sender-name').value;
+  const email = document.getElementById('sender-email').value;
+  const message = document.getElementById('sender-message').value;
+
+  txt.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>TRANSMITTING...';
+  btn.style.opacity = '0.7';
+  btn.disabled = true;
+  status.textContent = '';
+  status.className = 'font-mono text-xs text-center';
+
+ 
+
+  setTimeout(() => {
+    txt.textContent = 'TRANSMIT MESSAGE';
+    btn.style.background = '';
+    btn.style.opacity = '';
+    btn.disabled = false;
+  }, 4000);
+});
+
+// ── PARALLAX ORBS ──
+document.addEventListener('mousemove', e => {
+  const x = (e.clientX/window.innerWidth - 0.5)*20;
+  const y = (e.clientY/window.innerHeight - 0.5)*20;
+  document.querySelectorAll('.orb').forEach((orb, i) => {
+    const factor = (i+1)*0.3;
+    orb.style.transform += `translate(${x*factor}px,${y*factor}px)`;
+  });
+});
+</script>
 </body>
-
 </html>
