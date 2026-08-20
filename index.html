@@ -609,6 +609,10 @@ tailwind.config = {
             <span class="text-white/70 text-sm">LFI / Path Traversal</span>
           </div>
           <div class="flex items-center gap-2.5">
+            <i class="fas fa-list-ol text-crimson-400/80 w-5"></i>
+            <span class="text-white/70 text-sm">OWASP Top 10 Testing</span>
+          </div>
+          <div class="flex items-center gap-2.5">
             <i class="fas fa-bolt text-crimson-400/80 w-5"></i>
             <span class="text-white/70 text-sm">DoS Simulation (GoldenEye, Slowloris)</span>
           </div>
@@ -770,6 +774,7 @@ tailwind.config = {
           <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">Exploitation</span>
           <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">SQLi / LFI</span>
           <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">Brute-force</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">OWASP Top 10</span>
           <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">DoS Simulation</span>
           <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">CMS Fingerprinting</span>
         </div>
@@ -905,7 +910,7 @@ tailwind.config = {
       <p class="text-white/40 max-w-xl mt-3 font-body">Technical findings only matter if they map to a standard someone can act on. These are the frameworks I assess against.</p>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
       <div class="skill-card p-7 fade-in" style="--card-color: var(--crimson)">
         <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(239,68,68,0.12)">
@@ -932,6 +937,15 @@ tailwind.config = {
         <div class="font-mono text-xs text-ember-400 mb-2">PCI DSS</div>
         <h3 class="font-display font-bold text-lg text-white mb-2">Payment Card Industry Data Security Standard</h3>
         <p class="text-white/40 text-sm leading-relaxed">An industry-mandated standard for any organization that stores, processes, or transmits cardholder data — covering network segmentation, encryption, access control, and logging.</p>
+      </div>
+
+      <div class="skill-card p-7 fade-in" style="--card-color: var(--blood); transition-delay:0.3s">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(185,28,28,0.15)">
+          <i class="fas fa-code text-blood-500"></i>
+        </div>
+        <div class="font-mono text-xs text-blood-500 mb-2">OWASP TOP 10</div>
+        <h3 class="font-display font-bold text-lg text-white mb-2">Web Application Security Risks</h3>
+        <p class="text-white/40 text-sm leading-relaxed">The industry-standard reference for the most critical web application risks — injection, broken access control, misconfiguration, and more. I use it to structure and prioritize web app assessments.</p>
       </div>
     </div>
   </div>
