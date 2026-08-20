@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mark Ivan Sumalinog — Developer · AI · Cybersecurity</title>
+<title>Mark Ivan Sumalinog — Developer · Offensive & Defensive Security</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -19,14 +19,12 @@ tailwind.config = {
         body: ['Inter', 'sans-serif'],
       },
       colors: {
-        void: '#030712',
-        neural: '#0f172a',
-        grid: '#0d1117',
-        cyan: { 400: '#22d3ee', 500: '#06b6d4' },
-        violet: { 400: '#a78bfa', 500: '#8b5cf6', 600: '#7c3aed' },
-        emerald: { 400: '#34d399', 500: '#10b981' },
-        rose: { 400: '#fb7185', 500: '#f43f5e' },
-        amber: { 400: '#fbbf24' },
+        void: '#0a0505',
+        surface: '#170c0d',
+        crimson: { 400: '#f87171', 500: '#ef4444', 600: '#dc2626' },
+        blood: { 500: '#b91c1c', 700: '#7f1d1d' },
+        rose: { 400: '#fb7185' },
+        ember: { 400: '#fb923c', 500: '#f97316' },
       },
     }
   }
@@ -37,15 +35,13 @@ tailwind.config = {
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --cyan: #22d3ee;
-    --violet: #a78bfa;
-    --emerald: #34d399;
+    --crimson: #ef4444;
+    --blood: #b91c1c;
     --rose: #fb7185;
-    --amber: #fbbf24;
-    --void: #030712;
-    --neural: #0f172a;
-    --surface: #111827;
-    --border: rgba(255,255,255,0.06);
+    --ember: #f97316;
+    --void: #0a0505;
+    --surface: #170c0d;
+    --border: rgba(239,68,68,0.10);
   }
 
   html { scroll-behavior: smooth; }
@@ -53,7 +49,7 @@ tailwind.config = {
   body {
     font-family: 'Inter', sans-serif;
     background: var(--void);
-    color: #e2e8f0;
+    color: #f1e4e4;
     overflow-x: hidden;
     cursor: none;
   }
@@ -61,16 +57,16 @@ tailwind.config = {
   /* ── CUSTOM CURSOR ── */
   #cursor-dot {
     width: 8px; height: 8px;
-    background: var(--cyan);
+    background: var(--crimson);
     border-radius: 50%;
     position: fixed; pointer-events: none; z-index: 9999;
     transform: translate(-50%, -50%);
     transition: transform 0.1s, background 0.2s;
-    box-shadow: 0 0 12px var(--cyan);
+    box-shadow: 0 0 12px var(--crimson);
   }
   #cursor-ring {
     width: 36px; height: 36px;
-    border: 1.5px solid rgba(34,211,238,0.5);
+    border: 1.5px solid rgba(239,68,68,0.5);
     border-radius: 50%;
     position: fixed; pointer-events: none; z-index: 9998;
     transform: translate(-50%, -50%);
@@ -79,14 +75,14 @@ tailwind.config = {
   body:has(a:hover) #cursor-ring,
   body:has(button:hover) #cursor-ring {
     width: 60px; height: 60px;
-    border-color: var(--violet);
+    border-color: var(--rose);
   }
 
   /* ── GRID BACKGROUND ── */
   .grid-bg {
     background-image:
-      linear-gradient(rgba(34,211,238,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(34,211,238,0.03) 1px, transparent 1px);
+      linear-gradient(rgba(239,68,68,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(239,68,68,0.035) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 
@@ -119,16 +115,16 @@ tailwind.config = {
     letter-spacing: -0.03em;
   }
   .char-glow {
-    background: linear-gradient(135deg, #fff 0%, var(--cyan) 40%, var(--violet) 100%);
+    background: linear-gradient(135deg, #fff 0%, var(--crimson) 45%, var(--blood) 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 40px rgba(34,211,238,0.3));
+    filter: drop-shadow(0 0 40px rgba(239,68,68,0.35));
   }
 
   /* ── TYPING CURSOR ── */
   .type-cursor::after {
     content: '|';
-    color: var(--cyan);
+    color: var(--crimson);
     animation: blink 1s infinite;
   }
   @keyframes blink { 0%,50% { opacity: 1; } 51%,100% { opacity: 0; } }
@@ -136,7 +132,7 @@ tailwind.config = {
   /* ── TERMINAL ── */
   .terminal {
     background: rgba(0,0,0,0.7);
-    border: 1px solid rgba(34,211,238,0.2);
+    border: 1px solid rgba(239,68,68,0.2);
     border-radius: 12px;
     backdrop-filter: blur(20px);
     font-family: 'Space Mono', monospace;
@@ -157,29 +153,29 @@ tailwind.config = {
   .skill-card::before {
     content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(135deg, var(--card-color, var(--cyan)), transparent 60%);
+    background: linear-gradient(135deg, var(--card-color, var(--crimson)), transparent 60%);
     opacity: 0; transition: opacity 0.4s;
     border-radius: inherit;
   }
-  .skill-card:hover::before { opacity: 0.07; }
+  .skill-card:hover::before { opacity: 0.08; }
   .skill-card:hover {
-    border-color: var(--card-color, var(--cyan));
+    border-color: var(--card-color, var(--crimson));
     transform: translateY(-6px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px var(--card-color, var(--cyan)), inset 0 1px 0 rgba(255,255,255,0.08);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--card-color, var(--crimson)), inset 0 1px 0 rgba(255,255,255,0.08);
   }
 
   /* ── LEARNING BADGE ── */
   .learning-badge {
-    background: linear-gradient(135deg, rgba(167,139,250,0.15), rgba(34,211,238,0.1));
-    border: 1px solid rgba(167,139,250,0.3);
+    background: linear-gradient(135deg, rgba(251,113,133,0.15), rgba(239,68,68,0.1));
+    border: 1px solid rgba(251,113,133,0.3);
     border-radius: 100px;
     font-family: 'Space Mono', monospace;
     font-size: 0.7rem;
     animation: pulseBorder 2s ease-in-out infinite;
   }
   @keyframes pulseBorder {
-    0%,100% { border-color: rgba(167,139,250,0.3); box-shadow: 0 0 0 0 rgba(167,139,250,0.2); }
-    50% { border-color: rgba(34,211,238,0.5); box-shadow: 0 0 20px rgba(167,139,250,0.15); }
+    0%,100% { border-color: rgba(251,113,133,0.3); box-shadow: 0 0 0 0 rgba(251,113,133,0.2); }
+    50% { border-color: rgba(239,68,68,0.5); box-shadow: 0 0 20px rgba(251,113,133,0.15); }
   }
 
   /* ── PROGRESS BARS ── */
@@ -192,11 +188,6 @@ tailwind.config = {
   }
   .progress-fill.animated { transform: scaleX(1); }
 
-  /* ── AI SECTION ── */
-  .neural-net {
-    position: absolute; inset: 0; overflow: hidden; opacity: 0.15;
-  }
-
   /* ── PROJECT CARD ── */
   .project-card {
     background: var(--surface);
@@ -206,20 +197,34 @@ tailwind.config = {
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .project-card:hover {
-    border-color: rgba(34,211,238,0.3);
+    border-color: rgba(239,68,68,0.35);
     transform: translateY(-8px);
-    box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 40px rgba(34,211,238,0.05);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.55), 0 0 40px rgba(239,68,68,0.08);
   }
-  .project-img-wrap { position: relative; overflow: hidden; }
-  .project-img-wrap img { transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
-  .project-card:hover .project-img-wrap img { transform: scale(1.05); }
-  .project-overlay {
+
+  /* ── ASCII PANEL ── */
+  .ascii-wrap {
+    background: #000;
+    border-bottom: 1px solid rgba(239,68,68,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+  .ascii-wrap::before {
+    content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(34,211,238,0.85), rgba(167,139,250,0.85));
-    opacity: 0; transition: opacity 0.4s;
-    display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle at 50% 30%, rgba(239,68,68,0.12), transparent 70%);
+    pointer-events: none;
   }
-  .project-card:hover .project-overlay { opacity: 1; }
+  .ascii-art {
+    font-family: 'Space Mono', monospace;
+    color: var(--crimson);
+    text-shadow: 0 0 8px rgba(239,68,68,0.6), 0 0 20px rgba(239,68,68,0.25);
+    white-space: pre;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    text-align: center;
+    user-select: none;
+  }
 
   /* ── CONTACT ── */
   .contact-card {
@@ -229,14 +234,14 @@ tailwind.config = {
     transition: all 0.3s ease;
   }
   .contact-card:hover {
-    border-color: rgba(34,211,238,0.3);
-    background: linear-gradient(145deg, rgba(34,211,238,0.06), rgba(167,139,250,0.04));
+    border-color: rgba(239,68,68,0.35);
+    background: linear-gradient(145deg, rgba(239,68,68,0.07), rgba(251,113,133,0.04));
     transform: translateX(6px);
   }
 
   /* ── NAV ── */
   .nav-glass {
-    background: rgba(3,7,18,0.8);
+    background: rgba(10,5,5,0.8);
     backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid var(--border);
   }
@@ -247,12 +252,12 @@ tailwind.config = {
     transition: color 0.2s;
     letter-spacing: 0.05em;
   }
-  .nav-link:hover { color: var(--cyan); }
+  .nav-link:hover { color: var(--crimson); }
 
   /* ── SCROLL PROGRESS ── */
   #scroll-prog {
     position: fixed; top: 0; left: 0; height: 2px; z-index: 9999;
-    background: linear-gradient(90deg, var(--cyan), var(--violet), var(--emerald));
+    background: linear-gradient(90deg, var(--crimson), var(--rose), var(--blood));
     transition: width 0.1s linear;
   }
 
@@ -261,7 +266,7 @@ tailwind.config = {
     font-family: 'Space Mono', monospace;
     font-size: 0.7rem;
     letter-spacing: 0.2em;
-    color: var(--cyan);
+    color: var(--crimson);
     text-transform: uppercase;
   }
   .section-title {
@@ -272,14 +277,14 @@ tailwind.config = {
     color: #fff;
   }
 
-  /* ── CYBER GRID ANIMATION ── */
+  /* ── SCAN LINE ── */
   @keyframes scan {
     0% { transform: translateY(-100%); }
     100% { transform: translateY(100vh); }
   }
   .scan-line {
     position: fixed; left: 0; width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(34,211,238,0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(239,68,68,0.35), transparent);
     animation: scan 6s linear infinite;
     pointer-events: none; z-index: 1; opacity: 0.4;
   }
@@ -294,19 +299,13 @@ tailwind.config = {
   /* ── STATUS DOT ── */
   .status-dot {
     width: 8px; height: 8px; border-radius: 50%;
-    background: var(--emerald);
-    box-shadow: 0 0 10px var(--emerald);
+    background: var(--crimson);
+    box-shadow: 0 0 10px var(--crimson);
     animation: statusPulse 2s ease-in-out infinite;
   }
   @keyframes statusPulse {
-    0%,100% { box-shadow: 0 0 10px var(--emerald); }
-    50% { box-shadow: 0 0 20px var(--emerald), 0 0 40px rgba(52,211,153,0.3); }
-  }
-
-  /* ── HEXAGON SKILL ICON ── */
-  .hex-icon {
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    display: flex; align-items: center; justify-content: center;
+    0%,100% { box-shadow: 0 0 10px var(--crimson); }
+    50% { box-shadow: 0 0 20px var(--crimson), 0 0 40px rgba(239,68,68,0.35); }
   }
 
   /* ── MOBILE MENU ── */
@@ -317,13 +316,11 @@ tailwind.config = {
   #mobile-menu.open { transform: translateX(0); }
 
   /* ── GLITCH TEXT ── */
-  .glitch {
-    position: relative;
-  }
+  .glitch { position: relative; }
   .glitch::before, .glitch::after {
     content: attr(data-text);
     position: absolute; left: 0; top: 0;
-    background: linear-gradient(100deg, #fff 0%, var(--cyan) 40%, var(--violet) 100%);
+    background: linear-gradient(100deg, #fff 0%, var(--crimson) 45%, var(--blood) 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
   }
@@ -350,48 +347,53 @@ tailwind.config = {
   /* RESPONSIVE */
   @media (max-width: 768px) {
     .hero-name { font-size: clamp(2.8rem, 11vw, 5rem); }
+    .ascii-art { font-size: 5px !important; }
   }
 
-  /* ── MAGNETIC BUTTON ── */
+  /* ── BUTTONS ── */
   .mag-btn {
     position: relative; overflow: hidden;
-    background: linear-gradient(135deg, var(--cyan), var(--violet));
+    background: linear-gradient(135deg, var(--crimson), var(--blood));
     border-radius: 100px;
     transition: all 0.3s ease;
     font-family: 'Space Mono', monospace;
     font-size: 0.8rem;
     letter-spacing: 0.05em;
   }
-  .mag-btn::before {
-    content: '';
-    position: absolute; inset: -2px;
-    background: linear-gradient(135deg, var(--cyan), var(--violet), var(--emerald));
-    border-radius: inherit; z-index: -1;
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .mag-btn:hover { transform: scale(1.05); box-shadow: 0 10px 40px rgba(34,211,238,0.3); }
+  .mag-btn:hover { transform: scale(1.05); box-shadow: 0 10px 40px rgba(239,68,68,0.35); }
 
   .outline-btn {
     position: relative; overflow: hidden;
     background: transparent;
-    border: 1px solid rgba(34,211,238,0.4);
+    border: 1px solid rgba(239,68,68,0.4);
     border-radius: 100px;
     transition: all 0.3s ease;
     font-family: 'Space Mono', monospace;
     font-size: 0.8rem;
     letter-spacing: 0.05em;
-    color: var(--cyan);
+    color: var(--crimson);
   }
   .outline-btn:hover {
-    background: rgba(34,211,238,0.08);
-    border-color: var(--cyan);
+    background: rgba(239,68,68,0.08);
+    border-color: var(--crimson);
     transform: scale(1.05);
   }
+
+  /* ── DEVTOOLS WARNING OVERLAY ── */
+  #dt-warning {
+    position: fixed; inset: 0; z-index: 100000;
+    background: rgba(10,5,5,0.97);
+    display: none;
+    align-items: center; justify-content: center;
+    flex-direction: column; gap: 12px;
+    text-align: center; padding: 24px;
+  }
+  #dt-warning.show { display: flex; }
 
   /* scrollbar */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--void); }
-  ::-webkit-scrollbar-thumb { background: rgba(34,211,238,0.3); border-radius: 100px; }
+  ::-webkit-scrollbar-thumb { background: rgba(239,68,68,0.35); border-radius: 100px; }
 </style>
 </head>
 <body class="grid-bg noise relative">
@@ -406,11 +408,18 @@ tailwind.config = {
 <!-- Scroll progress -->
 <div id="scroll-prog" style="width:0%"></div>
 
+<!-- DevTools deterrent overlay -->
+<div id="dt-warning">
+  <div class="font-mono text-xs text-crimson-500 tracking-widest">[ ACCESS RESTRICTED ]</div>
+  <div class="font-display font-bold text-2xl text-white">DevTools detected</div>
+  <div class="font-body text-white/40 max-w-sm text-sm">Close the developer console to keep browsing.</div>
+</div>
+
 <!-- NAV -->
 <nav class="nav-glass fixed top-0 left-0 right-0 z-50">
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
     <a href="#home" class="flex items-center gap-2">
-      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-violet-500 flex items-center justify-center">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-crimson-500 to-blood-700 flex items-center justify-center">
         <span class="font-display font-bold text-sm text-void">MI</span>
       </div>
       <span class="font-mono text-xs text-white/40 hidden sm:block">Mark Ivan</span>
@@ -420,14 +429,14 @@ tailwind.config = {
     <ul class="hidden lg:flex items-center gap-8">
       <li><a href="#home" class="nav-link">_home</a></li>
       <li><a href="#skills" class="nav-link">_skills</a></li>
-      <li><a href="#ai-journey" class="nav-link">_ai_journey</a></li>
+      <li><a href="#security" class="nav-link">_security</a></li>
       <li><a href="#project" class="nav-link">_projects</a></li>
       <li><a href="#contact" class="nav-link">_contact</a></li>
     </ul>
 
     <div class="hidden lg:flex items-center gap-3">
       <div class="status-dot"></div>
-      <span class="font-mono text-xs text-emerald-400">Available for hire</span>
+      <span class="font-mono text-xs text-crimson-400">Available for hire</span>
     </div>
 
     <!-- Hamburger -->
@@ -442,20 +451,20 @@ tailwind.config = {
 <!-- Mobile menu -->
 <div id="mobile-menu" class="fixed inset-0 bg-void/95 backdrop-blur-2xl z-40 flex flex-col items-center justify-center">
   <ul class="flex flex-col items-center gap-8">
-    <li><a href="#home" class="font-display text-2xl text-white hover:text-cyan-400 transition-colors">Home</a></li>
-    <li><a href="#skills" class="font-display text-2xl text-white hover:text-cyan-400 transition-colors">Skills</a></li>
-    <li><a href="#ai-journey" class="font-display text-2xl text-white hover:text-cyan-400 transition-colors">AI Journey</a></li>
-    <li><a href="#project" class="font-display text-2xl text-white hover:text-cyan-400 transition-colors">Projects</a></li>
-    <li><a href="#contact" class="font-display text-2xl text-white hover:text-cyan-400 transition-colors">Contact</a></li>
+    <li><a href="#home" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Home</a></li>
+    <li><a href="#skills" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Skills</a></li>
+    <li><a href="#security" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Security</a></li>
+    <li><a href="#project" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Projects</a></li>
+    <li><a href="#contact" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Contact</a></li>
   </ul>
 </div>
 
 <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
 <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
   <!-- Orbs -->
-  <div class="orb w-96 h-96 bg-cyan-400 top-20 -left-32" style="animation-delay:0s"></div>
-  <div class="orb w-80 h-80 bg-violet-500 bottom-20 -right-24" style="animation-delay:4s"></div>
-  <div class="orb w-48 h-48 bg-emerald-400 top-1/2 left-1/2" style="animation-delay:8s"></div>
+  <div class="orb w-96 h-96 bg-crimson-500 top-20 -left-32" style="animation-delay:0s"></div>
+  <div class="orb w-80 h-80 bg-blood-700 bottom-20 -right-24" style="animation-delay:4s"></div>
+  <div class="orb w-48 h-48 bg-rose-400 top-1/2 left-1/2" style="animation-delay:8s"></div>
 
   <div class="max-w-7xl mx-auto px-6 w-full">
     <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -476,36 +485,35 @@ tailwind.config = {
 
         <!-- Role -->
         <div class="flex items-center gap-3 mb-6">
-          <div class="h-px flex-1 bg-gradient-to-r from-cyan-400/50 to-transparent"></div>
-          <span id="typing-role" class="font-mono text-sm text-cyan-400 type-cursor"></span>
+          <div class="h-px flex-1 bg-gradient-to-r from-crimson-500/50 to-transparent"></div>
+          <span id="typing-role" class="font-mono text-sm text-crimson-400 type-cursor"></span>
         </div>
 
         <p class="text-white/50 text-base leading-relaxed mb-8 max-w-lg font-body">
-          Frontend developer evolving into a multi-domain technologist. Currently pushing the boundaries of 
-          <span class="text-violet-400 font-medium">AI & Machine Learning</span>, hunting exploits in 
-          <span class="text-emerald-400 font-medium">Cybersecurity</span>, and mastering 
-          <span class="text-amber-400 font-medium">Python</span> — converging all three into a singular vision.
+          Frontend developer sharpening skills in <span class="text-crimson-400 font-medium">offensive security</span> and
+          <span class="text-rose-400 font-medium">defensive security</span>. I build systems, then try to break them on
+          purpose — hunting vulnerabilities in networks, web apps, and credentials before anyone else finds them.
         </p>
 
         <div class="flex flex-wrap gap-3 mb-10">
           <a href="#contact" class="mag-btn px-7 py-3 text-void font-semibold cursor-none">Get In Touch</a>
           <a href="#project" class="outline-btn px-7 py-3 cursor-none">View Projects</a>
-          <a href="#ai-journey" class="outline-btn px-7 py-3 cursor-none" style="border-color:rgba(167,139,250,0.4); color:var(--violet)">AI Journey ↗</a>
+          <a href="#security" class="outline-btn px-7 py-3 cursor-none" style="border-color:rgba(251,113,133,0.4); color:var(--rose)">Security Work ↗</a>
         </div>
 
         <!-- Quick stats -->
         <div class="grid grid-cols-3 gap-4">
           <div class="text-center">
-            <div class="font-display font-bold text-2xl text-cyan-400">1+</div>
+            <div class="font-display font-bold text-2xl text-crimson-400">1+</div>
             <div class="font-mono text-xs text-white/30 mt-1">YEARS EXP</div>
           </div>
           <div class="text-center border-x border-white/10">
-            <div class="font-display font-bold text-2xl text-violet-400">∞</div>
-            <div class="font-mono text-xs text-white/30 mt-1">CURIOSITY</div>
+            <div class="font-display font-bold text-2xl text-rose-400">15</div>
+            <div class="font-mono text-xs text-white/30 mt-1">ASSESSMENT PHASES</div>
           </div>
           <div class="text-center">
-            <div class="font-display font-bold text-2xl text-emerald-400">3</div>
-            <div class="font-mono text-xs text-white/30 mt-1">DOMAINS</div>
+            <div class="font-display font-bold text-2xl text-blood-500">2</div>
+            <div class="font-mono text-xs text-white/30 mt-1">SEC. FRAMEWORKS</div>
           </div>
         </div>
       </div>
@@ -514,29 +522,29 @@ tailwind.config = {
       <div class="fade-in float" style="transition-delay:0.3s">
         <div class="terminal p-0 relative">
           <div class="terminal-bar px-4 py-3 flex items-center gap-2">
-            <div class="dot bg-rose-500"></div>
-            <div class="dot bg-amber-400"></div>
-            <div class="dot bg-emerald-400"></div>
+            <div class="dot bg-blood-500"></div>
+            <div class="dot bg-ember-400"></div>
+            <div class="dot bg-crimson-400"></div>
             <span class="ml-4 text-white/20 text-xs">mark_ivan ~ portfolio</span>
           </div>
           <div class="p-5 space-y-2 text-sm leading-relaxed">
             <div class="text-white/30">// Mark Ivan · Developer Profile</div>
             <br>
-            <div><span class="text-violet-400">const</span> <span class="text-cyan-400">developer</span> <span class="text-white/50">=</span> <span class="text-white/80">{</span></div>
-            <div class="pl-4"><span class="text-emerald-400">name</span><span class="text-white/50">:</span> <span class="text-amber-400">"Mark Ivan Sumalinog"</span><span class="text-white/50">,</span></div>
-            <div class="pl-4"><span class="text-emerald-400">role</span><span class="text-white/50">:</span> <span class="text-amber-400">"Frontend Developer"</span><span class="text-white/50">,</span></div>
-            <div class="pl-4"><span class="text-emerald-400">location</span><span class="text-white/50">:</span> <span class="text-amber-400">"Cebu City, PH 🇵🇭"</span><span class="text-white/50">,</span></div>
-            <div class="pl-4"><span class="text-emerald-400">learning</span><span class="text-white/50">:</span> <span class="text-white/80">[</span></div>
-            <div class="pl-8"><span class="text-amber-400">"AI / LLM"</span><span class="text-white/50">,</span></div>
-            <div class="pl-8"><span class="text-amber-400">"Machine Learning"</span><span class="text-white/50">,</span></div>
-            <div class="pl-8"><span class="text-amber-400">"Cybersecurity"</span><span class="text-white/50">,</span></div>
-            <div class="pl-8"><span class="text-amber-400">"Python Mastery"</span></div>
+            <div><span class="text-rose-400">const</span> <span class="text-crimson-400">developer</span> <span class="text-white/50">=</span> <span class="text-white/80">{</span></div>
+            <div class="pl-4"><span class="text-blood-500 text-rose-300">name</span><span class="text-white/50">:</span> <span class="text-ember-400">"Mark Ivan Sumalinog"</span><span class="text-white/50">,</span></div>
+            <div class="pl-4"><span class="text-rose-300">role</span><span class="text-white/50">:</span> <span class="text-ember-400">"Frontend Developer"</span><span class="text-white/50">,</span></div>
+            <div class="pl-4"><span class="text-rose-300">location</span><span class="text-white/50">:</span> <span class="text-ember-400">"Cebu City, PH 🇵🇭"</span><span class="text-white/50">,</span></div>
+            <div class="pl-4"><span class="text-rose-300">focus</span><span class="text-white/50">:</span> <span class="text-white/80">[</span></div>
+            <div class="pl-8"><span class="text-ember-400">"Offensive Security"</span><span class="text-white/50">,</span></div>
+            <div class="pl-8"><span class="text-ember-400">"Defensive Security"</span><span class="text-white/50">,</span></div>
+            <div class="pl-8"><span class="text-ember-400">"Network Security"</span><span class="text-white/50">,</span></div>
+            <div class="pl-8"><span class="text-ember-400">"Python Mastery"</span></div>
             <div class="pl-4"><span class="text-white/80">]</span><span class="text-white/50">,</span></div>
-            <div class="pl-4"><span class="text-emerald-400">status</span><span class="text-white/50">:</span> <span class="text-emerald-400">"available"</span><span class="text-white/50">,</span></div>
-            <div class="pl-4"><span class="text-emerald-400">mission</span><span class="text-white/50">:</span> <span class="text-amber-400">"Build. Break. Secure. Repeat."</span></div>
+            <div class="pl-4"><span class="text-rose-300">status</span><span class="text-white/50">:</span> <span class="text-crimson-400">"available"</span><span class="text-white/50">,</span></div>
+            <div class="pl-4"><span class="text-rose-300">mission</span><span class="text-white/50">:</span> <span class="text-ember-400">"Build. Break. Secure. Repeat."</span></div>
             <div><span class="text-white/80">}</span></div>
             <br>
-            <div id="terminal-running" class="text-emerald-400 text-xs">
+            <div id="terminal-running" class="text-crimson-400 text-xs">
               <span class="text-white/30">❯</span> running<span class="type-cursor"></span>
             </div>
           </div>
@@ -544,9 +552,9 @@ tailwind.config = {
 
         <!-- Learning pills below terminal -->
         <div class="flex flex-wrap gap-2 mt-4 justify-center">
-          <span class="learning-badge px-4 py-1.5 text-violet-300">🧠 LLM IN PROGRESS</span>
-          <span class="learning-badge px-4 py-1.5 text-cyan-300" style="border-color:rgba(34,211,238,0.3)">🛡️ CYBERSEC LEARNING</span>
-          <span class="learning-badge px-4 py-1.5 text-amber-300" style="border-color:rgba(251,191,36,0.3)">🐍 PYTHON MASTERY</span>
+          <span class="learning-badge px-4 py-1.5 text-crimson-300">🛡️ OFFENSIVE SECURITY</span>
+          <span class="learning-badge px-4 py-1.5 text-rose-300" style="border-color:rgba(251,113,133,0.3)">🔒 DEFENSIVE SECURITY</span>
+          <span class="learning-badge px-4 py-1.5 text-ember-400" style="border-color:rgba(251,146,60,0.3)">🐍 PYTHON / BASH</span>
         </div>
       </div>
     </div>
@@ -555,7 +563,7 @@ tailwind.config = {
   <!-- Scroll cue -->
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
     <span class="font-mono text-xs text-white/40">scroll</span>
-    <div class="w-px h-10 bg-gradient-to-b from-cyan-400 to-transparent animate-pulse"></div>
+    <div class="w-px h-10 bg-gradient-to-b from-crimson-500 to-transparent animate-pulse"></div>
   </div>
 </section>
 
@@ -564,38 +572,38 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-6">
     <div class="mb-16 fade-in">
       <div class="section-label mb-3">02 / SKILLS</div>
-      <h2 class="section-title">Tech <span style="background: linear-gradient(135deg, var(--cyan), var(--violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Arsenal</span></h2>
+      <h2 class="section-title">Tech <span style="background: linear-gradient(135deg, var(--crimson), var(--rose)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Arsenal</span></h2>
       <p class="text-white/40 max-w-xl mt-3 font-body">The toolkit I deploy to craft exceptional digital experiences.</p>
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
       <!-- Frontend -->
-      <div class="skill-card p-6 fade-in" style="--card-color: var(--cyan)">
+      <div class="skill-card p-6 fade-in" style="--card-color: var(--crimson)">
         <div class="flex items-center gap-3 mb-5">
-          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(34,211,238,0.1)">
-            <i class="fas fa-layer-group text-cyan-400 text-sm"></i>
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(239,68,68,0.1)">
+            <i class="fas fa-layer-group text-crimson-400 text-sm"></i>
           </div>
           <div>
             <div class="font-display font-bold text-white text-sm">Frontend</div>
-            <div class="font-mono text-xs text-cyan-400">4 techs</div>
+            <div class="font-mono text-xs text-crimson-400">4 techs</div>
           </div>
         </div>
         <div class="space-y-3">
           <div class="flex items-center gap-2.5">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-5 h-5">
             <span class="text-white/70 text-sm">React.js</span>
-            <div class="ml-auto text-xs text-cyan-400/60 font-mono">core</div>
+            <div class="ml-auto text-xs text-crimson-400/60 font-mono">core</div>
           </div>
           <div class="flex items-center gap-2.5">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" class="w-5 h-5">
             <span class="text-white/70 text-sm">TypeScript</span>
-            <div class="ml-auto text-xs text-cyan-400/60 font-mono">core</div>
+            <div class="ml-auto text-xs text-crimson-400/60 font-mono">core</div>
           </div>
           <div class="flex items-center gap-2.5">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" class="w-5 h-5">
             <span class="text-white/70 text-sm">Tailwind CSS</span>
-            <div class="ml-auto text-xs text-emerald-400/60 font-mono">expert</div>
+            <div class="ml-auto text-xs text-rose-400/60 font-mono">expert</div>
           </div>
           <div class="flex items-center gap-2.5">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" class="w-5 h-5">
@@ -605,14 +613,14 @@ tailwind.config = {
       </div>
 
       <!-- Backend -->
-      <div class="skill-card p-6 fade-in" style="--card-color: var(--violet); transition-delay:0.1s">
+      <div class="skill-card p-6 fade-in" style="--card-color: var(--rose); transition-delay:0.1s">
         <div class="flex items-center gap-3 mb-5">
-          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(167,139,250,0.1)">
-            <i class="fas fa-server text-violet-400 text-sm"></i>
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(251,113,133,0.1)">
+            <i class="fas fa-server text-rose-400 text-sm"></i>
           </div>
           <div>
             <div class="font-display font-bold text-white text-sm">Backend</div>
-            <div class="font-mono text-xs text-violet-400">4 techs</div>
+            <div class="font-mono text-xs text-rose-400">4 techs</div>
           </div>
         </div>
         <div class="space-y-3">
@@ -636,14 +644,14 @@ tailwind.config = {
       </div>
 
       <!-- Tools -->
-      <div class="skill-card p-6 fade-in" style="--card-color: var(--emerald); transition-delay:0.2s">
+      <div class="skill-card p-6 fade-in" style="--card-color: var(--ember); transition-delay:0.2s">
         <div class="flex items-center gap-3 mb-5">
-          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(52,211,153,0.1)">
-            <i class="fas fa-wrench text-emerald-400 text-sm"></i>
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(249,115,22,0.1)">
+            <i class="fas fa-wrench text-ember-400 text-sm"></i>
           </div>
           <div>
             <div class="font-display font-bold text-white text-sm">Tools</div>
-            <div class="font-mono text-xs text-emerald-400">4 techs</div>
+            <div class="font-mono text-xs text-ember-400">4 techs</div>
           </div>
         </div>
         <div class="space-y-3">
@@ -666,33 +674,33 @@ tailwind.config = {
         </div>
       </div>
 
-      <!-- Cloud -->
-      <div class="skill-card p-6 fade-in" style="--card-color: var(--amber); transition-delay:0.3s">
+      <!-- Network / Security tools -->
+      <div class="skill-card p-6 fade-in" style="--card-color: var(--blood); transition-delay:0.3s">
         <div class="flex items-center gap-3 mb-5">
-          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(251,191,36,0.1)">
-            <i class="fas fa-cloud text-amber-400 text-sm"></i>
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(185,28,28,0.15)">
+            <i class="fas fa-shield-halved text-blood-500 text-sm"></i>
           </div>
           <div>
-            <div class="font-display font-bold text-white text-sm">Cloud</div>
-            <div class="font-mono text-xs text-amber-400">4 techs</div>
+            <div class="font-display font-bold text-white text-sm">Security</div>
+            <div class="font-mono text-xs text-blood-500">4 tools</div>
           </div>
         </div>
         <div class="space-y-3">
           <div class="flex items-center gap-2.5">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" class="w-5 h-5" style="filter:invert(1) opacity(0.7)">
-            <span class="text-white/70 text-sm">AWS</span>
+            <i class="fas fa-network-wired text-white/50 w-5"></i>
+            <span class="text-white/70 text-sm">Nmap</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" class="w-5 h-5">
-            <span class="text-white/70 text-sm">Google Cloud</span>
+            <i class="fas fa-satellite-dish text-white/50 w-5"></i>
+            <span class="text-white/70 text-sm">Wireshark</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" class="w-5 h-5">
-            <span class="text-white/70 text-sm">Firebase</span>
+            <i class="fas fa-user-secret text-white/50 w-5"></i>
+            <span class="text-white/70 text-sm">Tor</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-original.svg" class="w-5 h-5">
-            <span class="text-white/70 text-sm">Heroku</span>
+            <i class="fas fa-terminal text-white/50 w-5"></i>
+            <span class="text-white/70 text-sm">Bash Scripting</span>
           </div>
         </div>
       </div>
@@ -700,161 +708,116 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- ═══════════════════════════ AI JOURNEY ═══════════════════════════ -->
-<section id="ai-journey" class="py-28 relative overflow-hidden">
+<!-- ═══════════════════════════ SECURITY ═══════════════════════════ -->
+<section id="security" class="py-28 relative overflow-hidden">
   <!-- Background glow -->
   <div class="absolute inset-0 pointer-events-none">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-violet-500/30 to-transparent"></div>
-    <div class="orb w-[500px] h-[500px] bg-violet-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="opacity:0.08"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-crimson-500/30 to-transparent"></div>
+    <div class="orb w-[500px] h-[500px] bg-blood-700 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="opacity:0.10"></div>
   </div>
 
   <div class="max-w-7xl mx-auto px-6 relative">
     <div class="mb-16 fade-in">
-      <div class="section-label mb-3">03 / AI × CYBER × PYTHON</div>
-      <h2 class="section-title">The <span style="background: linear-gradient(135deg, var(--violet), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Frontier</span></h2>
-      <p class="text-white/40 max-w-xl mt-3 font-body">Where I'm heading. Three disciplines converging into one unstoppable force.</p>
+      <div class="section-label mb-3">03 / CYBERSECURITY</div>
+      <h2 class="section-title">Offense <span style="background: linear-gradient(135deg, var(--crimson), var(--rose)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">& Defense</span></h2>
+      <p class="text-white/40 max-w-xl mt-3 font-body">Two sides of the same discipline — find the weakness before it's exploited, then close it.</p>
     </div>
 
-    <!-- Big 3 cards -->
-    <div class="grid lg:grid-cols-3 gap-6 mb-12">
+    <!-- 2-col: Offensive / Defensive -->
+    <div class="grid lg:grid-cols-2 gap-6 mb-12">
 
-      <!-- AI / LLM -->
-      <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--violet)">
+      <!-- Offensive Security -->
+      <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--crimson)">
         <div class="absolute top-4 right-4">
-          <span class="learning-badge px-3 py-1 text-violet-300 text-xs">IN PROGRESS</span>
+          <span class="learning-badge px-3 py-1 text-crimson-300 text-xs">ACTIVE</span>
         </div>
-        <!-- Icon -->
-        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(167,139,250,0.2), rgba(167,139,250,0.05)); border: 1px solid rgba(167,139,250,0.2)">
-          <span class="text-3xl">🧠</span>
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(239,68,68,0.2), rgba(239,68,68,0.05)); border: 1px solid rgba(239,68,68,0.25)">
+          <span class="text-3xl">🗡️</span>
         </div>
-        <h3 class="font-display font-bold text-xl text-white mb-2">AI & Large Language Models</h3>
-        <p class="text-white/40 text-sm leading-relaxed mb-6">Studying transformer architectures, prompt engineering, fine-tuning, RAG pipelines, and how LLMs actually think. Targeting mastery of the full AI stack.</p>
-
-        <!-- Tags -->
-        <div class="flex flex-wrap gap-2 mb-6">
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-violet-400/10 text-violet-300 border border-violet-400/20">Transformers</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-violet-400/10 text-violet-300 border border-violet-400/20">LLMs</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-violet-400/10 text-violet-300 border border-violet-400/20">Prompt Eng.</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-violet-400/10 text-violet-300 border border-violet-400/20">RAG</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-violet-400/10 text-violet-300 border border-violet-400/20">Fine-tuning</span>
-        </div>
-
-        <!-- Progress -->
-        <div class="space-y-3">
-          <div>
-            <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">Foundations</span><span class="text-violet-400">72%</span>
-            </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.72" style="--from:#a78bfa; --to:#22d3ee"></div></div>
-          </div>
-          <div>
-            <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">Architectures</span><span class="text-violet-400">45%</span>
-            </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.45" style="--from:#a78bfa; --to:#22d3ee"></div></div>
-          </div>
-          <div>
-            <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">Applications</span><span class="text-violet-400">60%</span>
-            </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.60" style="--from:#a78bfa; --to:#22d3ee"></div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Machine Learning -->
-      <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--cyan); transition-delay:0.1s">
-        <div class="absolute top-4 right-4">
-          <span class="learning-badge px-3 py-1 text-cyan-300 text-xs" style="border-color:rgba(34,211,238,0.3)">LEARNING</span>
-        </div>
-        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(34,211,238,0.2), rgba(34,211,238,0.05)); border: 1px solid rgba(34,211,238,0.2)">
-          <span class="text-3xl">⚡</span>
-        </div>
-        <h3 class="font-display font-bold text-xl text-white mb-2">Machine Learning</h3>
-        <p class="text-white/40 text-sm leading-relaxed mb-6">Deep diving into ML algorithms, neural networks, training pipelines, model evaluation, and real-world deployment. NumPy, pandas, scikit-learn, PyTorch on the stack.</p>
+        <h3 class="font-display font-bold text-xl text-white mb-2">Offensive Security</h3>
+        <p class="text-white/40 text-sm leading-relaxed mb-6">Thinking like an attacker to find what's actually exploitable. Reconnaissance, vulnerability scanning, credential exposure testing, and attack simulation against web apps and networks.</p>
 
         <div class="flex flex-wrap gap-2 mb-6">
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-cyan-400/10 text-cyan-300 border border-cyan-400/20">Neural Nets</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-cyan-400/10 text-cyan-300 border border-cyan-400/20">PyTorch</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-cyan-400/10 text-cyan-300 border border-cyan-400/20">scikit-learn</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-cyan-400/10 text-cyan-300 border border-cyan-400/20">pandas</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-cyan-400/10 text-cyan-300 border border-cyan-400/20">NumPy</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">Reconnaissance</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">Exploitation</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">SQLi / LFI</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">Brute-force</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">CMS Fingerprinting</span>
         </div>
 
         <div class="space-y-3">
           <div>
             <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">Math & Stats</span><span class="text-cyan-400">65%</span>
+              <span class="text-white/40">Vulnerability Discovery</span><span class="text-crimson-400">70%</span>
             </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.65" style="--from:#22d3ee; --to:#34d399"></div></div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.70" style="--from:#ef4444; --to:#fb7185"></div></div>
           </div>
           <div>
             <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">Algorithms</span><span class="text-cyan-400">50%</span>
+              <span class="text-white/40">Exploitation</span><span class="text-crimson-400">55%</span>
             </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.50" style="--from:#22d3ee; --to:#34d399"></div></div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.55" style="--from:#ef4444; --to:#fb7185"></div></div>
           </div>
           <div>
             <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">Model Deploy</span><span class="text-cyan-400">35%</span>
+              <span class="text-white/40">Reporting & Risk Scoring</span><span class="text-crimson-400">65%</span>
             </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.35" style="--from:#22d3ee; --to:#34d399"></div></div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.65" style="--from:#ef4444; --to:#fb7185"></div></div>
           </div>
         </div>
       </div>
 
-      <!-- Cybersecurity + Python -->
-      <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--emerald); transition-delay:0.2s">
+      <!-- Defensive Security -->
+      <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--rose); transition-delay:0.1s">
         <div class="absolute top-4 right-4">
-          <span class="learning-badge px-3 py-1 text-emerald-300 text-xs" style="border-color:rgba(52,211,153,0.3)">ACTIVE</span>
+          <span class="learning-badge px-3 py-1 text-rose-300 text-xs" style="border-color:rgba(251,113,133,0.3)">ACTIVE</span>
         </div>
-        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(52,211,153,0.2), rgba(52,211,153,0.05)); border: 1px solid rgba(52,211,153,0.2)">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(251,113,133,0.2), rgba(251,113,133,0.05)); border: 1px solid rgba(251,113,133,0.25)">
           <span class="text-3xl">🛡️</span>
         </div>
-        <h3 class="font-display font-bold text-xl text-white mb-2">Cybersecurity + Python</h3>
-        <p class="text-white/40 text-sm leading-relaxed mb-6">Learning offensive & defensive security. Network security, ethical hacking, OSINT, and building security tools in Python — the one language to rule them all.</p>
+        <h3 class="font-display font-bold text-xl text-white mb-2">Defensive Security</h3>
+        <p class="text-white/40 text-sm leading-relaxed mb-6">Taking what offense finds and closing it. SSL/TLS auditing, secure system administration, false-positive filtering, and mapping vulnerabilities to actionable mitigations.</p>
 
         <div class="flex flex-wrap gap-2 mb-6">
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">Ethical Hacking</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">OSINT</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-amber-400/10 text-amber-300 border border-amber-400/20">🐍 Python</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">Network Sec</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">CTF</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">SSL/TLS Auditing</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">Network Security</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">Active Directory</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">Risk Mitigation</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-amber-400/10 text-amber-300 border border-amber-400/20">🐍 Python / Bash</span>
         </div>
 
         <div class="space-y-3">
           <div>
             <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">Python</span><span class="text-emerald-400">68%</span>
+              <span class="text-white/40">System Hardening</span><span class="text-rose-400">60%</span>
             </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.68" style="--from:#34d399; --to:#fbbf24"></div></div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.60" style="--from:#fb7185; --to:#f97316"></div></div>
           </div>
           <div>
             <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">Sec Concepts</span><span class="text-emerald-400">55%</span>
+              <span class="text-white/40">Network Administration</span><span class="text-rose-400">72%</span>
             </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.55" style="--from:#34d399; --to:#fbbf24"></div></div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.72" style="--from:#fb7185; --to:#f97316"></div></div>
           </div>
           <div>
             <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">Pen Testing</span><span class="text-emerald-400">30%</span>
+              <span class="text-white/40">Automation (Python/Bash)</span><span class="text-rose-400">68%</span>
             </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.30" style="--from:#34d399; --to:#fbbf24"></div></div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.68" style="--from:#fb7185; --to:#f97316"></div></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- CONVERGENCE BANNER — the thing that doesn't exist anywhere else -->
-    <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--cyan)">
+    <!-- CONVERGENCE BANNER -->
+    <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--crimson)">
       <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
-        <!-- Animated connection lines SVG -->
         <svg width="100%" height="100%" viewBox="0 0 800 200" preserveAspectRatio="xMidYMid slice">
           <defs>
             <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#22d3ee" stop-opacity="0"/>
-              <stop offset="50%" stop-color="#a78bfa"/>
-              <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+              <stop offset="0%" stop-color="#ef4444" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#fb7185"/>
+              <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
             </linearGradient>
           </defs>
           <path d="M100,100 Q250,30 400,100 Q550,170 700,100" stroke="url(#lineGrad)" stroke-width="1.5" fill="none">
@@ -863,36 +826,36 @@ tailwind.config = {
                       M100,100 Q250,170 400,100 Q550,30 700,100;
                       M100,100 Q250,30 400,100 Q550,170 700,100"/>
           </path>
-          <circle r="4" fill="#22d3ee"><animateMotion dur="4s" repeatCount="indefinite" path="M100,100 Q250,30 400,100 Q550,170 700,100"/></circle>
-          <circle r="4" fill="#a78bfa"><animateMotion dur="4s" begin="1.3s" repeatCount="indefinite" path="M100,100 Q250,30 400,100 Q550,170 700,100"/></circle>
-          <circle r="4" fill="#34d399"><animateMotion dur="4s" begin="2.6s" repeatCount="indefinite" path="M100,100 Q250,30 400,100 Q550,170 700,100"/></circle>
+          <circle r="4" fill="#ef4444"><animateMotion dur="4s" repeatCount="indefinite" path="M100,100 Q250,30 400,100 Q550,170 700,100"/></circle>
+          <circle r="4" fill="#fb7185"><animateMotion dur="4s" begin="1.3s" repeatCount="indefinite" path="M100,100 Q250,30 400,100 Q550,170 700,100"/></circle>
+          <circle r="4" fill="#f97316"><animateMotion dur="4s" begin="2.6s" repeatCount="indefinite" path="M100,100 Q250,30 400,100 Q550,170 700,100"/></circle>
         </svg>
       </div>
 
       <div class="relative grid lg:grid-cols-3 gap-8 items-center">
         <div class="lg:col-span-2">
-          <div class="font-mono text-xs text-violet-400 mb-2">// THE CONVERGENCE THESIS</div>
-          <h3 class="font-display font-bold text-2xl text-white mb-3">Frontend + AI + Cybersecurity = <span class="text-cyan-400">The Future Developer</span></h3>
+          <div class="font-mono text-xs text-rose-400 mb-2">// THE THESIS</div>
+          <h3 class="font-display font-bold text-2xl text-white mb-3">Frontend + Offensive &amp; Defensive Security = <span class="text-crimson-400">Built to Withstand</span></h3>
           <p class="text-white/40 leading-relaxed text-sm">
-            Most developers choose one lane. I'm building across three. A frontend architect who understands LLM integration, can write ML-powered features in Python, and thinks like a hacker when designing systems. That intersection doesn't exist on most resumes. It will define mine.
+            Most developers ship first and think about security later. I build with an attacker's mindset from the start — testing my own systems for weaknesses, then defending what I build. That's the intersection I'm developing my career around.
           </p>
         </div>
         <div class="flex flex-col gap-3 text-sm font-mono">
           <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <span class="text-cyan-400">→</span>
-            <span class="text-white/60">Build AI-powered UIs</span>
+            <span class="text-crimson-400">→</span>
+            <span class="text-white/60">Think like an attacker</span>
           </div>
           <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <span class="text-violet-400">→</span>
+            <span class="text-rose-400">→</span>
             <span class="text-white/60">Secure every layer</span>
           </div>
           <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <span class="text-emerald-400">→</span>
-            <span class="text-white/60">Automate with Python</span>
+            <span class="text-ember-400">→</span>
+            <span class="text-white/60">Automate with Python & Bash</span>
           </div>
           <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <span class="text-amber-400">→</span>
-            <span class="text-white/60">Ship. Break. Improve.</span>
+            <span class="text-white/70">→</span>
+            <span class="text-white/60">Ship. Break. Secure.</span>
           </div>
         </div>
       </div>
@@ -905,79 +868,109 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-6">
     <div class="mb-16 fade-in">
       <div class="section-label mb-3">04 / PROJECTS</div>
-      <h2 class="section-title">Work I've <span style="background: linear-gradient(135deg, var(--emerald), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Shipped</span></h2>
+      <h2 class="section-title">Security <span style="background: linear-gradient(135deg, var(--crimson), var(--blood)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Frameworks</span></h2>
+      <p class="text-white/40 max-w-xl mt-3 font-body">Two independently built Bash-based tools for automated web security assessment.</p>
     </div>
 
-    <div class="grid lg:grid-cols-5 gap-6">
-      <!-- Main Project — large -->
-      <div class="project-card lg:col-span-3 fade-in">
-        <div class="project-img-wrap">
-          <img src="proj-1.png" alt="ServiceEase"
-               class="w-full h-56 lg:h-72 object-cover"
-               onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80&auto=format'">
-          <div class="project-overlay">
-            <a href="https://serviceease-mkie.onrender.com" target="_blank"
-               class="w-14 h-14 rounded-full bg-void/80 flex items-center justify-center text-white text-xl hover:bg-void transition-colors cursor-none">
-              <i class="fas fa-external-link-alt"></i>
-            </a>
-          </div>
-          <!-- Live badge -->
-          <div class="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-void/80 backdrop-blur-md border border-white/10">
-            <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-            <span class="font-mono text-xs text-white/70">LIVE</span>
-          </div>
+    <div class="grid lg:grid-cols-2 gap-6">
+
+      <!-- Death Star -->
+      <div class="project-card fade-in">
+        <div class="ascii-wrap flex items-center justify-center py-8 px-4">
+          <pre class="ascii-art" style="font-size:9px;">⠀⢀⣠⣾⣿⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣷⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⠄⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⣄⣀⣀⡀⠀⢀⣤⣾⣿⣿⡿⠟⠁⠀⠀⠀⠀⢠⣾⣿⣿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⡿⠟⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⠟⠀⠀⠀⠀⠀⣠⣴⣿⣿⣿⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢀⣤⣾⡿⠋⠀⠀⠀⠀⠈⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⣶⣶⣶⣦⣼⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣠⣾⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣷⡄
+⠀⠀⠀⣠⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣶⣿⣿⣿⡏⠀
+⠸⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀
+⠾⠛⠁⠙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣿⡿⠛⠉⠁⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⣿⣿⣿⠟⠁⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⠁⠀⠀⠀⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⡀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠟⠉⠁⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠘⠿⣿⣿⡿⠉⠛⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣀⢀⡀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠟⠁⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⣶⣿⠉⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟
+⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⠟⠁⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡿⠛⠿⠀⠀⠀⠈⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⠇
+⠀⠀⠀⠀⠀⠀⣠⣾⠟⠁⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⣿⣿⣿⣿⠟⠁⠀
+⠀⠀⠀⠰⣿⣿⣿⡅⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣿⡿⠋⠀⠀⠀
+⠀⠀⠀⠰⠟⠁⠙⠃⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣨⣿⡿⠋⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⣿⣿⣿⣿⣿⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⡿⠋⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠿⠿⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠾⣿⣿⣏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⠟⠉⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</pre>
         </div>
         <div class="p-7">
-          <h3 class="font-display font-bold text-xl text-white mb-2">ServiceEase</h3>
-          <p class="text-white/40 text-sm leading-relaxed mb-5">
-            Comprehensive management system for Emade Technological Solutions Corp. Features inventory tracking, client management, and reporting — powered by MySQL.
-            <span class="text-white/25 block mt-1 font-mono text-xs">Demo: admin / admin123</span>
-          </p>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span class="px-3 py-1 rounded-full text-xs font-mono bg-blue-400/10 text-blue-300 border border-blue-400/20">PHP</span>
-            <span class="px-3 py-1 rounded-full text-xs font-mono bg-yellow-400/10 text-yellow-300 border border-yellow-400/20">JavaScript</span>
-            <span class="px-3 py-1 rounded-full text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20">MySQL</span>
-            <span class="px-3 py-1 rounded-full text-xs font-mono bg-orange-400/10 text-orange-300 border border-orange-400/20">HTML</span>
-            <span class="px-3 py-1 rounded-full text-xs font-mono bg-cyan-400/10 text-cyan-300 border border-cyan-400/20">Tailwind</span>
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="font-display font-bold text-xl text-white">Death Star v20.0</h3>
+            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">Bash</span>
           </div>
-          <a href="https://serviceease-mkie.onrender.com" target="_blank"
-             class="inline-flex items-center gap-2 font-mono text-xs text-cyan-400 hover:text-cyan-300 transition-colors cursor-none">
-            View Live Project <i class="fas fa-arrow-right text-xs"></i>
+          <p class="text-white/40 text-sm leading-relaxed mb-5">Complete security assessment framework supporting 30+ CMS platform signatures with weighted confidence scoring. Includes attack simulation (SQLi, LFI/path traversal, RCE against CVE-2018-7600 & CVE-2021-3129), smart domain-aware brute-force, Tor anonymization with circuit rotation, and an automated defense-recommendation engine mapping vulnerabilities to mitigations.</p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">30+ CMS Signatures</span>
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-blood-500/10 text-rose-300 border border-blood-500/20">Exploitation</span>
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-ember-400/10 text-ember-400 border border-ember-400/20">Tor Anonymization</span>
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">Risk Scoring</span>
+          </div>
+          <a href="https://github.com/sabel2-0" target="_blank"
+             class="inline-flex items-center gap-2 font-mono text-xs text-crimson-400 hover:text-crimson-300 transition-colors cursor-none">
+            <i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right text-xs"></i>
           </a>
         </div>
       </div>
 
-      <!-- Right side: upcoming / vision -->
-      <div class="lg:col-span-2 flex flex-col gap-5">
-
-        <!-- AI Project (coming soon) -->
-        <div class="skill-card p-6 fade-in flex-1 relative overflow-hidden" style="--card-color: var(--violet); transition-delay:0.15s">
-          <div class="absolute top-3 right-3">
-            <span class="learning-badge px-3 py-1 text-violet-300 text-xs">BUILDING</span>
-          </div>
-          <div class="text-4xl mb-3">🤖</div>
-          <h3 class="font-display font-bold text-white text-lg mb-2">AI-Powered App</h3>
-          <p class="text-white/40 text-sm leading-relaxed mb-4">Next project: integrating LLM APIs to build a real AI-driven web application. Frontend meets machine intelligence.</p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-violet-400/10 text-violet-300 border border-violet-400/20">Python</span>
-            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-violet-400/10 text-violet-300 border border-violet-400/20">LLM API</span>
-            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-violet-400/10 text-violet-300 border border-violet-400/20">React</span>
-          </div>
+      <!-- Spear of Destruction -->
+      <div class="project-card fade-in" style="transition-delay:0.15s">
+        <div class="ascii-wrap flex items-center justify-center py-8 px-4">
+          <pre class="ascii-art" style="font-size:11px;">⠀⠀⠀⠴⣄⠀⠀⠀⠀⣀⣀⣀⠤⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣏⠀⠋⠀⠀⢀⣨⡭⠽⠿⢯⡛⢿⡑⢦⡀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠘⢦⡤⠤⢖⣉⣁⣀⠀⠀⠀⠙⡄⠱⡀⠹⡄⠀⠀⠀⠀
+⠀⠀⣀⠀⠀⠀⢀⠜⣁⠴⠚⠉⣁⣀⡀⠑⡀⠀⠀⠀⠀⡇⠀⠹⡄⠀⠀⠀
+⠀⢺⠉⠃⠀⢠⡿⠚⣁⣤⠞⠉⣠⠤⠬⣷⡀⠀⠀⠀⠀⠇⠀⢀⣷⠀⠀⠀
+⠀⠀⠙⠒⣲⠟⠓⠋⣵⠋⠀⠀⠈⠁⠀⠈⢧⠀⠀⠀⠀⠀⠀⡼⠀⣇⠀⠀
+⠶⠤⠤⠖⢡⠶⣄⡜⠁⠀⠀⠀⠀⠀⠰⠖⣾⠀⠀⠀⠀⠀⡜⠀⠀⢸⠀⠀
+⠀⠀⠀⠀⠀⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⠀⠀⠀⠀⠊⠀⠀⠀⢸⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⡸⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠊⠁⠀⠀⠀⠀⠀⠀⠀⢀⣠⠴⠛⣉⡗
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠞⠁⠀⠀⠀⠀⠀⠀⠀⢰⠋⣡⡶⠛⠉⠁⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠇⠀⠀⠀⢀⣠⠤⢤⣤⣤⡾⠀⣏⣄⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⡾⠀⠀⠀⠰⠛⠉⠉⠉⠛⠉⠀⠀⣿⠀⡆⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢧⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⠖⠚⡟⡆⢿⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣆⠀⠀⠀⠀⠀⢀⣾⣍⣀⠀⣸⠇⢹⠈⢦⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢦⡀⠀⠀⠀⠈⠸⡄⠈⠉⠁⠀⠀⢣⣠⠃⠀
+⠀⠀⠀⠀⣰⢷⡀⠀⠀⠀⠀⠀⠹⣆⠀⠀⠀⠀⢳⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢻⠀⠉⠍⠳⠤⠤⠤⢶⡄⣇⠀⠀⠀⠀⢱⡀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢷⡀⠀⠀⠀⠀⡴⠋⠀⢹⠀⠀⠀⠀⠀⣇⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢇⣀⣀⣴⡄⠉⠲⠶⠚⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠸⡄⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢹⡄⠀⠀⠀⠀⢠⠀⠀⠀⠀⠀⡴⠃⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣙⡶⣄⠀⢀⡘⣆⠀⠀⣶⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⣠⠶⠒⠒⠋⠉⠁⠀⠈⣹⠻⠏⣻⠇⠀⢘⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⣼⣥⡶⠋⠉⠉⠉⠉⠉⠉⠁⢠⡞⠁⣠⡶⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⢠⠏⣠⠞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠏⣼⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣈⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠿⠟⠁⠀⠀⠀⠀⠀</pre>
         </div>
-
-        <!-- Cyber Tool (coming soon) -->
-        <div class="skill-card p-6 fade-in flex-1 relative overflow-hidden" style="--card-color: var(--emerald); transition-delay:0.3s">
-          <div class="absolute top-3 right-3">
-            <span class="learning-badge px-3 py-1 text-emerald-300 text-xs" style="border-color:rgba(52,211,153,0.3)">PLANNED</span>
+        <div class="p-7">
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="font-display font-bold text-xl text-white">Spear of Destruction v5.2</h3>
+            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">Bash</span>
           </div>
-          <div class="text-4xl mb-3">🔐</div>
-          <h3 class="font-display font-bold text-white text-lg mb-2">Security Tool</h3>
-          <p class="text-white/40 text-sm leading-relaxed mb-4">Building a Python-based OSINT / network analysis tool as part of my cybersecurity learning path.</p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">Python</span>
-            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">OSINT</span>
-            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">Networking</span>
+          <p class="text-white/40 text-sm leading-relaxed mb-5">Automated web security assessment framework running a 15-phase pipeline — reconnaissance, attack-surface discovery, vulnerability assessment, service enumeration, authentication testing, SSL/TLS auditing, and credential exposure detection. Built with automated CMS fingerprinting, SHA1-based false-positive filtering, and Nmap-driven port scanning with structured report generation.</p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">15-Phase Pipeline</span>
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">SSL/TLS Auditing</span>
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-ember-400/10 text-ember-400 border border-ember-400/20">CMS Fingerprinting</span>
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">Credential Exposure</span>
           </div>
+          <a href="https://github.com/sabel2-0" target="_blank"
+             class="inline-flex items-center gap-2 font-mono text-xs text-rose-400 hover:text-rose-300 transition-colors cursor-none">
+            <i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right text-xs"></i>
+          </a>
         </div>
       </div>
     </div>
@@ -987,7 +980,7 @@ tailwind.config = {
 <!-- ═══════════════════════════ CONTACT ═══════════════════════════ -->
 <section id="contact" class="py-28 relative overflow-hidden">
   <div class="absolute inset-0 pointer-events-none">
-    <div class="orb w-96 h-96 bg-cyan-400 top-1/2 right-0 translate-x-1/2 -translate-y-1/2" style="opacity:0.08"></div>
+    <div class="orb w-96 h-96 bg-crimson-500 top-1/2 right-0 translate-x-1/2 -translate-y-1/2" style="opacity:0.08"></div>
   </div>
 
   <div class="max-w-7xl mx-auto px-6">
@@ -996,26 +989,26 @@ tailwind.config = {
       <!-- Left -->
       <div class="fade-in">
         <div class="section-label mb-3">05 / CONTACT</div>
-        <h2 class="section-title mb-4">Let's <span style="background: linear-gradient(135deg, var(--cyan), var(--emerald)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Connect</span></h2>
+        <h2 class="section-title mb-4">Let's <span style="background: linear-gradient(135deg, var(--crimson), var(--blood)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Connect</span></h2>
         <p class="text-white/40 leading-relaxed mb-8 font-body">
-          I'm always open to new opportunities, collaborations, and conversations about tech. Whether you want to build something together, discuss AI, or just say hi — my inbox is open.
+          I'm always open to new opportunities, collaborations, and conversations about tech and security. Whether you want to build something together or just say hi — my inbox is open.
         </p>
 
         <div class="space-y-4 mb-8">
-          <a href="mailto:markivan.night@gmail.com" class="contact-card flex items-center gap-4 p-5 cursor-none">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(34,211,238,0.1)">
-              <i class="fas fa-envelope text-cyan-400"></i>
+          <a href="mailto:markivan.su@gmail.com" class="contact-card flex items-center gap-4 p-5 cursor-none">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(239,68,68,0.1)">
+              <i class="fas fa-envelope text-crimson-400"></i>
             </div>
             <div>
               <div class="font-mono text-xs text-white/30 mb-0.5">EMAIL</div>
-              <div class="text-white text-sm">markivan.night@gmail.com</div>
+              <div class="text-white text-sm">markivan.su@gmail.com</div>
             </div>
             <i class="fas fa-arrow-right ml-auto text-white/20 text-xs"></i>
           </a>
 
           <div class="contact-card flex items-center gap-4 p-5">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(52,211,153,0.1)">
-              <i class="fas fa-phone text-emerald-400"></i>
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(251,113,133,0.1)">
+              <i class="fas fa-phone text-rose-400"></i>
             </div>
             <div>
               <div class="font-mono text-xs text-white/30 mb-0.5">PHONE</div>
@@ -1024,8 +1017,8 @@ tailwind.config = {
           </div>
 
           <div class="contact-card flex items-center gap-4 p-5">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(251,191,36,0.1)">
-              <i class="fas fa-map-marker-alt text-amber-400"></i>
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(249,115,22,0.1)">
+              <i class="fas fa-map-marker-alt text-ember-400"></i>
             </div>
             <div>
               <div class="font-mono text-xs text-white/30 mb-0.5">LOCATION</div>
@@ -1036,44 +1029,44 @@ tailwind.config = {
 
         <!-- Social links -->
         <div class="flex gap-3">
-          <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-cyan-400 hover:border-cyan-400/30 transition-all cursor-none">
+          <a href="https://github.com/sabel2-0" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-crimson-400 hover:border-crimson-500/30 transition-all cursor-none">
             <i class="fab fa-github text-sm"></i>
           </a>
-          <a href="#" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-cyan-400 hover:border-cyan-400/30 transition-all cursor-none">
+          <a href="https://www.linkedin.com/in/mark-ivan-sumalinog-3b5a772b2/" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-crimson-400 hover:border-crimson-500/30 transition-all cursor-none">
             <i class="fab fa-linkedin text-sm"></i>
           </a>
-         <a href="https://x.com/Vaizen__" target="_blank" 
-   class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-cyan-400 hover:border-cyan-400/30 transition-all cursor-none">
-    <i class="fa-brands fa-x-twitter text-sm"></i>
-</a>
+          <a href="https://x.com/Vaizen__" target="_blank"
+             class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-crimson-400 hover:border-crimson-500/30 transition-all cursor-none">
+            <i class="fa-brands fa-x-twitter text-sm"></i>
+          </a>
         </div>
       </div>
 
-      <!-- Right: Quick message panel -->
-     
+    </div>
+  </div>
 </section>
 
 <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
 <footer class="border-t border-white/5 py-10">
   <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
     <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-violet-500 flex items-center justify-center">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-crimson-500 to-blood-700 flex items-center justify-center">
         <span class="font-display font-bold text-sm text-void">MI</span>
       </div>
       <span class="font-mono text-xs text-white/20">Mark Ivan Sumalinog</span>
     </div>
     <div class="font-mono text-xs text-white/20 text-center">
-      Built with passion · Tailwind CSS · Cebu, PH · 2025
+      Built with passion · Tailwind CSS · Cebu, PH · 2026
     </div>
     <div class="flex items-center gap-2">
       <div class="status-dot"></div>
-      <span class="font-mono text-xs text-emerald-400/60">Systems online</span>
+      <span class="font-mono text-xs text-crimson-400/60">Systems online</span>
     </div>
   </div>
 </footer>
 
 <!-- Back to top -->
-<button id="back-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-500 flex items-center justify-center text-void opacity-0 transition-all duration-300 hover:scale-110 shadow-lg cursor-none z-40">
+<button id="back-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-xl bg-gradient-to-br from-crimson-500 to-blood-700 flex items-center justify-center text-void opacity-0 transition-all duration-300 hover:scale-110 shadow-lg cursor-none z-40">
   <i class="fas fa-arrow-up text-sm"></i>
 </button>
 
@@ -1089,9 +1082,9 @@ animRing();
 // ── TYPING EFFECT ──
 const roles = [
   "Frontend Developer",
-  "AI/LLM Learner",
-  "Python Enthusiast",
-  "Cybersec Explorer",
+  "Offensive Security",
+  "Defensive Security",
+  "Python / Bash Developer",
   "Full-Stack Builder",
 ];
 let ri=0, ci=0, deleting=false;
@@ -1111,7 +1104,7 @@ function typeRole() {
 typeRole();
 
 // Terminal running text
-const terminalTexts = ['init portfolio.js', 'loading modules...', 'ai_modules loaded ✓', 'cyber_modules loaded ✓', 'python_modules loaded ✓', 'portfolio.run() — ready'];
+const terminalTexts = ['init portfolio.js', 'loading modules...', 'security_modules loaded ✓', 'python_modules loaded ✓', 'scan complete — 0 open ports', 'portfolio.run() — ready'];
 let ti=0;
 function cycleTerminal() {
   const el = document.getElementById('terminal-running');
@@ -1144,53 +1137,24 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if(e.isIntersecting) {
       e.target.classList.add('visible');
-      // Animate progress bars inside
       e.target.querySelectorAll('.progress-fill').forEach(bar => {
         setTimeout(() => bar.classList.add('animated'), 300);
       });
     }
   });
 }, { threshold: 0.1 });
-
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Also observe sections for progress bars
 const progObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if(e.isIntersecting) {
-      e.querySelectorAll('.progress-fill').forEach(bar => {
+      e.target.querySelectorAll('.progress-fill').forEach(bar => {
         setTimeout(() => bar.classList.add('animated'), 300);
       });
     }
   });
 }, { threshold: 0.2 });
 document.querySelectorAll('section').forEach(s => progObserver.observe(s));
-
-// ── SEND BUTTON ──
-document.getElementById('contact-form').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const btn = document.getElementById('send-btn');
-  const txt = document.getElementById('send-text');
-  const status = document.getElementById('send-status');
-  const name = document.getElementById('sender-name').value;
-  const email = document.getElementById('sender-email').value;
-  const message = document.getElementById('sender-message').value;
-
-  txt.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>TRANSMITTING...';
-  btn.style.opacity = '0.7';
-  btn.disabled = true;
-  status.textContent = '';
-  status.className = 'font-mono text-xs text-center';
-
- 
-
-  setTimeout(() => {
-    txt.textContent = 'TRANSMIT MESSAGE';
-    btn.style.background = '';
-    btn.style.opacity = '';
-    btn.disabled = false;
-  }, 4000);
-});
 
 // ── PARALLAX ORBS ──
 document.addEventListener('mousemove', e => {
@@ -1201,6 +1165,39 @@ document.addEventListener('mousemove', e => {
     orb.style.transform += `translate(${x*factor}px,${y*factor}px)`;
   });
 });
+
+/* ══════════════════ VIEW-SOURCE DETERRENTS ══════════════════
+   NOTE: These only stop casual attempts (right-click, F12, Ctrl+U).
+   They cannot block browser features like view-source:, "Save Page As",
+   or DevTools opened from the browser menu — no page can do that. */
+
+// Disable right-click context menu
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Block common inspect/view-source shortcuts
+document.addEventListener('keydown', e => {
+  const k = e.key.toLowerCase();
+  if (
+    e.key === 'F12' ||
+    (e.ctrlKey && e.shiftKey && ['i','j','c'].includes(k)) ||
+    (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+    (e.ctrlKey && k === 'u') ||
+    (e.metaKey && k === 'u')
+  ) {
+    e.preventDefault();
+  }
+});
+
+// Lightweight DevTools-open detector (size-diff heuristic)
+const dtWarning = document.getElementById('dt-warning');
+let dtOpen = false;
+setInterval(() => {
+  const widthDiff = window.outerWidth - window.innerWidth > 160;
+  const heightDiff = window.outerHeight - window.innerHeight > 160;
+  const isOpen = widthDiff || heightDiff;
+  if (isOpen && !dtOpen) { dtOpen = true; dtWarning.classList.add('show'); }
+  if (!isOpen && dtOpen) { dtOpen = false; dtWarning.classList.remove('show'); }
+}, 800);
 </script>
 </body>
 </html>
