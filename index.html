@@ -430,7 +430,9 @@ tailwind.config = {
       <li><a href="#home" class="nav-link">_home</a></li>
       <li><a href="#skills" class="nav-link">_skills</a></li>
       <li><a href="#security" class="nav-link">_security</a></li>
+      <li><a href="#compliance" class="nav-link">_compliance</a></li>
       <li><a href="#the-problem" class="nav-link">_why</a></li>
+      <li><a href="#field-notes" class="nav-link">_notes</a></li>
       <li><a href="#project" class="nav-link">_projects</a></li>
       <li><a href="#contact" class="nav-link">_contact</a></li>
     </ul>
@@ -455,6 +457,8 @@ tailwind.config = {
     <li><a href="#home" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Home</a></li>
     <li><a href="#skills" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Skills</a></li>
     <li><a href="#security" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Security</a></li>
+    <li><a href="#compliance" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Compliance</a></li>
+    <li><a href="#field-notes" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Field Notes</a></li>
     <li><a href="#project" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Projects</a></li>
     <li><a href="#contact" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Contact</a></li>
   </ul>
@@ -491,9 +495,9 @@ tailwind.config = {
         </div>
 
         <p class="text-white/50 text-base leading-relaxed mb-8 max-w-lg font-body">
-          Frontend developer sharpening skills in <span class="text-crimson-400 font-medium">offensive security</span> and
-          <span class="text-rose-400 font-medium">defensive security</span>. I build systems, then try to break them on
-          purpose — hunting vulnerabilities in networks, web apps, and credentials before anyone else finds them.
+          Building hands-on expertise in <span class="text-crimson-400 font-medium">offensive security</span> and
+          <span class="text-rose-400 font-medium">defensive security</span>. I test systems the way an attacker would,
+          then close what I find — hunting vulnerabilities in networks, web apps, and credentials before anyone else does.
         </p>
 
         <div class="flex flex-wrap gap-3 mb-10">
@@ -503,18 +507,14 @@ tailwind.config = {
         </div>
 
         <!-- Quick stats -->
-        <div class="grid grid-cols-3 gap-4">
-          <div class="text-center">
-            <div class="font-display font-bold text-2xl text-crimson-400">1+</div>
-            <div class="font-mono text-xs text-white/30 mt-1">YEARS EXP</div>
-          </div>
-          <div class="text-center border-x border-white/10">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="text-center border-r border-white/10">
             <div class="font-display font-bold text-2xl text-rose-400">15</div>
             <div class="font-mono text-xs text-white/30 mt-1">ASSESSMENT PHASES</div>
           </div>
           <div class="text-center">
             <div class="font-display font-bold text-2xl text-blood-500">2</div>
-            <div class="font-mono text-xs text-white/30 mt-1">SEC. FRAMEWORKS</div>
+            <div class="font-mono text-xs text-white/30 mt-1">SEC. FRAMEWORKS BUILT</div>
           </div>
         </div>
       </div>
@@ -529,11 +529,11 @@ tailwind.config = {
             <span class="ml-4 text-white/20 text-xs">mark_ivan ~ portfolio</span>
           </div>
           <div class="p-5 space-y-2 text-sm leading-relaxed">
-            <div class="text-white/30">// Mark Ivan · Developer Profile</div>
+            <div class="text-white/30">// Mark Ivan · Security Profile</div>
             <br>
-            <div><span class="text-rose-400">const</span> <span class="text-crimson-400">developer</span> <span class="text-white/50">=</span> <span class="text-white/80">{</span></div>
+            <div><span class="text-rose-400">const</span> <span class="text-crimson-400">practitioner</span> <span class="text-white/50">=</span> <span class="text-white/80">{</span></div>
             <div class="pl-4"><span class="text-blood-500 text-rose-300">name</span><span class="text-white/50">:</span> <span class="text-ember-400">"Mark Ivan Sumalinog"</span><span class="text-white/50">,</span></div>
-            <div class="pl-4"><span class="text-rose-300">role</span><span class="text-white/50">:</span> <span class="text-ember-400">"Frontend Developer"</span><span class="text-white/50">,</span></div>
+            <div class="pl-4"><span class="text-rose-300">role</span><span class="text-white/50">:</span> <span class="text-ember-400">"Offensive & Defensive Security"</span><span class="text-white/50">,</span></div>
             <div class="pl-4"><span class="text-rose-300">location</span><span class="text-white/50">:</span> <span class="text-ember-400">"Cebu City, PH 🇵🇭"</span><span class="text-white/50">,</span></div>
             <div class="pl-4"><span class="text-rose-300">focus</span><span class="text-white/50">:</span> <span class="text-white/80">[</span></div>
             <div class="pl-8"><span class="text-ember-400">"Offensive Security"</span><span class="text-white/50">,</span></div>
@@ -609,6 +609,10 @@ tailwind.config = {
             <span class="text-white/70 text-sm">LFI / Path Traversal</span>
           </div>
           <div class="flex items-center gap-2.5">
+            <i class="fas fa-bolt text-crimson-400/80 w-5"></i>
+            <span class="text-white/70 text-sm">DoS Simulation (GoldenEye, Slowloris)</span>
+          </div>
+          <div class="flex items-center gap-2.5">
             <i class="fas fa-user-secret text-crimson-400/80 w-5"></i>
             <span class="text-white/70 text-sm">Tor Anonymization</span>
           </div>
@@ -636,8 +640,12 @@ tailwind.config = {
             <span class="text-white/70 text-sm">SSL/TLS Auditing</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-users-gear text-rose-400/80 w-5"></i>
-            <span class="text-white/70 text-sm">Active Directory</span>
+            <i class="fas fa-tower-broadcast text-rose-400/80 w-5"></i>
+            <span class="text-white/70 text-sm">IDS/IPS (Snort, Suricata)</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i class="fas fa-magnifying-glass text-rose-400/80 w-5"></i>
+            <span class="text-white/70 text-sm">Digital Forensics (Autopsy)</span>
           </div>
           <div class="flex items-center gap-2.5">
             <i class="fas fa-server text-rose-400/80 w-5"></i>
@@ -673,6 +681,10 @@ tailwind.config = {
           <div class="flex items-center gap-2.5">
             <i class="fas fa-route text-ember-400/80 w-5"></i>
             <span class="text-white/70 text-sm">Routing & Switching</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i class="fas fa-users-gear text-ember-400/80 w-5"></i>
+            <span class="text-white/70 text-sm">Active Directory</span>
           </div>
           <div class="flex items-center gap-2.5">
             <i class="fas fa-desktop text-ember-400/80 w-5"></i>
@@ -751,13 +763,14 @@ tailwind.config = {
           <span class="text-3xl">🗡️</span>
         </div>
         <h3 class="font-display font-bold text-xl text-white mb-2">Offensive Security</h3>
-        <p class="text-white/40 text-sm leading-relaxed mb-6">Thinking like an attacker to find what's actually exploitable. Reconnaissance, vulnerability scanning, credential exposure testing, and attack simulation against web apps and networks.</p>
+        <p class="text-white/40 text-sm leading-relaxed mb-6">Thinking like an attacker to find what's actually exploitable. Reconnaissance, vulnerability scanning, credential exposure testing, denial-of-service simulation, and attack simulation against web apps and networks.</p>
 
         <div class="flex flex-wrap gap-2 mb-6">
           <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">Reconnaissance</span>
           <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">Exploitation</span>
           <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">SQLi / LFI</span>
           <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">Brute-force</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">DoS Simulation</span>
           <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">CMS Fingerprinting</span>
         </div>
 
@@ -776,9 +789,9 @@ tailwind.config = {
           </div>
           <div>
             <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">Reporting & Risk Scoring</span><span class="text-crimson-400">65%</span>
+              <span class="text-white/40">DoS / Stress Testing</span><span class="text-crimson-400">50%</span>
             </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.65" style="--from:#ef4444; --to:#fb7185"></div></div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.50" style="--from:#ef4444; --to:#fb7185"></div></div>
           </div>
         </div>
       </div>
@@ -792,12 +805,12 @@ tailwind.config = {
           <span class="text-3xl">🛡️</span>
         </div>
         <h3 class="font-display font-bold text-xl text-white mb-2">Defensive Security</h3>
-        <p class="text-white/40 text-sm leading-relaxed mb-6">Taking what offense finds and closing it. SSL/TLS auditing, secure system administration, false-positive filtering, and mapping vulnerabilities to actionable mitigations.</p>
+        <p class="text-white/40 text-sm leading-relaxed mb-6">Taking what offense finds and closing it. SSL/TLS auditing, intrusion detection, digital forensics, false-positive filtering, and mapping vulnerabilities to actionable mitigations.</p>
 
         <div class="flex flex-wrap gap-2 mb-6">
           <span class="px-2 py-1 rounded-md text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">SSL/TLS Auditing</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">Network Security</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">Active Directory</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">IDS/IPS</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">Digital Forensics</span>
           <span class="px-2 py-1 rounded-md text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">Risk Mitigation</span>
           <span class="px-2 py-1 rounded-md text-xs font-mono bg-amber-400/10 text-amber-300 border border-amber-400/20">🐍 Python / Bash</span>
         </div>
@@ -811,15 +824,15 @@ tailwind.config = {
           </div>
           <div>
             <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">Network Administration</span><span class="text-rose-400">72%</span>
+              <span class="text-white/40">Intrusion Detection & Monitoring</span><span class="text-rose-400">65%</span>
             </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.72" style="--from:#fb7185; --to:#f97316"></div></div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.65" style="--from:#fb7185; --to:#f97316"></div></div>
           </div>
           <div>
             <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">Automation (Python/Bash)</span><span class="text-rose-400">68%</span>
+              <span class="text-white/40">Digital Forensics</span><span class="text-rose-400">50%</span>
             </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.68" style="--from:#fb7185; --to:#f97316"></div></div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.50" style="--from:#fb7185; --to:#f97316"></div></div>
           </div>
         </div>
       </div>
@@ -851,9 +864,9 @@ tailwind.config = {
       <div class="relative grid lg:grid-cols-3 gap-8 items-center">
         <div class="lg:col-span-2">
           <div class="font-mono text-xs text-rose-400 mb-2">// THE THESIS</div>
-          <h3 class="font-display font-bold text-2xl text-white mb-3">Frontend + Offensive &amp; Defensive Security = <span class="text-crimson-400">Built to Withstand</span></h3>
+          <h3 class="font-display font-bold text-2xl text-white mb-3">Offense + Defense + Automation = <span class="text-crimson-400">Built to Withstand</span></h3>
           <p class="text-white/40 leading-relaxed text-sm">
-            Most developers ship first and think about security later. I build with an attacker's mindset from the start — testing my own systems for weaknesses, then defending what I build. That's the intersection I'm developing my career around.
+            Most teams ship first and think about security later. I test systems with an attacker's mindset first, then defend and harden what's exposed. That's the intersection I'm building my career around.
           </p>
         </div>
         <div class="flex flex-col gap-3 text-sm font-mono">
@@ -871,9 +884,54 @@ tailwind.config = {
           </div>
           <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
             <span class="text-white/70">→</span>
-            <span class="text-white/60">Ship. Break. Secure.</span>
+            <span class="text-white/60">Test. Break. Secure.</span>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ COMPLIANCE ═══════════════════════════ -->
+<section id="compliance" class="py-28 relative overflow-hidden border-y border-white/5">
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="orb w-[500px] h-[500px] bg-crimson-500 bottom-0 right-1/4" style="opacity:0.08"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="mb-16 fade-in">
+      <div class="section-label mb-3">04 / COMPLIANCE</div>
+      <h2 class="section-title">Compliance <span style="background: linear-gradient(135deg, var(--crimson), var(--rose)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Frameworks</span></h2>
+      <p class="text-white/40 max-w-xl mt-3 font-body">Technical findings only matter if they map to a standard someone can act on. These are the frameworks I assess against.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <div class="skill-card p-7 fade-in" style="--card-color: var(--crimson)">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(239,68,68,0.12)">
+          <i class="fas fa-building-shield text-crimson-400"></i>
+        </div>
+        <div class="font-mono text-xs text-crimson-400 mb-2">CMMC</div>
+        <h3 class="font-display font-bold text-lg text-white mb-2">Cybersecurity Maturity Model Certification</h3>
+        <p class="text-white/40 text-sm leading-relaxed">A tiered DoD contractor requirement that grades an organization's cybersecurity maturity, from basic hygiene up to advanced, proactive practices, before it can handle defense-related work.</p>
+      </div>
+
+      <div class="skill-card p-7 fade-in" style="--card-color: var(--rose); transition-delay:0.1s">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(251,113,133,0.12)">
+          <i class="fas fa-file-shield text-rose-400"></i>
+        </div>
+        <div class="font-mono text-xs text-rose-400 mb-2">NIST SP 800-171</div>
+        <h3 class="font-display font-bold text-lg text-white mb-2">Protecting Controlled Unclassified Information</h3>
+        <p class="text-white/40 text-sm leading-relaxed">A set of security requirements for non-federal systems that store or process Controlled Unclassified Information — the technical baseline that CMMC largely builds on.</p>
+      </div>
+
+      <div class="skill-card p-7 fade-in" style="--card-color: var(--ember); transition-delay:0.2s">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(249,115,22,0.12)">
+          <i class="fas fa-credit-card text-ember-400"></i>
+        </div>
+        <div class="font-mono text-xs text-ember-400 mb-2">PCI DSS</div>
+        <h3 class="font-display font-bold text-lg text-white mb-2">Payment Card Industry Data Security Standard</h3>
+        <p class="text-white/40 text-sm leading-relaxed">An industry-mandated standard for any organization that stores, processes, or transmits cardholder data — covering network segmentation, encryption, access control, and logging.</p>
       </div>
     </div>
   </div>
@@ -956,11 +1014,44 @@ tailwind.config = {
   </div>
 </section>
 
+<!-- ═══════════════════════════ FIELD NOTES ═══════════════════════════ -->
+<section id="field-notes" class="py-28 relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mb-16 fade-in">
+      <div class="section-label mb-3">// FIELD NOTES</div>
+      <h2 class="section-title">Notes From <span style="background: linear-gradient(135deg, var(--crimson), var(--rose)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">The Field</span></h2>
+      <p class="text-white/40 max-w-xl mt-3 font-body">Short lessons pulled from actually running assessments — not theory.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6">
+
+      <div class="skill-card p-7 fade-in" style="--card-color: var(--crimson)">
+        <div class="font-mono text-xs text-crimson-400 mb-3">01</div>
+        <h3 class="font-display font-bold text-lg text-white mb-3">Recon Is Half the Battle</h3>
+        <p class="text-white/40 text-sm leading-relaxed">Most engagements are won or lost before a single exploit runs. Time spent mapping subdomains, open ports, and exposed services quietly decides how the rest of the assessment goes — rushing this step almost always means missing the finding that mattered.</p>
+      </div>
+
+      <div class="skill-card p-7 fade-in" style="--card-color: var(--rose); transition-delay:0.1s">
+        <div class="font-mono text-xs text-rose-400 mb-3">02</div>
+        <h3 class="font-display font-bold text-lg text-white mb-3">A False Positive Still Costs Trust</h3>
+        <p class="text-white/40 text-sm leading-relaxed">Flooding a report with unverified findings doesn't make an assessment look thorough — it makes it look sloppy. Every scanner hit deserves manual confirmation before it earns a place in the final report.</p>
+      </div>
+
+      <div class="skill-card p-7 fade-in" style="--card-color: var(--ember); transition-delay:0.2s">
+        <div class="font-mono text-xs text-ember-400 mb-3">03</div>
+        <h3 class="font-display font-bold text-lg text-white mb-3">Compliance Isn't Security, But It's a Start</h3>
+        <p class="text-white/40 text-sm leading-relaxed">Passing an audit and being secure are not the same thing. Frameworks like CMMC, NIST SP 800-171, and PCI DSS give a baseline everyone can be measured against — the real work is closing the gap between "compliant" and "actually resilient."</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════════════════ PROJECTS ═══════════════════════════ -->
 <section id="project" class="py-28 relative">
   <div class="max-w-7xl mx-auto px-6">
     <div class="mb-16 fade-in">
-      <div class="section-label mb-3">04 / PROJECTS</div>
+      <div class="section-label mb-3">05 / PROJECTS</div>
       <h2 class="section-title">Security <span style="background: linear-gradient(135deg, var(--crimson), var(--blood)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Frameworks</span></h2>
       <p class="text-white/40 max-w-xl mt-3 font-body">Two independently built Bash-based tools for automated web security assessment.</p>
     </div>
@@ -981,7 +1072,6 @@ tailwind.config = {
 ⠸⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀
 ⠾⠛⠁⠙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣿⡿⠛⠉⠁⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⣿⣿⣿⠟⠁⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⠁⠀⠀⠀⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⡀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠟⠉⠁⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠘⠿⣿⣿⡿⠉⠛⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣀⢀⡀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠟⠁⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⣶⣿⠉⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟
@@ -1001,11 +1091,11 @@ tailwind.config = {
             <h3 class="font-display font-bold text-xl text-white">Death Star v20.0</h3>
             <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">Bash</span>
           </div>
-          <p class="text-white/40 text-sm leading-relaxed mb-5">Complete security assessment framework supporting 30+ CMS platform signatures with weighted confidence scoring. Includes attack simulation (SQLi, LFI/path traversal, RCE against CVE-2018-7600 & CVE-2021-3129), smart domain-aware brute-force, Tor anonymization with circuit rotation, and an automated defense-recommendation engine mapping vulnerabilities to mitigations.</p>
+          <p class="text-white/40 text-sm leading-relaxed mb-5">Complete security assessment framework supporting 30+ CMS platform signatures with weighted confidence scoring. Includes attack simulation (SQLi, LFI/path traversal, RCE against CVE-2018-7600 & CVE-2021-3129), smart domain-aware brute-force, DoS/stress-testing modules (GoldenEye, Slowloris), Tor anonymization with circuit rotation, and an automated defense-recommendation engine mapping vulnerabilities to mitigations.</p>
           <div class="flex flex-wrap gap-2 mb-5">
             <span class="px-3 py-1 rounded-full text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">30+ CMS Signatures</span>
             <span class="px-3 py-1 rounded-full text-xs font-mono bg-blood-500/10 text-rose-300 border border-blood-500/20">Exploitation</span>
-            <span class="px-3 py-1 rounded-full text-xs font-mono bg-ember-400/10 text-ember-400 border border-ember-400/20">Tor Anonymization</span>
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-ember-400/10 text-ember-400 border border-ember-400/20">DoS Simulation</span>
             <span class="px-3 py-1 rounded-full text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">Risk Scoring</span>
           </div>
           <a href="https://github.com/sabel2-0" target="_blank"
@@ -1081,7 +1171,7 @@ tailwind.config = {
 
       <!-- Left -->
       <div class="fade-in">
-        <div class="section-label mb-3">05 / CONTACT</div>
+        <div class="section-label mb-3">06 / CONTACT</div>
         <h2 class="section-title mb-4">Let's <span style="background: linear-gradient(135deg, var(--crimson), var(--blood)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Connect</span></h2>
         <p class="text-white/40 leading-relaxed mb-8 font-body">
           I'm always open to new opportunities, collaborations, and conversations about tech and security. Whether you want to build something together or just say hi — my inbox is open.
@@ -1174,11 +1264,11 @@ animRing();
 
 // ── TYPING EFFECT ──
 const roles = [
-  "Frontend Developer",
   "Offensive Security",
   "Defensive Security",
   "Python / Bash Developer",
-  "Full-Stack Builder",
+  "Digital Forensics",
+  "Network Security",
 ];
 let ri=0, ci=0, deleting=false;
 function typeRole() {
