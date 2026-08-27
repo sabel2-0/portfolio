@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mark Ivan Sumalinog — Developer · Offensive & Defensive Security</title>
+<title>Mark Ivan Sumalinog — Developer · Security</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <script>
@@ -14,17 +14,16 @@ tailwind.config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Syne', 'sans-serif'],
-        mono: ['Space Mono', 'monospace'],
+        display: ['Fraunces', 'serif'],
+        mono: ['JetBrains Mono', 'monospace'],
         body: ['Inter', 'sans-serif'],
       },
       colors: {
-        void: '#0a0505',
-        surface: '#170c0d',
-        crimson: { 400: '#f87171', 500: '#ef4444', 600: '#dc2626' },
-        blood: { 500: '#b91c1c', 700: '#7f1d1d' },
-        rose: { 400: '#fb7185' },
-        ember: { 400: '#fb923c', 500: '#f97316' },
+        ink: '#10162a',
+        surface: '#171f38',
+        gold: { 300: '#fbd097', 400: '#f6b768', 500: '#f0a13f', 600: '#d98527' },
+        teal: { 300: '#a8ece4', 400: '#5fd6c7', 500: '#3cbfae' },
+        coral: { 400: '#ff9d7a', 500: '#ff7f56' },
       },
     }
   }
@@ -35,54 +34,30 @@ tailwind.config = {
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --crimson: #ef4444;
-    --blood: #b91c1c;
-    --rose: #fb7185;
-    --ember: #f97316;
-    --void: #0a0505;
-    --surface: #170c0d;
-    --border: rgba(239,68,68,0.10);
+    --gold: #f0a13f;
+    --gold-soft: #fbd097;
+    --teal: #3cbfae;
+    --coral: #ff7f56;
+    --ink: #10162a;
+    --surface: #171f38;
+    --border: rgba(240,161,63,0.14);
+    --cream: #f5f1e8;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
     font-family: 'Inter', sans-serif;
-    background: var(--void);
-    color: #f1e4e4;
+    background: var(--ink);
+    color: var(--cream);
     overflow-x: hidden;
-    cursor: none;
-  }
-
-  /* ── CUSTOM CURSOR ── */
-  #cursor-dot {
-    width: 8px; height: 8px;
-    background: var(--crimson);
-    border-radius: 50%;
-    position: fixed; pointer-events: none; z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s, background 0.2s;
-    box-shadow: 0 0 12px var(--crimson);
-  }
-  #cursor-ring {
-    width: 36px; height: 36px;
-    border: 1.5px solid rgba(239,68,68,0.5);
-    border-radius: 50%;
-    position: fixed; pointer-events: none; z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.18s ease, width 0.2s, height 0.2s, border-color 0.2s;
-  }
-  body:has(a:hover) #cursor-ring,
-  body:has(button:hover) #cursor-ring {
-    width: 60px; height: 60px;
-    border-color: var(--rose);
   }
 
   /* ── GRID BACKGROUND ── */
   .grid-bg {
     background-image:
-      linear-gradient(rgba(239,68,68,0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(239,68,68,0.035) 1px, transparent 1px);
+      linear-gradient(rgba(240,161,63,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(240,161,63,0.04) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 
@@ -91,61 +66,61 @@ tailwind.config = {
     content: '';
     position: absolute; inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none; opacity: 0.4;
+    pointer-events: none; opacity: 0.35;
   }
 
   /* ── GLOW ORBS ── */
   .orb {
     position: absolute; border-radius: 50%;
-    filter: blur(80px); opacity: 0.15;
-    pointer-events: none; animation: orbDrift 12s ease-in-out infinite;
+    filter: blur(90px); opacity: 0.18;
+    pointer-events: none; animation: orbDrift 14s ease-in-out infinite;
   }
   @keyframes orbDrift {
     0%,100% { transform: translate(0,0) scale(1); }
-    33% { transform: translate(30px,-20px) scale(1.05); }
-    66% { transform: translate(-20px,15px) scale(0.95); }
+    33% { transform: translate(26px,-18px) scale(1.05); }
+    66% { transform: translate(-18px,14px) scale(0.95); }
   }
 
   /* ── HERO TITLE ── */
   .hero-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(3.5rem, 9vw, 7rem);
-    line-height: 0.95;
-    letter-spacing: -0.03em;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(3.2rem, 8.5vw, 6.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
   }
-  .char-glow {
-    background: linear-gradient(135deg, #fff 0%, var(--crimson) 45%, var(--blood) 100%);
+  .name-warm {
+    background: linear-gradient(120deg, #fff 0%, var(--gold-soft) 45%, var(--teal) 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 40px rgba(239,68,68,0.35));
+    filter: drop-shadow(0 0 32px rgba(240,161,63,0.25));
   }
 
   /* ── TYPING CURSOR ── */
   .type-cursor::after {
     content: '|';
-    color: var(--crimson);
+    color: var(--gold);
     animation: blink 1s infinite;
   }
   @keyframes blink { 0%,50% { opacity: 1; } 51%,100% { opacity: 0; } }
 
   /* ── TERMINAL ── */
   .terminal {
-    background: rgba(0,0,0,0.7);
-    border: 1px solid rgba(239,68,68,0.2);
-    border-radius: 12px;
+    background: rgba(10,14,28,0.75);
+    border: 1px solid rgba(240,161,63,0.18);
+    border-radius: 18px;
     backdrop-filter: blur(20px);
-    font-family: 'Space Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.8rem;
   }
-  .terminal-bar { background: rgba(255,255,255,0.05); border-radius: 12px 12px 0 0; }
+  .terminal-bar { background: rgba(255,255,255,0.05); border-radius: 18px 18px 0 0; }
   .dot { width: 12px; height: 12px; border-radius: 50%; }
 
   /* ── SKILL CARDS ── */
   .skill-card {
-    background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    background: linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.012));
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: 20px;
     backdrop-filter: blur(10px);
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative; overflow: hidden;
@@ -153,29 +128,29 @@ tailwind.config = {
   .skill-card::before {
     content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(135deg, var(--card-color, var(--crimson)), transparent 60%);
+    background: linear-gradient(135deg, var(--card-color, var(--gold)), transparent 60%);
     opacity: 0; transition: opacity 0.4s;
     border-radius: inherit;
   }
   .skill-card:hover::before { opacity: 0.08; }
   .skill-card:hover {
-    border-color: var(--card-color, var(--crimson));
+    border-color: var(--card-color, var(--gold));
     transform: translateY(-6px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--card-color, var(--crimson)), inset 0 1px 0 rgba(255,255,255,0.08);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px var(--card-color, var(--gold)), inset 0 1px 0 rgba(255,255,255,0.08);
   }
 
   /* ── LEARNING BADGE ── */
   .learning-badge {
-    background: linear-gradient(135deg, rgba(251,113,133,0.15), rgba(239,68,68,0.1));
-    border: 1px solid rgba(251,113,133,0.3);
+    background: linear-gradient(135deg, rgba(240,161,63,0.15), rgba(60,191,174,0.1));
+    border: 1px solid rgba(240,161,63,0.3);
     border-radius: 100px;
-    font-family: 'Space Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
-    animation: pulseBorder 2s ease-in-out infinite;
+    animation: pulseBorder 2.4s ease-in-out infinite;
   }
   @keyframes pulseBorder {
-    0%,100% { border-color: rgba(251,113,133,0.3); box-shadow: 0 0 0 0 rgba(251,113,133,0.2); }
-    50% { border-color: rgba(239,68,68,0.5); box-shadow: 0 0 20px rgba(251,113,133,0.15); }
+    0%,100% { border-color: rgba(240,161,63,0.3); box-shadow: 0 0 0 0 rgba(240,161,63,0.15); }
+    50% { border-color: rgba(60,191,174,0.4); box-shadow: 0 0 20px rgba(60,191,174,0.12); }
   }
 
   /* ── PROGRESS BARS ── */
@@ -192,106 +167,78 @@ tailwind.config = {
   .project-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 20px;
+    border-radius: 22px;
     overflow: hidden;
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .project-card:hover {
-    border-color: rgba(239,68,68,0.35);
+    border-color: rgba(240,161,63,0.35);
     transform: translateY(-8px);
-    box-shadow: 0 30px 80px rgba(0,0,0,0.55), 0 0 40px rgba(239,68,68,0.08);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45), 0 0 40px rgba(240,161,63,0.08);
   }
 
-  /* ── ASCII PANEL ── */
-  .ascii-wrap {
-    background: #000;
-    border-bottom: 1px solid rgba(239,68,68,0.15);
+  /* ── ILLUSTRATION PANEL ── */
+  .art-wrap {
+    background: radial-gradient(circle at 50% 20%, rgba(240,161,63,0.14), transparent 65%), #0c1122;
+    border-bottom: 1px solid rgba(240,161,63,0.12);
     position: relative;
     overflow: hidden;
-  }
-  .ascii-wrap::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(circle at 50% 30%, rgba(239,68,68,0.12), transparent 70%);
-    pointer-events: none;
-  }
-  .ascii-art {
-    font-family: 'Space Mono', monospace;
-    color: var(--crimson);
-    text-shadow: 0 0 8px rgba(239,68,68,0.6), 0 0 20px rgba(239,68,68,0.25);
-    white-space: pre;
-    line-height: 1.05;
-    letter-spacing: -0.5px;
-    text-align: center;
-    user-select: none;
   }
 
   /* ── CONTACT ── */
   .contact-card {
-    background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    background: linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.012));
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: 18px;
     transition: all 0.3s ease;
   }
   .contact-card:hover {
-    border-color: rgba(239,68,68,0.35);
-    background: linear-gradient(145deg, rgba(239,68,68,0.07), rgba(251,113,133,0.04));
+    border-color: rgba(240,161,63,0.35);
+    background: linear-gradient(145deg, rgba(240,161,63,0.08), rgba(60,191,174,0.05));
     transform: translateX(6px);
   }
 
   /* ── NAV ── */
   .nav-glass {
-    background: rgba(10,5,5,0.8);
+    background: rgba(16,22,42,0.82);
     backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid var(--border);
   }
   .nav-link {
-    font-family: 'Space Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.75rem;
     color: rgba(255,255,255,0.5);
     transition: color 0.2s;
     letter-spacing: 0.05em;
   }
-  .nav-link:hover { color: var(--crimson); }
+  .nav-link:hover { color: var(--gold); }
 
   /* ── SCROLL PROGRESS ── */
   #scroll-prog {
     position: fixed; top: 0; left: 0; height: 2px; z-index: 9999;
-    background: linear-gradient(90deg, var(--crimson), var(--rose), var(--blood));
+    background: linear-gradient(90deg, var(--gold), var(--teal), var(--coral));
     transition: width 0.1s linear;
   }
 
   /* ── SECTION LABEL ── */
   .section-label {
-    font-family: 'Space Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
     letter-spacing: 0.2em;
-    color: var(--crimson);
+    color: var(--gold);
     text-transform: uppercase;
   }
   .section-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    letter-spacing: -0.02em;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    letter-spacing: -0.01em;
     color: #fff;
-  }
-
-  /* ── SCAN LINE ── */
-  @keyframes scan {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100vh); }
-  }
-  .scan-line {
-    position: fixed; left: 0; width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(239,68,68,0.35), transparent);
-    animation: scan 6s linear infinite;
-    pointer-events: none; z-index: 1; opacity: 0.4;
   }
 
   /* ── FADE IN UP ── */
   .fade-in {
-    opacity: 0; transform: translateY(30px);
+    opacity: 0; transform: translateY(28px);
     transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -299,13 +246,13 @@ tailwind.config = {
   /* ── STATUS DOT ── */
   .status-dot {
     width: 8px; height: 8px; border-radius: 50%;
-    background: var(--crimson);
-    box-shadow: 0 0 10px var(--crimson);
-    animation: statusPulse 2s ease-in-out infinite;
+    background: var(--teal);
+    box-shadow: 0 0 10px var(--teal);
+    animation: statusPulse 2.4s ease-in-out infinite;
   }
   @keyframes statusPulse {
-    0%,100% { box-shadow: 0 0 10px var(--crimson); }
-    50% { box-shadow: 0 0 20px var(--crimson), 0 0 40px rgba(239,68,68,0.35); }
+    0%,100% { box-shadow: 0 0 10px var(--teal); }
+    50% { box-shadow: 0 0 18px var(--teal), 0 0 34px rgba(60,191,174,0.35); }
   }
 
   /* ── MOBILE MENU ── */
@@ -315,112 +262,64 @@ tailwind.config = {
   }
   #mobile-menu.open { transform: translateX(0); }
 
-  /* ── GLITCH TEXT ── */
-  .glitch { position: relative; }
-  .glitch::before, .glitch::after {
-    content: attr(data-text);
-    position: absolute; left: 0; top: 0;
-    background: linear-gradient(100deg, #fff 0%, var(--crimson) 45%, var(--blood) 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .glitch::before { animation: glitch1 4s infinite; clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%); }
-  .glitch::after  { animation: glitch2 4s infinite; clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%); }
-  @keyframes glitch1 {
-    0%,94%,100% { transform: none; opacity: 0; }
-    95% { transform: translate(-2px, 1px) skewX(-3deg); opacity: 0.6; }
-    97% { transform: translate(2px, -1px); opacity: 0.6; }
-  }
-  @keyframes glitch2 {
-    0%,94%,100% { transform: none; opacity: 0; }
-    95% { transform: translate(2px, -1px) skewX(3deg); opacity: 0.6; }
-    97% { transform: translate(-2px, 1px); opacity: 0.6; }
-  }
-
   /* ── FLOAT ── */
-  .float { animation: floatAnim 4s ease-in-out infinite; }
+  .float { animation: floatAnim 4.5s ease-in-out infinite; }
   @keyframes floatAnim {
     0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
+    50% { transform: translateY(-10px); }
   }
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
-    .hero-name { font-size: clamp(2.8rem, 11vw, 5rem); }
-    .ascii-art { font-size: 5px !important; }
+    .hero-name { font-size: clamp(2.6rem, 11vw, 4.6rem); }
   }
 
   /* ── BUTTONS ── */
   .mag-btn {
     position: relative; overflow: hidden;
-    background: linear-gradient(135deg, var(--crimson), var(--blood));
+    background: linear-gradient(135deg, var(--gold), var(--coral));
     border-radius: 100px;
     transition: all 0.3s ease;
-    font-family: 'Space Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.8rem;
     letter-spacing: 0.05em;
   }
-  .mag-btn:hover { transform: scale(1.05); box-shadow: 0 10px 40px rgba(239,68,68,0.35); }
+  .mag-btn:hover { transform: scale(1.05); box-shadow: 0 10px 40px rgba(240,161,63,0.3); }
 
   .outline-btn {
     position: relative; overflow: hidden;
     background: transparent;
-    border: 1px solid rgba(239,68,68,0.4);
+    border: 1px solid rgba(240,161,63,0.4);
     border-radius: 100px;
     transition: all 0.3s ease;
-    font-family: 'Space Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.8rem;
     letter-spacing: 0.05em;
-    color: var(--crimson);
+    color: var(--gold);
   }
   .outline-btn:hover {
-    background: rgba(239,68,68,0.08);
-    border-color: var(--crimson);
+    background: rgba(240,161,63,0.08);
+    border-color: var(--gold);
     transform: scale(1.05);
   }
 
-  /* ── DEVTOOLS WARNING OVERLAY ── */
-  #dt-warning {
-    position: fixed; inset: 0; z-index: 100000;
-    background: rgba(10,5,5,0.97);
-    display: none;
-    align-items: center; justify-content: center;
-    flex-direction: column; gap: 12px;
-    text-align: center; padding: 24px;
-  }
-  #dt-warning.show { display: flex; }
-
   /* scrollbar */
   ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--void); }
-  ::-webkit-scrollbar-thumb { background: rgba(239,68,68,0.35); border-radius: 100px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: rgba(240,161,63,0.35); border-radius: 100px; }
 </style>
 </head>
 <body class="grid-bg noise relative">
 
-<!-- Custom cursor -->
-<div id="cursor-dot"></div>
-<div id="cursor-ring"></div>
-
-<!-- Scan line -->
-<div class="scan-line"></div>
-
 <!-- Scroll progress -->
 <div id="scroll-prog" style="width:0%"></div>
-
-<!-- DevTools deterrent overlay -->
-<div id="dt-warning">
-  <div class="font-mono text-xs text-crimson-500 tracking-widest">[ ACCESS RESTRICTED ]</div>
-  <div class="font-display font-bold text-2xl text-white">DevTools detected</div>
-  <div class="font-body text-white/40 max-w-sm text-sm">Close the developer console to keep browsing.</div>
-</div>
 
 <!-- NAV -->
 <nav class="nav-glass fixed top-0 left-0 right-0 z-50">
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
     <a href="#home" class="flex items-center gap-2">
-      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-crimson-500 to-blood-700 flex items-center justify-center">
-        <span class="font-display font-bold text-sm text-void">MI</span>
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-gold-500 to-coral-500 flex items-center justify-center">
+        <span class="font-display font-bold text-sm text-ink">MI</span>
       </div>
       <span class="font-mono text-xs text-white/40 hidden sm:block">Mark Ivan</span>
     </a>
@@ -433,13 +332,13 @@ tailwind.config = {
       <li><a href="#compliance" class="nav-link">_compliance</a></li>
       <li><a href="#the-problem" class="nav-link">_why</a></li>
       <li><a href="#field-notes" class="nav-link">_notes</a></li>
-      <li><a href="#project" class="nav-link">_projects</a></li>
+      <li><a href="#project" class="nav-link">_project</a></li>
       <li><a href="#contact" class="nav-link">_contact</a></li>
     </ul>
 
     <div class="hidden lg:flex items-center gap-3">
       <div class="status-dot"></div>
-      <span class="font-mono text-xs text-crimson-400">Available for hire</span>
+      <span class="font-mono text-xs text-teal-400">Open to opportunities</span>
     </div>
 
     <!-- Hamburger -->
@@ -452,24 +351,24 @@ tailwind.config = {
 </nav>
 
 <!-- Mobile menu -->
-<div id="mobile-menu" class="fixed inset-0 bg-void/95 backdrop-blur-2xl z-40 flex flex-col items-center justify-center">
+<div id="mobile-menu" class="fixed inset-0 bg-ink/95 backdrop-blur-2xl z-40 flex flex-col items-center justify-center">
   <ul class="flex flex-col items-center gap-8">
-    <li><a href="#home" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Home</a></li>
-    <li><a href="#skills" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Skills</a></li>
-    <li><a href="#security" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Security</a></li>
-    <li><a href="#compliance" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Compliance</a></li>
-    <li><a href="#field-notes" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Field Notes</a></li>
-    <li><a href="#project" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Projects</a></li>
-    <li><a href="#contact" class="font-display text-2xl text-white hover:text-crimson-400 transition-colors">Contact</a></li>
+    <li><a href="#home" class="font-display text-2xl text-white hover:text-gold-400 transition-colors">Home</a></li>
+    <li><a href="#skills" class="font-display text-2xl text-white hover:text-gold-400 transition-colors">Skills</a></li>
+    <li><a href="#security" class="font-display text-2xl text-white hover:text-gold-400 transition-colors">Security</a></li>
+    <li><a href="#compliance" class="font-display text-2xl text-white hover:text-gold-400 transition-colors">Compliance</a></li>
+    <li><a href="#field-notes" class="font-display text-2xl text-white hover:text-gold-400 transition-colors">Field Notes</a></li>
+    <li><a href="#project" class="font-display text-2xl text-white hover:text-gold-400 transition-colors">Project</a></li>
+    <li><a href="#contact" class="font-display text-2xl text-white hover:text-gold-400 transition-colors">Contact</a></li>
   </ul>
 </div>
 
 <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
 <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
   <!-- Orbs -->
-  <div class="orb w-96 h-96 bg-crimson-500 top-20 -left-32" style="animation-delay:0s"></div>
-  <div class="orb w-80 h-80 bg-blood-700 bottom-20 -right-24" style="animation-delay:4s"></div>
-  <div class="orb w-48 h-48 bg-rose-400 top-1/2 left-1/2" style="animation-delay:8s"></div>
+  <div class="orb w-96 h-96 bg-gold-500 top-20 -left-32" style="animation-delay:0s"></div>
+  <div class="orb w-80 h-80 bg-teal-400 bottom-20 -right-24" style="animation-delay:4s"></div>
+  <div class="orb w-48 h-48 bg-coral-400 top-1/2 left-1/2" style="animation-delay:8s"></div>
 
   <div class="max-w-7xl mx-auto px-6 w-full">
     <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -479,42 +378,42 @@ tailwind.config = {
         <!-- Status -->
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
           <div class="status-dot"></div>
-          <span class="font-mono text-xs text-white/60">OPEN TO OPPORTUNITIES · CEBU, PH</span>
+          <span class="font-mono text-xs text-white/60">👋 OPEN TO OPPORTUNITIES · CEBU, PH</span>
         </div>
 
         <!-- Name -->
-        <div class="hero-name mb-4 overflow-hidden">
-          <div class="glitch char-glow" data-text="MARK">MARK</div>
-          <div class="glitch char-glow" data-text="IVAN" style="animation-delay:0.5s">IVAN</div>
+        <div class="hero-name mb-4">
+          <div class="name-warm">MARK IVAN</div>
         </div>
 
         <!-- Role -->
         <div class="flex items-center gap-3 mb-6">
-          <div class="h-px flex-1 bg-gradient-to-r from-crimson-500/50 to-transparent"></div>
-          <span id="typing-role" class="font-mono text-sm text-crimson-400 type-cursor"></span>
+          <div class="h-px flex-1 bg-gradient-to-r from-gold-500/50 to-transparent"></div>
+          <span id="typing-role" class="font-mono text-sm text-gold-400 type-cursor"></span>
         </div>
 
-        <p class="text-white/50 text-base leading-relaxed mb-8 max-w-lg font-body">
-          Building hands-on expertise in <span class="text-crimson-400 font-medium">offensive security</span> and
-          <span class="text-rose-400 font-medium">defensive security</span>. I test systems the way an attacker would,
-          then close what I find — hunting vulnerabilities in networks, web apps, and credentials before anyone else does.
+        <p class="text-white/55 text-base leading-relaxed mb-8 max-w-lg font-body">
+          I build software, and I like taking it apart to see how it breaks — then putting it back together
+          sturdier. My work sits between <span class="text-gold-400 font-medium">full-stack development</span> and
+          <span class="text-teal-400 font-medium">practical security testing</span>: web apps, networks, and the
+          small mistakes that usually cause the big problems.
         </p>
 
         <div class="flex flex-wrap gap-3 mb-10">
-          <a href="#contact" class="mag-btn px-7 py-3 text-void font-semibold cursor-none">Get In Touch</a>
-          <a href="#project" class="outline-btn px-7 py-3 cursor-none">View Projects</a>
-          <a href="#security" class="outline-btn px-7 py-3 cursor-none" style="border-color:rgba(251,113,133,0.4); color:var(--rose)">Security Work ↗</a>
+          <a href="#contact" class="mag-btn px-7 py-3 text-ink font-semibold">Say Hello</a>
+          <a href="#project" class="outline-btn px-7 py-3">See My Work</a>
+          <a href="#security" class="outline-btn px-7 py-3" style="border-color:rgba(60,191,174,0.4); color:var(--teal)">Security Work ↗</a>
         </div>
 
         <!-- Quick stats -->
         <div class="grid grid-cols-2 gap-4">
           <div class="text-center border-r border-white/10">
-            <div class="font-display font-bold text-2xl text-rose-400">15</div>
-            <div class="font-mono text-xs text-white/30 mt-1">ASSESSMENT PHASES</div>
+            <div class="font-display font-bold text-2xl text-teal-400">16</div>
+            <div class="font-mono text-xs text-white/30 mt-1">AUTOMATED SECURITY CHECKS</div>
           </div>
           <div class="text-center">
-            <div class="font-display font-bold text-2xl text-blood-500">2</div>
-            <div class="font-mono text-xs text-white/30 mt-1">SEC. FRAMEWORKS BUILT</div>
+            <div class="font-display font-bold text-2xl text-gold-400">4</div>
+            <div class="font-mono text-xs text-white/30 mt-1">COMPLIANCE FRAMEWORKS STUDIED</div>
           </div>
         </div>
       </div>
@@ -523,29 +422,29 @@ tailwind.config = {
       <div class="fade-in float" style="transition-delay:0.3s">
         <div class="terminal p-0 relative">
           <div class="terminal-bar px-4 py-3 flex items-center gap-2">
-            <div class="dot bg-blood-500"></div>
-            <div class="dot bg-ember-400"></div>
-            <div class="dot bg-crimson-400"></div>
+            <div class="dot bg-coral-500"></div>
+            <div class="dot bg-gold-400"></div>
+            <div class="dot bg-teal-400"></div>
             <span class="ml-4 text-white/20 text-xs">mark_ivan ~ portfolio</span>
           </div>
           <div class="p-5 space-y-2 text-sm leading-relaxed">
-            <div class="text-white/30">// Mark Ivan · Security Profile</div>
+            <div class="text-white/30">// Mark Ivan · Profile</div>
             <br>
-            <div><span class="text-rose-400">const</span> <span class="text-crimson-400">practitioner</span> <span class="text-white/50">=</span> <span class="text-white/80">{</span></div>
-            <div class="pl-4"><span class="text-blood-500 text-rose-300">name</span><span class="text-white/50">:</span> <span class="text-ember-400">"Mark Ivan Sumalinog"</span><span class="text-white/50">,</span></div>
-            <div class="pl-4"><span class="text-rose-300">role</span><span class="text-white/50">:</span> <span class="text-ember-400">"Offensive & Defensive Security"</span><span class="text-white/50">,</span></div>
-            <div class="pl-4"><span class="text-rose-300">location</span><span class="text-white/50">:</span> <span class="text-ember-400">"Cebu City, PH 🇵🇭"</span><span class="text-white/50">,</span></div>
-            <div class="pl-4"><span class="text-rose-300">focus</span><span class="text-white/50">:</span> <span class="text-white/80">[</span></div>
-            <div class="pl-8"><span class="text-ember-400">"Offensive Security"</span><span class="text-white/50">,</span></div>
-            <div class="pl-8"><span class="text-ember-400">"Defensive Security"</span><span class="text-white/50">,</span></div>
-            <div class="pl-8"><span class="text-ember-400">"Network Security"</span><span class="text-white/50">,</span></div>
-            <div class="pl-8"><span class="text-ember-400">"Python Mastery"</span></div>
+            <div><span class="text-teal-300">const</span> <span class="text-gold-400">developer</span> <span class="text-white/50">=</span> <span class="text-white/80">{</span></div>
+            <div class="pl-4"><span class="text-teal-300">name</span><span class="text-white/50">:</span> <span class="text-gold-300">"Mark Ivan Sumalinog"</span><span class="text-white/50">,</span></div>
+            <div class="pl-4"><span class="text-teal-300">role</span><span class="text-white/50">:</span> <span class="text-gold-300">"Full-Stack Dev · Security Enthusiast"</span><span class="text-white/50">,</span></div>
+            <div class="pl-4"><span class="text-teal-300">location</span><span class="text-white/50">:</span> <span class="text-gold-300">"Cebu City, PH 🇵🇭"</span><span class="text-white/50">,</span></div>
+            <div class="pl-4"><span class="text-teal-300">focus</span><span class="text-white/50">:</span> <span class="text-white/80">[</span></div>
+            <div class="pl-8"><span class="text-gold-300">"Full-Stack Development"</span><span class="text-white/50">,</span></div>
+            <div class="pl-8"><span class="text-gold-300">"Security Testing"</span><span class="text-white/50">,</span></div>
+            <div class="pl-8"><span class="text-gold-300">"Network Fundamentals"</span><span class="text-white/50">,</span></div>
+            <div class="pl-8"><span class="text-gold-300">"Python & Bash"</span></div>
             <div class="pl-4"><span class="text-white/80">]</span><span class="text-white/50">,</span></div>
-            <div class="pl-4"><span class="text-rose-300">status</span><span class="text-white/50">:</span> <span class="text-crimson-400">"available"</span><span class="text-white/50">,</span></div>
-            <div class="pl-4"><span class="text-rose-300">mission</span><span class="text-white/50">:</span> <span class="text-ember-400">"Build. Break. Secure. Repeat."</span></div>
+            <div class="pl-4"><span class="text-teal-300">status</span><span class="text-white/50">:</span> <span class="text-teal-400">"available"</span><span class="text-white/50">,</span></div>
+            <div class="pl-4"><span class="text-teal-300">mission</span><span class="text-white/50">:</span> <span class="text-gold-300">"Build things. Learn how they break. Make them sturdier."</span></div>
             <div><span class="text-white/80">}</span></div>
             <br>
-            <div id="terminal-running" class="text-crimson-400 text-xs">
+            <div id="terminal-running" class="text-gold-400 text-xs">
               <span class="text-white/30">❯</span> running<span class="type-cursor"></span>
             </div>
           </div>
@@ -553,9 +452,9 @@ tailwind.config = {
 
         <!-- Learning pills below terminal -->
         <div class="flex flex-wrap gap-2 mt-4 justify-center">
-          <span class="learning-badge px-4 py-1.5 text-crimson-300">🛡️ OFFENSIVE SECURITY</span>
-          <span class="learning-badge px-4 py-1.5 text-rose-300" style="border-color:rgba(251,113,133,0.3)">🔒 DEFENSIVE SECURITY</span>
-          <span class="learning-badge px-4 py-1.5 text-ember-400" style="border-color:rgba(251,146,60,0.3)">🐍 PYTHON / BASH</span>
+          <span class="learning-badge px-4 py-1.5 text-gold-300">🛡️ Security Testing</span>
+          <span class="learning-badge px-4 py-1.5 text-teal-300" style="border-color:rgba(60,191,174,0.3)">🔒 Hardening & Monitoring</span>
+          <span class="learning-badge px-4 py-1.5 text-coral-400" style="border-color:rgba(255,127,86,0.3)">🐍 Python / Bash</span>
         </div>
       </div>
     </div>
@@ -564,7 +463,7 @@ tailwind.config = {
   <!-- Scroll cue -->
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
     <span class="font-mono text-xs text-white/40">scroll</span>
-    <div class="w-px h-10 bg-gradient-to-b from-crimson-500 to-transparent animate-pulse"></div>
+    <div class="w-px h-10 bg-gradient-to-b from-gold-500 to-transparent animate-pulse"></div>
   </div>
 </section>
 
@@ -573,150 +472,150 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-6">
     <div class="mb-16 fade-in">
       <div class="section-label mb-3">02 / SKILLS</div>
-      <h2 class="section-title">Tech <span style="background: linear-gradient(135deg, var(--crimson), var(--rose)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Arsenal</span></h2>
-      <p class="text-white/40 max-w-xl mt-3 font-body">The toolkit I deploy to find weaknesses — and to close them.</p>
+      <h2 class="section-title">My <span style="background: linear-gradient(135deg, var(--gold), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Toolkit</span></h2>
+      <p class="text-white/40 max-w-xl mt-3 font-body">What I reach for when building things — and when checking that they hold up.</p>
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
-      <!-- Offensive Tools -->
-      <div class="skill-card p-6 fade-in" style="--card-color: var(--crimson)">
+      <!-- Security Testing -->
+      <div class="skill-card p-6 fade-in" style="--card-color: var(--gold)">
         <div class="flex items-center gap-3 mb-5">
-          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(239,68,68,0.1)">
-            <i class="fas fa-crosshairs text-crimson-400 text-sm"></i>
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(240,161,63,0.12)">
+            <i class="fas fa-magnifying-glass text-gold-400 text-sm"></i>
           </div>
           <div>
-            <div class="font-display font-bold text-white text-sm">Offensive Tools</div>
-            <div class="font-mono text-xs text-crimson-400">attack surface</div>
+            <div class="font-display font-bold text-white text-sm">Security Testing</div>
+            <div class="font-mono text-xs text-gold-400">finding the gaps</div>
           </div>
         </div>
         <div class="space-y-3">
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-network-wired text-crimson-400/80 w-5"></i>
+            <i class="fas fa-network-wired text-gold-400/80 w-5"></i>
             <span class="text-white/70 text-sm">Nmap</span>
-            <div class="ml-auto text-xs text-crimson-400/60 font-mono">recon</div>
+            <div class="ml-auto text-xs text-gold-400/60 font-mono">recon</div>
           </div>
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-key text-crimson-400/80 w-5"></i>
-            <span class="text-white/70 text-sm">Credential Brute-Force</span>
+            <i class="fas fa-key text-gold-400/80 w-5"></i>
+            <span class="text-white/70 text-sm">Credential Strength Testing</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-database text-crimson-400/80 w-5"></i>
+            <i class="fas fa-database text-gold-400/80 w-5"></i>
             <span class="text-white/70 text-sm">SQL Injection Testing</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-folder-open text-crimson-400/80 w-5"></i>
+            <i class="fas fa-folder-open text-gold-400/80 w-5"></i>
             <span class="text-white/70 text-sm">LFI / Path Traversal</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-list-ol text-crimson-400/80 w-5"></i>
+            <i class="fas fa-list-ol text-gold-400/80 w-5"></i>
             <span class="text-white/70 text-sm">OWASP Top 10 Testing</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-bolt text-crimson-400/80 w-5"></i>
-            <span class="text-white/70 text-sm">DoS Simulation (GoldenEye, Slowloris)</span>
+            <i class="fas fa-gauge-high text-gold-400/80 w-5"></i>
+            <span class="text-white/70 text-sm">Load & Stress Testing</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-user-secret text-crimson-400/80 w-5"></i>
+            <i class="fas fa-user-secret text-gold-400/80 w-5"></i>
             <span class="text-white/70 text-sm">Tor Anonymization</span>
           </div>
         </div>
       </div>
 
-      <!-- Defensive Tools -->
-      <div class="skill-card p-6 fade-in" style="--card-color: var(--rose); transition-delay:0.1s">
+      <!-- Hardening & Monitoring -->
+      <div class="skill-card p-6 fade-in" style="--card-color: var(--teal); transition-delay:0.1s">
         <div class="flex items-center gap-3 mb-5">
-          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(251,113,133,0.1)">
-            <i class="fas fa-shield-halved text-rose-400 text-sm"></i>
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(60,191,174,0.12)">
+            <i class="fas fa-shield-halved text-teal-400 text-sm"></i>
           </div>
           <div>
-            <div class="font-display font-bold text-white text-sm">Defensive Tools</div>
-            <div class="font-mono text-xs text-rose-400">hardening</div>
+            <div class="font-display font-bold text-white text-sm">Hardening & Monitoring</div>
+            <div class="font-mono text-xs text-teal-400">closing the gaps</div>
           </div>
         </div>
         <div class="space-y-3">
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-satellite-dish text-rose-400/80 w-5"></i>
+            <i class="fas fa-satellite-dish text-teal-400/80 w-5"></i>
             <span class="text-white/70 text-sm">Wireshark</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-lock text-rose-400/80 w-5"></i>
+            <i class="fas fa-lock text-teal-400/80 w-5"></i>
             <span class="text-white/70 text-sm">SSL/TLS Auditing</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-tower-broadcast text-rose-400/80 w-5"></i>
+            <i class="fas fa-tower-broadcast text-teal-400/80 w-5"></i>
             <span class="text-white/70 text-sm">IDS/IPS (Snort, Suricata)</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-magnifying-glass text-rose-400/80 w-5"></i>
+            <i class="fas fa-magnifying-glass text-teal-400/80 w-5"></i>
             <span class="text-white/70 text-sm">Digital Forensics (Autopsy)</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-server text-rose-400/80 w-5"></i>
+            <i class="fas fa-server text-teal-400/80 w-5"></i>
             <span class="text-white/70 text-sm">Windows Server Hardening</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-filter text-rose-400/80 w-5"></i>
+            <i class="fas fa-filter text-teal-400/80 w-5"></i>
             <span class="text-white/70 text-sm">False-Positive Filtering</span>
           </div>
         </div>
       </div>
 
       <!-- Networking & Systems -->
-      <div class="skill-card p-6 fade-in" style="--card-color: var(--ember); transition-delay:0.2s">
+      <div class="skill-card p-6 fade-in" style="--card-color: var(--coral); transition-delay:0.2s">
         <div class="flex items-center gap-3 mb-5">
-          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(249,115,22,0.1)">
-            <i class="fas fa-diagram-project text-ember-400 text-sm"></i>
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(255,127,86,0.12)">
+            <i class="fas fa-diagram-project text-coral-400 text-sm"></i>
           </div>
           <div>
             <div class="font-display font-bold text-white text-sm">Networking & Systems</div>
-            <div class="font-mono text-xs text-ember-400">infrastructure</div>
+            <div class="font-mono text-xs text-coral-400">infrastructure</div>
           </div>
         </div>
         <div class="space-y-3">
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-sitemap text-ember-400/80 w-5"></i>
+            <i class="fas fa-sitemap text-coral-400/80 w-5"></i>
             <span class="text-white/70 text-sm">TCP/IP & Subnetting</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-globe text-ember-400/80 w-5"></i>
+            <i class="fas fa-globe text-coral-400/80 w-5"></i>
             <span class="text-white/70 text-sm">DNS / DHCP</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-route text-ember-400/80 w-5"></i>
+            <i class="fas fa-route text-coral-400/80 w-5"></i>
             <span class="text-white/70 text-sm">Routing & Switching</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-users-gear text-ember-400/80 w-5"></i>
+            <i class="fas fa-users-gear text-coral-400/80 w-5"></i>
             <span class="text-white/70 text-sm">Active Directory</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-desktop text-ember-400/80 w-5"></i>
+            <i class="fas fa-desktop text-coral-400/80 w-5"></i>
             <span class="text-white/70 text-sm">Virtual Machines</span>
           </div>
           <div class="flex items-center gap-2.5">
-            <i class="fas fa-list-check text-ember-400/80 w-5"></i>
+            <i class="fas fa-list-check text-coral-400/80 w-5"></i>
             <span class="text-white/70 text-sm">Ping / Traceroute</span>
           </div>
         </div>
       </div>
 
       <!-- Linux & Scripting -->
-      <div class="skill-card p-6 fade-in" style="--card-color: var(--blood); transition-delay:0.3s">
+      <div class="skill-card p-6 fade-in" style="--card-color: var(--gold); transition-delay:0.3s">
         <div class="flex items-center gap-3 mb-5">
-          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(185,28,28,0.15)">
-            <i class="fab fa-linux text-blood-500 text-sm"></i>
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(240,161,63,0.15)">
+            <i class="fab fa-linux text-gold-400 text-sm"></i>
           </div>
           <div>
             <div class="font-display font-bold text-white text-sm">Linux & Scripting</div>
-            <div class="font-mono text-xs text-blood-500">core stack</div>
+            <div class="font-mono text-xs text-gold-400">core stack</div>
           </div>
         </div>
         <div class="space-y-3">
           <div class="flex items-center gap-2.5">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" class="w-5 h-5" style="filter:invert(1) opacity(0.75)">
             <span class="text-white/70 text-sm">Linux</span>
-            <div class="ml-auto text-xs text-blood-500/70 font-mono">core</div>
+            <div class="ml-auto text-xs text-gold-400/70 font-mono">core</div>
           </div>
           <div class="flex items-center gap-2.5">
             <i class="fas fa-terminal text-white/50 w-5"></i>
@@ -744,114 +643,114 @@ tailwind.config = {
 <section id="security" class="py-28 relative overflow-hidden">
   <!-- Background glow -->
   <div class="absolute inset-0 pointer-events-none">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-crimson-500/30 to-transparent"></div>
-    <div class="orb w-[500px] h-[500px] bg-blood-700 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="opacity:0.10"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-gold-500/25 to-transparent"></div>
+    <div class="orb w-[500px] h-[500px] bg-teal-400 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="opacity:0.10"></div>
   </div>
 
   <div class="max-w-7xl mx-auto px-6 relative">
     <div class="mb-16 fade-in">
       <div class="section-label mb-3">03 / CYBERSECURITY</div>
-      <h2 class="section-title">Offense <span style="background: linear-gradient(135deg, var(--crimson), var(--rose)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">& Defense</span></h2>
-      <p class="text-white/40 max-w-xl mt-3 font-body">Two sides of the same discipline — find the weakness before it's exploited, then close it.</p>
+      <h2 class="section-title">Testing <span style="background: linear-gradient(135deg, var(--gold), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">& Defending</span></h2>
+      <p class="text-white/40 max-w-xl mt-3 font-body">Two sides of the same discipline — find the weak spot before it becomes a problem, then close it.</p>
     </div>
 
     <!-- 2-col: Offensive / Defensive -->
     <div class="grid lg:grid-cols-2 gap-6 mb-12">
 
       <!-- Offensive Security -->
-      <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--crimson)">
+      <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--gold)">
         <div class="absolute top-4 right-4">
-          <span class="learning-badge px-3 py-1 text-crimson-300 text-xs">ACTIVE</span>
+          <span class="learning-badge px-3 py-1 text-gold-300 text-xs">ACTIVE</span>
         </div>
-        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(239,68,68,0.2), rgba(239,68,68,0.05)); border: 1px solid rgba(239,68,68,0.25)">
-          <span class="text-3xl">🗡️</span>
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(240,161,63,0.2), rgba(240,161,63,0.05)); border: 1px solid rgba(240,161,63,0.25)">
+          <span class="text-3xl">🔍</span>
         </div>
         <h3 class="font-display font-bold text-xl text-white mb-2">Offensive Security</h3>
-        <p class="text-white/40 text-sm leading-relaxed mb-6">Thinking like an attacker to find what's actually exploitable. Reconnaissance, vulnerability scanning, credential exposure testing, denial-of-service simulation, and attack simulation against web apps and networks.</p>
+        <p class="text-white/40 text-sm leading-relaxed mb-6">Testing systems the way someone trying to get in would — reconnaissance, vulnerability scanning, and controlled exploitation — so real issues surface before they turn into real incidents.</p>
 
         <div class="flex flex-wrap gap-2 mb-6">
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">Reconnaissance</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">Exploitation</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">SQLi / LFI</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">Brute-force</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">OWASP Top 10</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">DoS Simulation</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">CMS Fingerprinting</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-gold-500/10 text-gold-300 border border-gold-500/20">Reconnaissance</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-gold-500/10 text-gold-300 border border-gold-500/20">Controlled Exploitation</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-gold-500/10 text-gold-300 border border-gold-500/20">SQLi / LFI</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-gold-500/10 text-gold-300 border border-gold-500/20">Brute-force Testing</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-gold-500/10 text-gold-300 border border-gold-500/20">OWASP Top 10</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-gold-500/10 text-gold-300 border border-gold-500/20">Load Simulation</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-gold-500/10 text-gold-300 border border-gold-500/20">CMS Fingerprinting</span>
         </div>
 
         <div class="space-y-3">
           <div>
             <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">Vulnerability Discovery</span><span class="text-crimson-400">70%</span>
+              <span class="text-white/40">Vulnerability Discovery</span><span class="text-gold-400">70%</span>
             </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.70" style="--from:#ef4444; --to:#fb7185"></div></div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.70" style="--from:#f0a13f; --to:#fbd097"></div></div>
           </div>
           <div>
             <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">Exploitation</span><span class="text-crimson-400">55%</span>
+              <span class="text-white/40">Controlled Exploitation</span><span class="text-gold-400">55%</span>
             </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.55" style="--from:#ef4444; --to:#fb7185"></div></div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.55" style="--from:#f0a13f; --to:#fbd097"></div></div>
           </div>
           <div>
             <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">DoS / Stress Testing</span><span class="text-crimson-400">50%</span>
+              <span class="text-white/40">Load / Stress Testing</span><span class="text-gold-400">50%</span>
             </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.50" style="--from:#ef4444; --to:#fb7185"></div></div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.50" style="--from:#f0a13f; --to:#fbd097"></div></div>
           </div>
         </div>
       </div>
 
       <!-- Defensive Security -->
-      <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--rose); transition-delay:0.1s">
+      <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--teal); transition-delay:0.1s">
         <div class="absolute top-4 right-4">
-          <span class="learning-badge px-3 py-1 text-rose-300 text-xs" style="border-color:rgba(251,113,133,0.3)">ACTIVE</span>
+          <span class="learning-badge px-3 py-1 text-teal-300 text-xs" style="border-color:rgba(60,191,174,0.3)">ACTIVE</span>
         </div>
-        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(251,113,133,0.2), rgba(251,113,133,0.05)); border: 1px solid rgba(251,113,133,0.25)">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(60,191,174,0.2), rgba(60,191,174,0.05)); border: 1px solid rgba(60,191,174,0.25)">
           <span class="text-3xl">🛡️</span>
         </div>
         <h3 class="font-display font-bold text-xl text-white mb-2">Defensive Security</h3>
-        <p class="text-white/40 text-sm leading-relaxed mb-6">Taking what offense finds and closing it. SSL/TLS auditing, intrusion detection, digital forensics, false-positive filtering, and mapping vulnerabilities to actionable mitigations.</p>
+        <p class="text-white/40 text-sm leading-relaxed mb-6">Taking what testing finds and closing the gap. SSL/TLS auditing, intrusion detection, digital forensics, false-positive filtering, and turning findings into fixes people can act on.</p>
 
         <div class="flex flex-wrap gap-2 mb-6">
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">SSL/TLS Auditing</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">IDS/IPS</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">Digital Forensics</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">Risk Mitigation</span>
-          <span class="px-2 py-1 rounded-md text-xs font-mono bg-amber-400/10 text-amber-300 border border-amber-400/20">🐍 Python / Bash</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-teal-400/10 text-teal-300 border border-teal-400/20">SSL/TLS Auditing</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-teal-400/10 text-teal-300 border border-teal-400/20">IDS/IPS</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-teal-400/10 text-teal-300 border border-teal-400/20">Digital Forensics</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-teal-400/10 text-teal-300 border border-teal-400/20">Risk Mitigation</span>
+          <span class="px-2 py-1 rounded-md text-xs font-mono bg-coral-400/10 text-coral-400 border border-coral-400/20">🐍 Python / Bash</span>
         </div>
 
         <div class="space-y-3">
           <div>
             <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">System Hardening</span><span class="text-rose-400">60%</span>
+              <span class="text-white/40">System Hardening</span><span class="text-teal-400">60%</span>
             </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.60" style="--from:#fb7185; --to:#f97316"></div></div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.60" style="--from:#3cbfae; --to:#f0a13f"></div></div>
           </div>
           <div>
             <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">Intrusion Detection & Monitoring</span><span class="text-rose-400">65%</span>
+              <span class="text-white/40">Intrusion Detection & Monitoring</span><span class="text-teal-400">65%</span>
             </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.65" style="--from:#fb7185; --to:#f97316"></div></div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.65" style="--from:#3cbfae; --to:#f0a13f"></div></div>
           </div>
           <div>
             <div class="flex justify-between text-xs font-mono mb-1.5">
-              <span class="text-white/40">Digital Forensics</span><span class="text-rose-400">50%</span>
+              <span class="text-white/40">Digital Forensics</span><span class="text-teal-400">50%</span>
             </div>
-            <div class="progress-track"><div class="progress-fill" data-width="0.50" style="--from:#fb7185; --to:#f97316"></div></div>
+            <div class="progress-track"><div class="progress-fill" data-width="0.50" style="--from:#3cbfae; --to:#f0a13f"></div></div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- CONVERGENCE BANNER -->
-    <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--crimson)">
+    <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--gold)">
       <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
         <svg width="100%" height="100%" viewBox="0 0 800 200" preserveAspectRatio="xMidYMid slice">
           <defs>
             <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#ef4444" stop-opacity="0"/>
-              <stop offset="50%" stop-color="#fb7185"/>
-              <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
+              <stop offset="0%" stop-color="#f0a13f" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#3cbfae"/>
+              <stop offset="100%" stop-color="#ff7f56" stop-opacity="0"/>
             </linearGradient>
           </defs>
           <path d="M100,100 Q250,30 400,100 Q550,170 700,100" stroke="url(#lineGrad)" stroke-width="1.5" fill="none">
@@ -860,36 +759,38 @@ tailwind.config = {
                       M100,100 Q250,170 400,100 Q550,30 700,100;
                       M100,100 Q250,30 400,100 Q550,170 700,100"/>
           </path>
-          <circle r="4" fill="#ef4444"><animateMotion dur="4s" repeatCount="indefinite" path="M100,100 Q250,30 400,100 Q550,170 700,100"/></circle>
-          <circle r="4" fill="#fb7185"><animateMotion dur="4s" begin="1.3s" repeatCount="indefinite" path="M100,100 Q250,30 400,100 Q550,170 700,100"/></circle>
-          <circle r="4" fill="#f97316"><animateMotion dur="4s" begin="2.6s" repeatCount="indefinite" path="M100,100 Q250,30 400,100 Q550,170 700,100"/></circle>
+          <circle r="4" fill="#f0a13f"><animateMotion dur="4s" repeatCount="indefinite" path="M100,100 Q250,30 400,100 Q550,170 700,100"/></circle>
+          <circle r="4" fill="#3cbfae"><animateMotion dur="4s" begin="1.3s" repeatCount="indefinite" path="M100,100 Q250,30 400,100 Q550,170 700,100"/></circle>
+          <circle r="4" fill="#ff7f56"><animateMotion dur="4s" begin="2.6s" repeatCount="indefinite" path="M100,100 Q250,30 400,100 Q550,170 700,100"/></circle>
         </svg>
       </div>
 
       <div class="relative grid lg:grid-cols-3 gap-8 items-center">
         <div class="lg:col-span-2">
-          <div class="font-mono text-xs text-rose-400 mb-2">// THE THESIS</div>
-          <h3 class="font-display font-bold text-2xl text-white mb-3">Offense + Defense + Automation = <span class="text-crimson-400">Built to Withstand</span></h3>
+          <div class="font-mono text-xs text-teal-400 mb-2">// THE IDEA</div>
+          <h3 class="font-display font-bold text-2xl text-white mb-3">Testing + Defense + Automation = <span class="text-gold-400">Built to Last</span></h3>
           <p class="text-white/40 leading-relaxed text-sm">
-            Most teams ship first and think about security later. I test systems with an attacker's mindset first, then defend and harden what's exposed. That's the intersection I'm building my career around.
+            A lot of teams ship first and think about security later. I try to test things with a curious, slightly
+            suspicious eye first, then harden what's exposed. That intersection — building and breaking and
+            rebuilding — is the space I want to keep growing in.
           </p>
         </div>
         <div class="flex flex-col gap-3 text-sm font-mono">
           <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <span class="text-crimson-400">→</span>
-            <span class="text-white/60">Think like an attacker</span>
+            <span class="text-gold-400">→</span>
+            <span class="text-white/60">Think about how it could break</span>
           </div>
           <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <span class="text-rose-400">→</span>
+            <span class="text-teal-400">→</span>
             <span class="text-white/60">Secure every layer</span>
           </div>
           <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <span class="text-ember-400">→</span>
+            <span class="text-coral-400">→</span>
             <span class="text-white/60">Automate with Python & Bash</span>
           </div>
           <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
             <span class="text-white/70">→</span>
-            <span class="text-white/60">Test. Break. Secure.</span>
+            <span class="text-white/60">Test. Learn. Improve.</span>
           </div>
         </div>
       </div>
@@ -900,50 +801,50 @@ tailwind.config = {
 <!-- ═══════════════════════════ COMPLIANCE ═══════════════════════════ -->
 <section id="compliance" class="py-28 relative overflow-hidden border-y border-white/5">
   <div class="absolute inset-0 pointer-events-none">
-    <div class="orb w-[500px] h-[500px] bg-crimson-500 bottom-0 right-1/4" style="opacity:0.08"></div>
+    <div class="orb w-[500px] h-[500px] bg-gold-500 bottom-0 right-1/4" style="opacity:0.08"></div>
   </div>
 
   <div class="max-w-7xl mx-auto px-6 relative">
     <div class="mb-16 fade-in">
       <div class="section-label mb-3">04 / COMPLIANCE</div>
-      <h2 class="section-title">Compliance <span style="background: linear-gradient(135deg, var(--crimson), var(--rose)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Frameworks</span></h2>
-      <p class="text-white/40 max-w-xl mt-3 font-body">Technical findings only matter if they map to a standard someone can act on. These are the frameworks I assess against.</p>
+      <h2 class="section-title">Compliance <span style="background: linear-gradient(135deg, var(--gold), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Frameworks</span></h2>
+      <p class="text-white/40 max-w-xl mt-3 font-body">Technical findings only help if they map to a standard someone can act on. These are the frameworks I assess against.</p>
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
-      <div class="skill-card p-7 fade-in" style="--card-color: var(--crimson)">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(239,68,68,0.12)">
-          <i class="fas fa-building-shield text-crimson-400"></i>
+      <div class="skill-card p-7 fade-in" style="--card-color: var(--gold)">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(240,161,63,0.12)">
+          <i class="fas fa-building-shield text-gold-400"></i>
         </div>
-        <div class="font-mono text-xs text-crimson-400 mb-2">CMMC</div>
+        <div class="font-mono text-xs text-gold-400 mb-2">CMMC</div>
         <h3 class="font-display font-bold text-lg text-white mb-2">Cybersecurity Maturity Model Certification</h3>
         <p class="text-white/40 text-sm leading-relaxed">A tiered DoD contractor requirement that grades an organization's cybersecurity maturity, from basic hygiene up to advanced, proactive practices, before it can handle defense-related work.</p>
       </div>
 
-      <div class="skill-card p-7 fade-in" style="--card-color: var(--rose); transition-delay:0.1s">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(251,113,133,0.12)">
-          <i class="fas fa-file-shield text-rose-400"></i>
+      <div class="skill-card p-7 fade-in" style="--card-color: var(--teal); transition-delay:0.1s">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(60,191,174,0.12)">
+          <i class="fas fa-file-shield text-teal-400"></i>
         </div>
-        <div class="font-mono text-xs text-rose-400 mb-2">NIST SP 800-171</div>
+        <div class="font-mono text-xs text-teal-400 mb-2">NIST SP 800-171</div>
         <h3 class="font-display font-bold text-lg text-white mb-2">Protecting Controlled Unclassified Information</h3>
         <p class="text-white/40 text-sm leading-relaxed">A set of security requirements for non-federal systems that store or process Controlled Unclassified Information — the technical baseline that CMMC largely builds on.</p>
       </div>
 
-      <div class="skill-card p-7 fade-in" style="--card-color: var(--ember); transition-delay:0.2s">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(249,115,22,0.12)">
-          <i class="fas fa-credit-card text-ember-400"></i>
+      <div class="skill-card p-7 fade-in" style="--card-color: var(--coral); transition-delay:0.2s">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(255,127,86,0.12)">
+          <i class="fas fa-credit-card text-coral-400"></i>
         </div>
-        <div class="font-mono text-xs text-ember-400 mb-2">PCI DSS</div>
+        <div class="font-mono text-xs text-coral-400 mb-2">PCI DSS</div>
         <h3 class="font-display font-bold text-lg text-white mb-2">Payment Card Industry Data Security Standard</h3>
         <p class="text-white/40 text-sm leading-relaxed">An industry-mandated standard for any organization that stores, processes, or transmits cardholder data — covering network segmentation, encryption, access control, and logging.</p>
       </div>
 
-      <div class="skill-card p-7 fade-in" style="--card-color: var(--blood); transition-delay:0.3s">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(185,28,28,0.15)">
-          <i class="fas fa-code text-blood-500"></i>
+      <div class="skill-card p-7 fade-in" style="--card-color: var(--gold); transition-delay:0.3s">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(240,161,63,0.15)">
+          <i class="fas fa-code text-gold-400"></i>
         </div>
-        <div class="font-mono text-xs text-blood-500 mb-2">OWASP TOP 10</div>
+        <div class="font-mono text-xs text-gold-400 mb-2">OWASP TOP 10</div>
         <h3 class="font-display font-bold text-lg text-white mb-2">Web Application Security Risks</h3>
         <p class="text-white/40 text-sm leading-relaxed">The industry-standard reference for the most critical web application risks — injection, broken access control, misconfiguration, and more. I use it to structure and prioritize web app assessments.</p>
       </div>
@@ -954,63 +855,62 @@ tailwind.config = {
 <!-- ═══════════════════════════ THE PROBLEM ═══════════════════════════ -->
 <section id="the-problem" class="py-28 relative overflow-hidden border-y border-white/5">
   <div class="absolute inset-0 pointer-events-none">
-    <div class="orb w-[600px] h-[600px] bg-blood-700 top-0 left-1/2 -translate-x-1/2" style="opacity:0.10"></div>
+    <div class="orb w-[600px] h-[600px] bg-teal-400 top-0 left-1/2 -translate-x-1/2" style="opacity:0.10"></div>
   </div>
 
   <div class="max-w-7xl mx-auto px-6 relative">
     <div class="mb-14 fade-in text-center">
       <div class="section-label mb-3">// WHY THIS MATTERS</div>
-      <h2 class="section-title">Security Is <span style="background: linear-gradient(135deg, var(--crimson), var(--blood)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">An Afterthought</span></h2>
-      <p class="text-white/40 max-w-2xl mx-auto mt-4 font-body">— and that's exactly why it keeps failing.</p>
+      <h2 class="section-title">Security Is Easy <span style="background: linear-gradient(135deg, var(--gold), var(--coral)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">to Postpone</span></h2>
+      <p class="text-white/40 max-w-2xl mx-auto mt-4 font-body">— and that's exactly why it's worth doing early.</p>
     </div>
 
     <div class="grid lg:grid-cols-2 gap-10 items-center mb-14">
       <div class="fade-in">
         <p class="text-white/60 text-base leading-relaxed mb-5 font-body">
-          Most companies treat security as a checkbox, not a discipline. A firewall gets installed once, a policy gets
-          written once, and everyone moves on assuming the job is done. Even organizations with recognizable names and
-          real budgets fall into the same trap: they assume scale and reputation are protection in themselves.
+          Most teams treat security as a checkbox instead of a habit. A firewall gets set up once, a policy gets
+          written once, and everyone moves on assuming the job is done. Even well-established organizations with
+          real budgets can fall into the same trap: assuming scale and reputation are protection in themselves.
         </p>
         <p class="text-white/60 text-base leading-relaxed mb-5 font-body">
-          They aren't. Attackers don't care how big your logo is. They care whether a password was reused, whether a
-          server was left unpatched, whether an API quietly leaked a key nobody rotated. The breach that takes down a
-          company rarely starts with something exotic — it starts with something small that nobody thought was worth
-          fixing.
+          They usually aren't enough on their own. The issues that cause the most damage rarely start with something
+          exotic — it's often something small: a reused password, an unpatched server, an API key nobody rotated.
         </p>
         <p class="text-white/60 text-base leading-relaxed font-body">
-          By the time the damage is visible — leaked data, drained accounts, frozen operations, a headline — it's
-          already too late to prevent it. The cost was never the fix. It was always the complacency before it.
+          By the time the damage is visible — downtime, a breach, a scramble to recover — it's harder and more
+          expensive to fix than it would have been to catch early. That's the whole case for testing things before
+          they're forced to prove themselves.
         </p>
       </div>
 
-      <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--crimson); transition-delay:0.1s">
-        <div class="font-mono text-xs text-crimson-400 mb-6">// WHAT COMPLACENCY ACTUALLY COSTS</div>
+      <div class="skill-card p-8 fade-in relative overflow-hidden" style="--card-color: var(--gold); transition-delay:0.1s">
+        <div class="font-mono text-xs text-gold-400 mb-6">// WHAT WAITING ACTUALLY COSTS</div>
         <div class="space-y-5">
           <div class="flex items-start gap-4">
-            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(239,68,68,0.12)">
-              <i class="fas fa-database text-crimson-400 text-sm"></i>
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(240,161,63,0.12)">
+              <i class="fas fa-database text-gold-400 text-sm"></i>
             </div>
             <div>
               <div class="text-white font-semibold text-sm mb-1">Data doesn't come back</div>
-              <div class="text-white/40 text-xs leading-relaxed">Once customer records, credentials, or internal documents are exposed, there's no undo — only disclosure, cleanup, and lost trust.</div>
+              <div class="text-white/40 text-xs leading-relaxed">Once customer records, credentials, or internal documents are exposed, there's no undo — only disclosure, cleanup, and rebuilding trust.</div>
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(251,113,133,0.12)">
-              <i class="fas fa-clock text-rose-400 text-sm"></i>
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(60,191,174,0.12)">
+              <i class="fas fa-clock text-teal-400 text-sm"></i>
             </div>
             <div>
-              <div class="text-white font-semibold text-sm mb-1">Downtime compounds</div>
+              <div class="text-white font-semibold text-sm mb-1">Downtime adds up fast</div>
               <div class="text-white/40 text-xs leading-relaxed">Every hour systems are frozen for incident response is an hour of lost revenue, missed transactions, and idle staff.</div>
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(249,115,22,0.12)">
-              <i class="fas fa-user-shield text-ember-400 text-sm"></i>
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(255,127,86,0.12)">
+              <i class="fas fa-user-shield text-coral-400 text-sm"></i>
             </div>
             <div>
-              <div class="text-white font-semibold text-sm mb-1">Trust is the real casualty</div>
-              <div class="text-white/40 text-xs leading-relaxed">Customers and partners forgive downtime. They rarely forgive finding out their data wasn't protected in the first place.</div>
+              <div class="text-white font-semibold text-sm mb-1">Trust is the hardest part to rebuild</div>
+              <div class="text-white/40 text-xs leading-relaxed">People forgive downtime. They're a lot less forgiving when they find out their data wasn't protected in the first place.</div>
             </div>
           </div>
         </div>
@@ -1018,10 +918,10 @@ tailwind.config = {
     </div>
 
     <!-- Closing statement banner -->
-    <div class="skill-card p-8 md:p-10 fade-in text-center relative overflow-hidden" style="--card-color: var(--blood)">
+    <div class="skill-card p-8 md:p-10 fade-in text-center relative overflow-hidden" style="--card-color: var(--teal)">
       <div class="font-display font-bold text-xl md:text-2xl text-white leading-snug max-w-3xl mx-auto">
-        "Being big doesn't make you secure. Being unpatched, untested, and unaware does the opposite —
-        <span class="text-crimson-400">no matter how well-known you are.</span>"
+        "Security isn't about being untouchable. It's about knowing where you're exposed —
+        <span class="text-gold-400">and closing that gap before someone else finds it.</span>"
       </div>
       <div class="font-mono text-xs text-white/30 mt-5">— the mindset behind every assessment I run</div>
     </div>
@@ -1033,26 +933,26 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-6">
     <div class="mb-16 fade-in">
       <div class="section-label mb-3">// FIELD NOTES</div>
-      <h2 class="section-title">Notes From <span style="background: linear-gradient(135deg, var(--crimson), var(--rose)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">The Field</span></h2>
+      <h2 class="section-title">Notes From <span style="background: linear-gradient(135deg, var(--gold), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">The Field</span></h2>
       <p class="text-white/40 max-w-xl mt-3 font-body">Short lessons pulled from actually running assessments — not theory.</p>
     </div>
 
     <div class="grid lg:grid-cols-3 gap-6">
 
-      <div class="skill-card p-7 fade-in" style="--card-color: var(--crimson)">
-        <div class="font-mono text-xs text-crimson-400 mb-3">01</div>
+      <div class="skill-card p-7 fade-in" style="--card-color: var(--gold)">
+        <div class="font-mono text-xs text-gold-400 mb-3">01</div>
         <h3 class="font-display font-bold text-lg text-white mb-3">Recon Is Half the Battle</h3>
         <p class="text-white/40 text-sm leading-relaxed">Most engagements are won or lost before a single exploit runs. Time spent mapping subdomains, open ports, and exposed services quietly decides how the rest of the assessment goes — rushing this step almost always means missing the finding that mattered.</p>
       </div>
 
-      <div class="skill-card p-7 fade-in" style="--card-color: var(--rose); transition-delay:0.1s">
-        <div class="font-mono text-xs text-rose-400 mb-3">02</div>
+      <div class="skill-card p-7 fade-in" style="--card-color: var(--teal); transition-delay:0.1s">
+        <div class="font-mono text-xs text-teal-400 mb-3">02</div>
         <h3 class="font-display font-bold text-lg text-white mb-3">A False Positive Still Costs Trust</h3>
         <p class="text-white/40 text-sm leading-relaxed">Flooding a report with unverified findings doesn't make an assessment look thorough — it makes it look sloppy. Every scanner hit deserves manual confirmation before it earns a place in the final report.</p>
       </div>
 
-      <div class="skill-card p-7 fade-in" style="--card-color: var(--ember); transition-delay:0.2s">
-        <div class="font-mono text-xs text-ember-400 mb-3">03</div>
+      <div class="skill-card p-7 fade-in" style="--card-color: var(--coral); transition-delay:0.2s">
+        <div class="font-mono text-xs text-coral-400 mb-3">03</div>
         <h3 class="font-display font-bold text-lg text-white mb-3">Compliance Isn't Security, But It's a Start</h3>
         <p class="text-white/40 text-sm leading-relaxed">Passing an audit and being secure are not the same thing. Frameworks like CMMC, NIST SP 800-171, and PCI DSS give a baseline everyone can be measured against — the real work is closing the gap between "compliant" and "actually resilient."</p>
       </div>
@@ -1061,111 +961,61 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- ═══════════════════════════ PROJECTS ═══════════════════════════ -->
+<!-- ═══════════════════════════ PROJECT ═══════════════════════════ -->
 <section id="project" class="py-28 relative">
   <div class="max-w-7xl mx-auto px-6">
     <div class="mb-16 fade-in">
-      <div class="section-label mb-3">05 / PROJECTS</div>
-      <h2 class="section-title">Security <span style="background: linear-gradient(135deg, var(--crimson), var(--blood)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Frameworks</span></h2>
-      <p class="text-white/40 max-w-xl mt-3 font-body">Two independently built Bash-based tools for automated web security assessment.</p>
+      <div class="section-label mb-3">05 / PROJECT</div>
+      <h2 class="section-title">Featured <span style="background: linear-gradient(135deg, var(--gold), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Build</span></h2>
+      <p class="text-white/40 max-w-xl mt-3 font-body">A full-stack security assessment tool I designed and built from the ground up.</p>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-6">
-
-      <!-- Death Star -->
+    <div class="max-w-4xl mx-auto">
       <div class="project-card fade-in">
-        <div class="ascii-wrap flex items-center justify-center py-8 px-4">
-          <pre class="ascii-art" style="font-size:9px;">⠀⢀⣠⣾⣿⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣷⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⠄⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⣄⣀⣀⡀⠀⢀⣤⣾⣿⣿⡿⠟⠁⠀⠀⠀⠀⢠⣾⣿⣿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⡿⠟⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⠟⠀⠀⠀⠀⠀⣠⣴⣿⣿⣿⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⢀⣤⣾⡿⠋⠀⠀⠀⠀⠈⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⣶⣶⣶⣦⣼⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣠⣾⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣷⡄
-⠀⠀⠀⣠⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣶⣿⣿⣿⡏⠀
-⠸⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀
-⠾⠛⠁⠙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣿⡿⠛⠉⠁⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⠁⠀⠀⠀⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⡀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠟⠉⠁⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠘⠿⣿⣿⡿⠉⠛⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣀⢀⡀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠟⠁⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⣶⣿⠉⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟
-⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⠟⠁⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡿⠛⠿⠀⠀⠀⠈⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⠇
-⠀⠀⠀⠀⠀⠀⣠⣾⠟⠁⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⣿⣿⣿⣿⠟⠁⠀
-⠀⠀⠀⠰⣿⣿⣿⡅⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣿⡿⠋⠀⠀⠀
-⠀⠀⠀⠰⠟⠁⠙⠃⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣨⣿⡿⠋⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⣿⣿⣿⣿⣿⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⡿⠋⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠿⠿⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠾⣿⣿⣏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⠟⠉⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</pre>
+        <div class="art-wrap flex items-center justify-center py-14 px-6">
+          <svg width="220" height="160" viewBox="0 0 220 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="shieldGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f0a13f"/>
+                <stop offset="100%" stop-color="#3cbfae"/>
+              </linearGradient>
+            </defs>
+            <path d="M110 15 L165 35 V80 C165 112 141 138 110 148 C79 138 55 112 55 80 V35 Z"
+                  stroke="url(#shieldGrad)" stroke-width="3" fill="rgba(240,161,63,0.06)"/>
+            <path d="M85 82 L102 99 L138 60" stroke="url(#shieldGrad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="35" cy="45" r="3" fill="#3cbfae" opacity="0.7"/>
+            <circle cx="190" cy="60" r="2.5" fill="#f0a13f" opacity="0.7"/>
+            <circle cx="30" cy="110" r="2" fill="#ff7f56" opacity="0.6"/>
+            <circle cx="185" cy="115" r="3" fill="#3cbfae" opacity="0.5"/>
+          </svg>
         </div>
-        <div class="p-7">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="font-display font-bold text-xl text-white">Death Star v20.0</h3>
-            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">Bash</span>
+        <div class="p-8">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <h3 class="font-display font-bold text-2xl text-white">Obsidian</h3>
+            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-gold-500/10 text-gold-300 border border-gold-500/20">Python / Flask</span>
+            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-teal-400/10 text-teal-300 border border-teal-400/20">Web App</span>
           </div>
-          <p class="text-white/40 text-sm leading-relaxed mb-5">Complete security assessment framework supporting 30+ CMS platform signatures with weighted confidence scoring. Includes attack simulation (SQLi, LFI/path traversal, RCE against CVE-2018-7600 & CVE-2021-3129), smart domain-aware brute-force, DoS/stress-testing modules (GoldenEye, Slowloris), Tor anonymization with circuit rotation, and an automated defense-recommendation engine mapping vulnerabilities to mitigations.</p>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span class="px-3 py-1 rounded-full text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">30+ CMS Signatures</span>
-            <span class="px-3 py-1 rounded-full text-xs font-mono bg-blood-500/10 text-rose-300 border border-blood-500/20">Exploitation</span>
-            <span class="px-3 py-1 rounded-full text-xs font-mono bg-ember-400/10 text-ember-400 border border-ember-400/20">DoS Simulation</span>
-            <span class="px-3 py-1 rounded-full text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">Risk Scoring</span>
+          <p class="text-white/45 text-sm leading-relaxed mb-6">
+            A full-stack, web-based vulnerability scanner I built to make security assessments faster and easier to read.
+            It runs 16 automated checks — port scanning, SSL/TLS auditing, WordPress and database enumeration, backup-file
+            exposure across 210+ paths, <span class="font-mono text-white/60">.env</span> / <span class="font-mono text-white/60">.git</span> exposure,
+            open redirect, and CORS misconfiguration — and streams results back in real time instead of making you wait for
+            one long report. Findings are automatically sorted by severity (Critical → Secure), and the whole thing works
+            comfortably from a phone thanks to a mobile-responsive UI.
+          </p>
+          <p class="text-white/45 text-sm leading-relaxed mb-6">
+            Beyond scanning, Obsidian can generate a polished PDF report in one click and includes controlled exploitation
+            modules — WordPress and MySQL brute-force testing, FTP access checks — built strictly for authorized security
+            testing on systems you own or have permission to assess.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-gold-500/10 text-gold-300 border border-gold-500/20">16 Automated Checks</span>
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-teal-400/10 text-teal-300 border border-teal-400/20">Real-Time Streaming</span>
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-coral-400/10 text-coral-400 border border-coral-400/20">PDF Reporting</span>
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-gold-500/10 text-gold-300 border border-gold-500/20">Mobile-Responsive</span>
           </div>
           <a href="https://github.com/sabel2-0" target="_blank"
-             class="inline-flex items-center gap-2 font-mono text-xs text-crimson-400 hover:text-crimson-300 transition-colors cursor-none">
-            <i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right text-xs"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Spear of Destruction -->
-      <div class="project-card fade-in" style="transition-delay:0.15s">
-        <div class="ascii-wrap flex items-center justify-center py-8 px-4">
-          <pre class="ascii-art" style="font-size:11px;">⠀⠀⠀⠴⣄⠀⠀⠀⠀⣀⣀⣀⠤⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⣏⠀⠋⠀⠀⢀⣨⡭⠽⠿⢯⡛⢿⡑⢦⡀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠘⢦⡤⠤⢖⣉⣁⣀⠀⠀⠀⠙⡄⠱⡀⠹⡄⠀⠀⠀⠀
-⠀⠀⣀⠀⠀⠀⢀⠜⣁⠴⠚⠉⣁⣀⡀⠑⡀⠀⠀⠀⠀⡇⠀⠹⡄⠀⠀⠀
-⠀⢺⠉⠃⠀⢠⡿⠚⣁⣤⠞⠉⣠⠤⠬⣷⡀⠀⠀⠀⠀⠇⠀⢀⣷⠀⠀⠀
-⠀⠀⠙⠒⣲⠟⠓⠋⣵⠋⠀⠀⠈⠁⠀⠈⢧⠀⠀⠀⠀⠀⠀⡼⠀⣇⠀⠀
-⠶⠤⠤⠖⢡⠶⣄⡜⠁⠀⠀⠀⠀⠀⠰⠖⣾⠀⠀⠀⠀⠀⡜⠀⠀⢸⠀⠀
-⠀⠀⠀⠀⠀⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⠀⠀⠀⠀⠊⠀⠀⠀⢸⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⡸⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠊⠁⠀⠀⠀⠀⠀⠀⠀⢀⣠⠴⠛⣉⡗
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠞⠁⠀⠀⠀⠀⠀⠀⠀⢰⠋⣡⡶⠛⠉⠁⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠇⠀⠀⠀⢀⣠⠤⢤⣤⣤⡾⠀⣏⣄⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⡾⠀⠀⠀⠰⠛⠉⠉⠉⠛⠉⠀⠀⣿⠀⡆⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⢧⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⠖⠚⡟⡆⢿⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣆⠀⠀⠀⠀⠀⢀⣾⣍⣀⠀⣸⠇⢹⠈⢦⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢦⡀⠀⠀⠀⠈⠸⡄⠈⠉⠁⠀⠀⢣⣠⠃⠀
-⠀⠀⠀⠀⣰⢷⡀⠀⠀⠀⠀⠀⠹⣆⠀⠀⠀⠀⢳⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⢻⠀⠉⠍⠳⠤⠤⠤⢶⡄⣇⠀⠀⠀⠀⢱⡀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⢷⡀⠀⠀⠀⠀⡴⠋⠀⢹⠀⠀⠀⠀⠀⣇⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⢇⣀⣀⣴⡄⠉⠲⠶⠚⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠸⡄⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⢹⡄⠀⠀⠀⠀⢠⠀⠀⠀⠀⠀⡴⠃⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⣙⡶⣄⠀⢀⡘⣆⠀⠀⣶⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⣠⠶⠒⠒⠋⠉⠁⠀⠈⣹⠻⠏⣻⠇⠀⢘⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⣼⣥⡶⠋⠉⠉⠉⠉⠉⠉⠁⢠⡞⠁⣠⡶⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⢠⠏⣠⠞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠏⣼⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣈⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠿⠟⠁⠀⠀⠀⠀⠀</pre>
-        </div>
-        <div class="p-7">
-          <div class="flex items-center gap-2 mb-2">
-            <h3 class="font-display font-bold text-xl text-white">Spear of Destruction v5.2</h3>
-            <span class="px-2 py-0.5 rounded-md text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">Bash</span>
-          </div>
-          <p class="text-white/40 text-sm leading-relaxed mb-5">Automated web security assessment framework running a 15-phase pipeline — reconnaissance, attack-surface discovery, vulnerability assessment, service enumeration, authentication testing, SSL/TLS auditing, and credential exposure detection. Built with automated CMS fingerprinting, SHA1-based false-positive filtering, and Nmap-driven port scanning with structured report generation.</p>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span class="px-3 py-1 rounded-full text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">15-Phase Pipeline</span>
-            <span class="px-3 py-1 rounded-full text-xs font-mono bg-crimson-500/10 text-crimson-300 border border-crimson-500/20">SSL/TLS Auditing</span>
-            <span class="px-3 py-1 rounded-full text-xs font-mono bg-ember-400/10 text-ember-400 border border-ember-400/20">CMS Fingerprinting</span>
-            <span class="px-3 py-1 rounded-full text-xs font-mono bg-rose-400/10 text-rose-300 border border-rose-400/20">Credential Exposure</span>
-          </div>
-          <a href="https://github.com/sabel2-0" target="_blank"
-             class="inline-flex items-center gap-2 font-mono text-xs text-rose-400 hover:text-rose-300 transition-colors cursor-none">
+             class="inline-flex items-center gap-2 font-mono text-xs text-gold-400 hover:text-gold-300 transition-colors">
             <i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right text-xs"></i>
           </a>
         </div>
@@ -1177,7 +1027,7 @@ tailwind.config = {
 <!-- ═══════════════════════════ CONTACT ═══════════════════════════ -->
 <section id="contact" class="py-28 relative overflow-hidden">
   <div class="absolute inset-0 pointer-events-none">
-    <div class="orb w-96 h-96 bg-crimson-500 top-1/2 right-0 translate-x-1/2 -translate-y-1/2" style="opacity:0.08"></div>
+    <div class="orb w-96 h-96 bg-gold-500 top-1/2 right-0 translate-x-1/2 -translate-y-1/2" style="opacity:0.08"></div>
   </div>
 
   <div class="max-w-7xl mx-auto px-6">
@@ -1186,15 +1036,16 @@ tailwind.config = {
       <!-- Left -->
       <div class="fade-in">
         <div class="section-label mb-3">06 / CONTACT</div>
-        <h2 class="section-title mb-4">Let's <span style="background: linear-gradient(135deg, var(--crimson), var(--blood)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Connect</span></h2>
+        <h2 class="section-title mb-4">Let's <span style="background: linear-gradient(135deg, var(--gold), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Connect</span></h2>
         <p class="text-white/40 leading-relaxed mb-8 font-body">
-          I'm always open to new opportunities, collaborations, and conversations about tech and security. Whether you want to build something together or just say hi — my inbox is open.
+          Got a project, an opportunity, or just want to talk tech and security? I'm always happy to meet people
+          building interesting things — my inbox is open.
         </p>
 
         <div class="space-y-4 mb-8">
-          <a href="mailto:markivan.su@gmail.com" class="contact-card flex items-center gap-4 p-5 cursor-none">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(239,68,68,0.1)">
-              <i class="fas fa-envelope text-crimson-400"></i>
+          <a href="mailto:markivan.su@gmail.com" class="contact-card flex items-center gap-4 p-5">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(240,161,63,0.1)">
+              <i class="fas fa-envelope text-gold-400"></i>
             </div>
             <div>
               <div class="font-mono text-xs text-white/30 mb-0.5">EMAIL</div>
@@ -1204,8 +1055,8 @@ tailwind.config = {
           </a>
 
           <div class="contact-card flex items-center gap-4 p-5">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(251,113,133,0.1)">
-              <i class="fas fa-phone text-rose-400"></i>
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(60,191,174,0.1)">
+              <i class="fas fa-phone text-teal-400"></i>
             </div>
             <div>
               <div class="font-mono text-xs text-white/30 mb-0.5">PHONE</div>
@@ -1214,8 +1065,8 @@ tailwind.config = {
           </div>
 
           <div class="contact-card flex items-center gap-4 p-5">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(249,115,22,0.1)">
-              <i class="fas fa-map-marker-alt text-ember-400"></i>
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(255,127,86,0.1)">
+              <i class="fas fa-map-marker-alt text-coral-400"></i>
             </div>
             <div>
               <div class="font-mono text-xs text-white/30 mb-0.5">LOCATION</div>
@@ -1226,14 +1077,14 @@ tailwind.config = {
 
         <!-- Social links -->
         <div class="flex gap-3">
-          <a href="https://github.com/sabel2-0" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-crimson-400 hover:border-crimson-500/30 transition-all cursor-none">
+          <a href="https://github.com/sabel2-0" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-gold-400 hover:border-gold-500/30 transition-all">
             <i class="fab fa-github text-sm"></i>
           </a>
-          <a href="https://www.linkedin.com/in/mark-ivan-sumalinog-3b5a772b2/" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-crimson-400 hover:border-crimson-500/30 transition-all cursor-none">
+          <a href="https://www.linkedin.com/in/mark-ivan-sumalinog-3b5a772b2/" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-gold-400 hover:border-gold-500/30 transition-all">
             <i class="fab fa-linkedin text-sm"></i>
           </a>
           <a href="https://x.com/Vaizen__" target="_blank"
-             class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-crimson-400 hover:border-crimson-500/30 transition-all cursor-none">
+             class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-gold-400 hover:border-gold-500/30 transition-all">
             <i class="fa-brands fa-x-twitter text-sm"></i>
           </a>
         </div>
@@ -1247,39 +1098,31 @@ tailwind.config = {
 <footer class="border-t border-white/5 py-10">
   <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
     <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-crimson-500 to-blood-700 flex items-center justify-center">
-        <span class="font-display font-bold text-sm text-void">MI</span>
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-gold-500 to-coral-500 flex items-center justify-center">
+        <span class="font-display font-bold text-sm text-ink">MI</span>
       </div>
       <span class="font-mono text-xs text-white/20">Mark Ivan Sumalinog</span>
     </div>
     <div class="font-mono text-xs text-white/20 text-center">
-      Built with passion · Tailwind CSS · Cebu, PH · 2026
+      Built with care · Tailwind CSS · Cebu, PH · 2026
     </div>
     <div class="flex items-center gap-2">
       <div class="status-dot"></div>
-      <span class="font-mono text-xs text-crimson-400/60">Systems online</span>
+      <span class="font-mono text-xs text-teal-400/70">Systems online</span>
     </div>
   </div>
 </footer>
 
 <!-- Back to top -->
-<button id="back-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-xl bg-gradient-to-br from-crimson-500 to-blood-700 flex items-center justify-center text-void opacity-0 transition-all duration-300 hover:scale-110 shadow-lg cursor-none z-40">
+<button id="back-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-xl bg-gradient-to-br from-gold-500 to-coral-500 flex items-center justify-center text-ink opacity-0 transition-all duration-300 hover:scale-110 shadow-lg z-40">
   <i class="fas fa-arrow-up text-sm"></i>
 </button>
 
 <script>
-// ── CURSOR ──
-const dot = document.getElementById('cursor-dot');
-const ring = document.getElementById('cursor-ring');
-let mx=0, my=0, rx=0, ry=0;
-document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
-function animRing() { rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); }
-animRing();
-
 // ── TYPING EFFECT ──
 const roles = [
-  "Offensive Security",
-  "Defensive Security",
+  "Full-Stack Developer",
+  "Offensive & Defensive Security",
   "Python / Bash Developer",
   "Digital Forensics",
   "Network Security",
@@ -1301,7 +1144,7 @@ function typeRole() {
 typeRole();
 
 // Terminal running text
-const terminalTexts = ['init portfolio.js', 'loading modules...', 'security_modules loaded ✓', 'python_modules loaded ✓', 'scan complete — 0 open ports', 'portfolio.run() — ready'];
+const terminalTexts = ['init portfolio.js', 'loading modules...', 'security_modules loaded ✓', 'python_modules loaded ✓', 'scan complete — 0 open issues', 'portfolio.run() — ready'];
 let ti=0;
 function cycleTerminal() {
   const el = document.getElementById('terminal-running');
@@ -1353,48 +1196,15 @@ const progObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.2 });
 document.querySelectorAll('section').forEach(s => progObserver.observe(s));
 
-// ── PARALLAX ORBS ──
+// ── GENTLE PARALLAX ORBS ──
 document.addEventListener('mousemove', e => {
-  const x = (e.clientX/window.innerWidth - 0.5)*20;
-  const y = (e.clientY/window.innerHeight - 0.5)*20;
+  const x = (e.clientX/window.innerWidth - 0.5)*16;
+  const y = (e.clientY/window.innerHeight - 0.5)*16;
   document.querySelectorAll('.orb').forEach((orb, i) => {
-    const factor = (i+1)*0.3;
-    orb.style.transform += `translate(${x*factor}px,${y*factor}px)`;
+    const factor = (i+1)*0.25;
+    orb.style.transform = `translate(${x*factor}px,${y*factor}px)`;
   });
 });
-
-/* ══════════════════ VIEW-SOURCE DETERRENTS ══════════════════
-   NOTE: These only stop casual attempts (right-click, F12, Ctrl+U).
-   They cannot block browser features like view-source:, "Save Page As",
-   or DevTools opened from the browser menu — no page can do that. */
-
-// Disable right-click context menu
-document.addEventListener('contextmenu', e => e.preventDefault());
-
-// Block common inspect/view-source shortcuts
-document.addEventListener('keydown', e => {
-  const k = e.key.toLowerCase();
-  if (
-    e.key === 'F12' ||
-    (e.ctrlKey && e.shiftKey && ['i','j','c'].includes(k)) ||
-    (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
-    (e.ctrlKey && k === 'u') ||
-    (e.metaKey && k === 'u')
-  ) {
-    e.preventDefault();
-  }
-});
-
-// Lightweight DevTools-open detector (size-diff heuristic)
-const dtWarning = document.getElementById('dt-warning');
-let dtOpen = false;
-setInterval(() => {
-  const widthDiff = window.outerWidth - window.innerWidth > 160;
-  const heightDiff = window.outerHeight - window.innerHeight > 160;
-  const isOpen = widthDiff || heightDiff;
-  if (isOpen && !dtOpen) { dtOpen = true; dtWarning.classList.add('show'); }
-  if (!isOpen && dtOpen) { dtOpen = false; dtWarning.classList.remove('show'); }
-}, 800);
 </script>
 </body>
 </html>
