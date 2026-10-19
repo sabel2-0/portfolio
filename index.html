@@ -4,166 +4,279 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mark Ivan Sumalinog — Full-Stack Developer</title>
-<meta name="description" content="Full-stack developer in Cebu, Philippines. Builder of FixLink, a service marketplace for appliance repair.">
+<meta name="description" content="Mark Ivan Sumalinog, full-stack developer and Information Systems graduate from Cebu, Philippines.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #ffffff;
-    --text: #111111;
-    --muted: #6b6b6b;
-    --line: #e7e7e7;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #101010;
-      --text: #ededed;
-      --muted: #9a9a9a;
-      --line: #262626;
-    }
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-    font-size: 16px;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
-  main { max-width: 640px; margin: 0 auto; padding: 96px 24px 64px; }
-  a { color: inherit; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; transition: text-decoration-color .2s; }
-  a:hover { text-decoration-color: var(--text); }
-  a:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; border-radius: 2px; }
+:root{--bg:#fff;--text:#0f0f0f;--muted:#6e6e6e;--line:#e6e6e6;--soft:#f6f6f6;--ink:#0f0f0f;--on-ink:#fff;--flip:0}
+@media(prefers-color-scheme:dark){:root{--bg:#0e0e0e;--text:#f0f0f0;--muted:#909090;--line:#262626;--soft:#161616;--ink:#f0f0f0;--on-ink:#0e0e0e;--flip:1}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--text);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 28px}
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .in{display:flex;justify-content:space-between;align-items:center;height:60px;font-size:.9rem}
+nav .links{display:flex;gap:24px}
+nav a{text-decoration:none;color:var(--muted);transition:color .2s}
+nav a:hover,nav .brand{color:var(--text)}
+nav .brand{font-weight:600}
+section{padding:96px 0 0}
+.label{color:var(--muted);font-size:.88rem;margin-bottom:28px}
+h2.t{font-size:clamp(1.7rem,3.4vw,2.4rem);letter-spacing:-.025em;font-weight:600;line-height:1.15;margin-bottom:28px;max-width:20ch}
 
-  header { margin-bottom: 72px; }
-  h1 { font-size: 1.75rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
-  .role { color: var(--muted); margin-top: 4px; }
-  .intro { margin-top: 24px; max-width: 52ch; }
+.hero{padding:110px 0 0}
+.status{display:inline-flex;align-items:center;gap:10px;font-size:.88rem;color:var(--muted);margin-bottom:28px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--ink);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25}}
+.hero h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:600;letter-spacing:-.04em;line-height:1.02}
+.hero .sub{margin-top:24px;font-size:1.15rem;color:var(--muted);max-width:44ch}
+.cta{margin-top:36px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:11px 22px;border-radius:999px;font-size:.92rem;font-weight:500;text-decoration:none;border:1px solid var(--text);transition:opacity .2s}
+.btn.solid{background:var(--ink);color:var(--on-ink)}
+.btn:hover{opacity:.7}
 
-  section { padding-top: 40px; margin-top: 40px; border-top: 1px solid var(--line); }
-  h2 { font-size: 0.875rem; font-weight: 500; color: var(--muted); margin-bottom: 20px; }
-  h3 { font-size: 1rem; font-weight: 600; }
-  p + p { margin-top: 12px; }
-  .muted { color: var(--muted); }
-  .small { font-size: 0.9rem; }
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:64px}
+.about p{color:var(--muted);font-size:1.02rem}
+.about p+p{margin-top:16px}
+.about p b{color:var(--text);font-weight:500}
+.path{list-style:none;border-left:1px solid var(--line);padding-left:24px}
+.path li{position:relative;padding-bottom:26px}
+.path li:last-child{padding-bottom:0}
+.path li:before{content:"";position:absolute;left:-29px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--ink)}
+.path small{display:block;color:var(--muted);font-size:.8rem}
+.path b{font-weight:600;font-size:.98rem}
+.path span{display:block;color:var(--muted);font-size:.88rem}
 
-  .project h3 { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
-  .project .links { margin-top: 16px; display: flex; gap: 20px; flex-wrap: wrap; }
-  .project ul { margin-top: 16px; padding-left: 18px; color: var(--muted); }
-  .project li + li { margin-top: 6px; }
+.card{background:var(--soft);border-radius:22px;overflow:hidden}
+.card+.card{margin-top:24px}
+.card-in{padding:44px}
+.card h3{font-size:clamp(1.7rem,3.4vw,2.3rem);letter-spacing:-.03em;font-weight:600;line-height:1.1}
+.card .desc{margin-top:14px;max-width:54ch;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tags span{font-size:.78rem;padding:4px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:var(--bg)}
+.card ul.pts{margin:22px 0 0 18px;color:var(--muted);font-size:.95rem}
+.card ul.pts li+li{margin-top:6px}
+.card .go{margin-top:28px}
+.preview{margin:0 44px;background:var(--bg);border:1px solid var(--line);border-bottom:0;border-radius:14px 14px 0 0}
+.bar{display:flex;gap:6px;padding:13px 16px;border-bottom:1px solid var(--line)}
+.bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.pv{display:grid;grid-template-columns:1.2fr 1fr}
+.pv>div{padding:22px}
+.pv>div+div{border-left:1px solid var(--line)}
+.pv h4{font-size:.78rem;font-weight:500;color:var(--muted);margin-bottom:12px}
+.steps{list-style:none}
+.steps li{display:flex;align-items:center;gap:12px;padding:8px 0;font-size:.9rem;color:var(--muted)}
+.steps li:before{content:"";width:10px;height:10px;border-radius:50%;border:1.5px solid var(--muted);flex:none}
+.steps li.done{color:var(--text)}
+.steps li.done:before{background:var(--ink);border-color:var(--ink)}
+.steps li.now{color:var(--text);font-weight:600}
+.steps li.now:before{border-color:var(--ink);box-shadow:0 0 0 4px var(--line)}
+.est{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:12px;padding:11px 14px;font-size:.86rem;margin-bottom:9px}
+.est small{display:block;color:var(--muted);font-size:.76rem}
+.est.pick{border-color:var(--text)}
+.chat{margin-top:12px;display:flex;flex-direction:column;gap:7px;font-size:.8rem}
+.chat span{padding:7px 12px;border-radius:12px;background:var(--soft);max-width:80%}
+.chat .me{align-self:flex-end;background:var(--ink);color:var(--on-ink)}
 
-  dl { display: grid; grid-template-columns: 120px 1fr; gap: 12px 24px; }
-  dt { color: var(--muted); font-size: 0.9rem; }
-  dd { font-size: 0.95rem; }
+.stackgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.group h3{font-size:.88rem;font-weight:500;color:var(--muted);margin-bottom:18px}
+.tech{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tech div{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 6px;border:1px solid var(--line);border-radius:14px;font-size:.76rem;color:var(--muted);text-align:center;transition:transform .25s ease,border-color .25s ease,color .25s}
+.tech div:hover{transform:translateY(-5px);border-color:var(--text);color:var(--text)}
+.tech img{width:34px;height:34px;transition:transform .35s ease}
+.tech div:hover img{transform:scale(1.12) rotate(-4deg)}
+.tech img.inv{filter:invert(var(--flip))}
 
-  .row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-  .row + .row { margin-top: 24px; }
-  .row .date { color: var(--muted); font-size: 0.9rem; }
+.certs{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cert{display:block;text-decoration:none;border:1px solid var(--line);border-radius:18px;padding:28px;transition:border-color .25s,transform .25s}
+.cert:hover{border-color:var(--text);transform:translateY(-3px)}
+.cert small{color:var(--muted);font-size:.8rem}
+.cert h3{font-size:1.1rem;font-weight:600;margin:6px 0 18px;line-height:1.3}
+.cert span{font-size:.88rem;border-bottom:1px solid var(--line)}
 
-  footer { margin-top: 72px; color: var(--muted); font-size: 0.85rem; }
+.contact{padding:96px 0 56px}
+.contact .big{border-top:1px solid var(--line);padding-top:96px}
+.contact h2{font-size:clamp(2.1rem,5.2vw,3.6rem);letter-spacing:-.035em;font-weight:600;line-height:1.08;max-width:14ch}
+.mail{display:inline-block;margin-top:28px;font-size:1.2rem;text-decoration-color:var(--line);text-underline-offset:6px}
+.mail:hover{text-decoration-color:var(--text)}
+.social{margin-top:22px;display:flex;gap:24px;flex-wrap:wrap;color:var(--muted);font-size:.92rem}
+.social a:hover{color:var(--text)}
+footer{padding-bottom:48px;color:var(--muted);font-size:.82rem}
 
-  @media (max-width: 520px) {
-    main { padding-top: 64px; }
-    dl { grid-template-columns: 1fr; gap: 2px; }
-    dd { margin-bottom: 14px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-  }
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;transition-delay:var(--d,0s)}
+.rv.on{opacity:1;transform:none}
+
+@media(max-width:780px){
+ section{padding-top:72px}
+ .hero{padding-top:72px}
+ .about{grid-template-columns:1fr;gap:40px}
+ .stackgrid,.certs{grid-template-columns:1fr}
+ .card-in{padding:28px 24px}
+ .preview{margin:0 24px}
+ .pv{grid-template-columns:1fr}
+ .pv>div+div{border-left:0;border-top:1px solid var(--line)}
+ nav .links{gap:16px}
+ nav .links a:nth-child(n+4){display:none}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ .rv{opacity:1;transform:none;transition:none}
+ .status i{animation:none}
+ .tech div,.tech img,.cert{transition:none}
+}
 </style>
 </head>
 <body>
-<main>
 
-  <header>
-    <h1>Mark Ivan Sumalinog</h1>
-    <p class="role">Full-stack developer · Cebu City, Philippines</p>
-    <p class="intro">I build web applications from requirements to deployment. Recently, that meant designing, building, and shipping FixLink, a two-sided marketplace for appliance repair.</p>
-  </header>
+<nav><div class="wrap in">
+  <a class="brand" href="#top">Mark Ivan Sumalinog</a>
+  <div class="links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#stack">Stack</a><a href="#certificates">Certificates</a><a href="#contact">Contact</a></div>
+</div></nav>
 
-  <section id="project" class="project">
-    <h2>Selected project</h2>
-    <h3>FixLink <span class="muted small" style="font-weight:400">Service marketplace · 2026</span></h3>
-    <p style="margin-top:12px">A marketplace for the Philippines that connects customers with verified appliance repair technicians. It covers the full job: finding a technician, getting estimates, approving a quote, live chat, payment recording, and dispute handling.</p>
-    <ul>
-      <li>Booking flow from estimate to quote to approval to completion, with realtime notifications and booking-based chat with read receipts.</li>
-      <li>Prepaid technician wallet that deducts a 10% commission automatically when a job is completed, and hides low-balance technicians from listings.</li>
-      <li>Technician verification through TESDA NC2, employment, business registration, or freelance references.</li>
-      <li>Admin portal with live bookings and a site name that updates across the UI, metadata, and emails.</li>
-      <li>Row Level Security on every table, responsive customer, technician, and admin portals, and Playwright end-to-end tests.</li>
-    </ul>
-    <div class="links">
-      <a href="https://fix-link-one.vercel.app/" target="_blank" rel="noopener">Visit FixLink</a>
+<div class="wrap">
+
+<header class="hero" id="top">
+  <div class="status"><i></i>Open to software development roles</div>
+  <h1>Mark Ivan<br>Sumalinog</h1>
+  <p class="sub">Full-stack developer in Cebu, Philippines. I turn real problems into web applications people can use.</p>
+  <div class="cta">
+    <a class="btn solid" href="#projects">View projects</a>
+    <a class="btn" href="#contact">Contact me</a>
+  </div>
+</header>
+
+<section id="about">
+  <div class="label">About</div>
+  <div class="about">
+    <div>
+      <h2 class="t">I like understanding the problem before writing the code.</h2>
+      <p>I'm an <b>Information Systems graduate</b> from Cebu Technological University. My training in system analysis and design means I start with requirements and flow, then build the interface, database, and logic around them.</p>
+      <p>I've led a capstone team as <b>project manager</b> using Agile Scrum, worked as a <b>full-stack developer intern</b>, and built and launched my own marketplace, FixLink. I enjoy owning a product from the first sketch to the deployed site.</p>
     </div>
-  </section>
+    <ol class="path">
+      <li><small>Jul 2026</small><b>B.S. Information Systems</b><span>Cebu Technological University</span></li>
+      <li><small>Feb – Jun 2026</small><b>Full Stack Developer Intern</b><span>Alford Tech Corporation</span></li>
+      <li><small>Mar 2024 – Jan 2026</small><b>Project Manager, Capstone</b><span>ServiceEase</span></li>
+    </ol>
+  </div>
+</section>
 
-  <section id="stack">
-    <h2>Stack</h2>
-    <dl>
-      <dt>Frontend</dt>
-      <dd>Next.js, React, TypeScript, Tailwind CSS, shadcn/ui, HTML, CSS, JavaScript</dd>
-      <dt>Backend</dt>
-      <dd>Supabase, PostgreSQL, C# ASP.NET MVC, SQL Server, Python, Flask, REST APIs</dd>
-      <dt>Tooling</dt>
-      <dd>Git, GitHub, Docker, Postman, Playwright, Figma, Vercel, VS Code</dd>
-      <dt>Integrations</dt>
-      <dd>Supabase Realtime, Cloudinary, Brevo, AWS Location Service</dd>
-      <dt>Practice</dt>
-      <dd>System analysis and design, SDLC, Agile Scrum</dd>
-    </dl>
-  </section>
+<section id="projects">
+  <div class="label">Projects</div>
 
-  <section id="experience">
-    <h2>Experience</h2>
-    <div class="row">
-      <div>
-        <h3>Full Stack Developer Intern</h3>
-        <p class="muted small">Alford Tech Corporation, Mandaue City</p>
+  <article class="card rv">
+    <div class="card-in">
+      <h3>FixLink</h3>
+      <p class="desc">A marketplace that connects people in the Philippines with verified appliance repair technicians, from finding a technician to approving a quote and recording payment.</p>
+      <div class="tags"><span>Next.js</span><span>TypeScript</span><span>Supabase</span><span>PostgreSQL</span><span>Tailwind CSS</span><span>Vercel</span></div>
+      <ul class="pts">
+        <li>Booking flow from estimate to quote to completion, with realtime notifications and chat.</li>
+        <li>Prepaid technician wallet with an automatic 10% commission.</li>
+        <li>Technician verification, admin portal, and Row Level Security on every table.</li>
+      </ul>
+      <div class="cta go"><a class="btn solid" href="https://fix-link-one.vercel.app/" target="_blank" rel="noopener">Visit FixLink</a></div>
+    </div>
+    <div class="preview" aria-hidden="true">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <div class="pv">
+        <div><h4>Booking progress</h4>
+          <ul class="steps"><li class="done">Request sent</li><li class="done">Estimates received</li><li class="done">Technician selected</li><li class="now">Quote approved</li><li>Job completed</li></ul></div>
+        <div><h4>Estimates</h4>
+          <div class="est pick"><div><b>Selected technician</b><small>Arrives around 10:59 AM</small></div><b>Quote</b></div>
+          <div class="est"><div><b>Technician B</b><small>Verified</small></div><span>Estimate</span></div>
+          <div class="chat"><span>I'm on my way.</span><span class="me">Great, see you soon.</span></div></div>
       </div>
-      <span class="date">Feb – Jun 2026</span>
     </div>
-    <p class="small" style="margin-top:8px">Did system analysis and design, prototyped in Figma, and built an e-commerce web app with C# ASP.NET MVC and SQL Server, using Docker and Postman.</p>
+  </article>
 
-    <div class="row">
-      <div>
-        <h3>Project Manager, ServiceEase</h3>
-        <p class="muted small">Capstone, Cebu City</p>
-      </div>
-      <span class="date">Mar 2024 – Jan 2026</span>
+  <article class="card rv">
+    <div class="card-in">
+      <h3>ServiceEase</h3>
+      <p class="desc">My capstone: a web-based service request system where businesses submit printer issues and follow them through to resolution. I led the team as project manager.</p>
+      <div class="tags"><span>Capstone</span><span>Project management</span><span>Agile Scrum</span><span>Web app</span></div>
+      <ul class="pts">
+        <li>Quick request submission and real-time status tracking for every ticket.</li>
+        <li>Technician workflows from assignment to resolution, with priority handling.</li>
+        <li>Planned and run in Agile sprints, with tasks assigned across the team.</li>
+      </ul>
+      <div class="cta go"><a class="btn solid" href="https://serviceease-mkie.onrender.com/" target="_blank" rel="noopener">Visit ServiceEase</a></div>
     </div>
-    <p class="small" style="margin-top:8px">Led a team through Agile Scrum sprints to build a service request management system for printer technicians, from ticket submission to resolution.</p>
-  </section>
+  </article>
+</section>
 
-  <section id="education">
-    <h2>Education</h2>
-    <div class="row">
-      <div>
-        <h3>B.S. Information Systems</h3>
-        <p class="muted small">Cebu Technological University, Main Campus</p>
-      </div>
-      <span class="date">Graduated Jul 2026</span>
-    </div>
-  </section>
+<section id="stack">
+  <div class="label">Stack</div>
+  <h2 class="t">The tools I build with.</h2>
+  <div class="stackgrid">
+    <div class="group"><h3>Frontend</h3>
+      <div class="tech">
+        <div class="rv"><img class="inv" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="" onerror="this.style.display='none'">Next.js</div>
+        <div class="rv" style="--d:.05s"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="" onerror="this.style.display='none'">React</div>
+        <div class="rv" style="--d:.1s"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="" onerror="this.style.display='none'">TypeScript</div>
+        <div class="rv" style="--d:.15s"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="" onerror="this.style.display='none'">Tailwind</div>
+        <div class="rv" style="--d:.2s"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="" onerror="this.style.display='none'">JavaScript</div>
+        <div class="rv" style="--d:.25s"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="" onerror="this.style.display='none'">HTML</div>
+        <div class="rv" style="--d:.3s"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="" onerror="this.style.display='none'">CSS</div>
+      </div></div>
+    <div class="group"><h3>Backend and data</h3>
+      <div class="tech">
+        <div class="rv"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="" onerror="this.style.display='none'">Supabase</div>
+        <div class="rv" style="--d:.05s"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="" onerror="this.style.display='none'">PostgreSQL</div>
+        <div class="rv" style="--d:.1s"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="" onerror="this.style.display='none'">C#</div>
+        <div class="rv" style="--d:.15s"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" alt="" onerror="this.style.display='none'">ASP.NET MVC</div>
+        <div class="rv" style="--d:.2s"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg" alt="" onerror="this.style.display='none'">SQL Server</div>
+        <div class="rv" style="--d:.25s"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" onerror="this.style.display='none'">Python</div>
+        <div class="rv" style="--d:.3s"><img class="inv" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="" onerror="this.style.display='none'">Flask</div>
+      </div></div>
+    <div class="group"><h3>Tools</h3>
+      <div class="tech">
+        <div class="rv"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="" onerror="this.style.display='none'">Git</div>
+        <div class="rv" style="--d:.05s"><img class="inv" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" onerror="this.style.display='none'">GitHub</div>
+        <div class="rv" style="--d:.1s"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="" onerror="this.style.display='none'">Docker</div>
+        <div class="rv" style="--d:.15s"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="" onerror="this.style.display='none'">Postman</div>
+        <div class="rv" style="--d:.2s"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/playwright/playwright-original.svg" alt="" onerror="this.style.display='none'">Playwright</div>
+        <div class="rv" style="--d:.25s"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="" onerror="this.style.display='none'">Figma</div>
+        <div class="rv" style="--d:.3s"><img class="inv" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" alt="" onerror="this.style.display='none'">Vercel</div>
+        <div class="rv" style="--d:.35s"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="" onerror="this.style.display='none'">VS Code</div>
+      </div></div>
+  </div>
+</section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Open to software development roles. The best way to reach me is email.</p>
-    <p style="margin-top:16px">
-      <a href="mailto:markivan.su@gmail.com">markivan.su@gmail.com</a><br>
-      <span class="muted">+63 994 906 5613</span>
-    </p>
-    <p style="margin-top:16px" class="small">
-      <a href="https://github.com/sabel2-0" target="_blank" rel="noopener">GitHub</a> ·
-      <a href="https://www.linkedin.com/in/mark-ivan-sumalinog-3b5a772b2/" target="_blank" rel="noopener">LinkedIn</a> ·
+<section id="certificates">
+  <div class="label">Certificates</div>
+  <div class="certs">
+    <a class="cert rv" href="https://coursera.org/share/4f9f8c95c87efab4a80c769140cdfa51" target="_blank" rel="noopener">
+      <small>Coursera · Google</small><h3>Google IT Support Professional Certificate</h3><span>View credential</span></a>
+    <a class="cert rv" style="--d:.1s" href="https://coursera.org/share/6a53087e32580db232b302e476c64374" target="_blank" rel="noopener">
+      <small>Coursera · Google</small><h3>Google Cybersecurity Professional Certificate</h3><span>View credential</span></a>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="big">
+    <h2>Let's talk about your next project.</h2>
+    <a class="mail" href="mailto:markivan.su@gmail.com">markivan.su@gmail.com</a>
+    <div class="social">
+      <a href="https://github.com/sabel2-0" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/mark-ivan-sumalinog-3b5a772b2/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://x.com/Vaizen__" target="_blank" rel="noopener">X</a>
-    </p>
-  </section>
+      <span>+63 994 906 5613</span>
+    </div>
+  </div>
+</section>
 
-  <footer>© 2026 Mark Ivan Sumalinog</footer>
+<footer>© 2026 Mark Ivan Sumalinog · Cebu City, Philippines</footer>
+</div>
 
-</main>
+<script>
+const els=document.querySelectorAll('.rv');
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
+  els.forEach(el=>io.observe(el));
+}else{els.forEach(el=>el.classList.add('on'))}
+</script>
 </body>
 </html>
